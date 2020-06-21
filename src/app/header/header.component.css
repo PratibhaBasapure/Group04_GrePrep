@@ -1,0 +1,13 @@
+::ng-deep .profile div.mat-select-arrow-wrapper {
+  display: none;
+}
+
+::ng-deep .profile.mat-select {
+  display: inline;
+}
+.toolbar {
+  top: 0;
+  position: sticky;
+  z-index: 10;
+  background-color: #1967b3;
+}

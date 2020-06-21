@@ -1,0 +1,166 @@
+<app-header></app-header>
+<div style="overflow: auto; height: 80%;">
+  <ngb-carousel
+    style="height: 300px;"
+    #carousel
+    [interval]="1500"
+    [pauseOnHover]="pauseOnHover"
+    (slide)="onSlide($event)"
+  >
+    <ng-template ngbSlide *ngFor="let img of images; index as i">
+      <div class="carousel-caption">
+        <h3>My slide {{ i + 1 }} title</h3>
+      </div>
+      <div class="picsum-img-wrapper">
+        <img [src]="img" height="300px" />
+      </div>
+    </ng-template>
+  </ngb-carousel>
+
+  <div
+    class="container"
+    fxLayout="row"
+    fxLayout.xs="column"
+    fxLayoutWrap
+    fxLayoutGap="0.5"
+    fxLayoutAlign="start"
+  >
+    <div fxFlex="65%" style="padding: 10px;">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Semper auctor neque
+      vitae tempus quam pellentesque nec nam. Curabitur gravida arcu ac tortor
+      dignissim convallis aenean et. Sed arcu non odio euismod lacinia at.
+      Sollicitudin tempor id eu nisl nunc. Auctor urna nunc id cursus metus
+      aliquam eleifend mi. Amet mattis vulputate enim nulla aliquet. Varius duis
+      at consectetur lorem. Non arcu risus quis varius quam quisque id.
+      Ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia. Risus
+      sed vulputate odio ut enim blandit volutpat maecenas volutpat. Nunc congue
+      nisi vitae suscipit tellus. Et malesuada fames ac turpis egestas integer
+      eget. Aliquet bibendum enim facilisis gravida neque convallis a. Lorem
+      ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+      incididunt ut labore et dolore magna aliqua. Semper auctor neque vitae
+      tempus quam pellentesque nec nam. Curabitur gravida arcu ac tortor
+      dignissim convallis aenean et. Sed arcu non odio euismod lacinia at.
+      Sollicitudin tempor id eu nisl nunc. Auctor urna nunc id cursus metus
+      aliquam eleifend mi. Amet mattis vulputate enim nulla aliquet. Varius duis
+      at consectetur lorem. Non arcu risus quis varius quam quisque id.
+      Ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia. Risus
+      sed vulputate odio ut enim blandit volutpat maecenas volutpat. Nunc congue
+      nisi vitae suscipit tellus. Et malesuada fames ac turpis egestas integer
+      eget. Aliquet bibendum enim facilisis gravida neque convallis a.
+    </div>
+    <div fxFlex="35%" style="padding: 10px;">
+      <img src="../../assets/img/english.PNG" width="90%" height="90%" />
+    </div>
+  </div>
+  <div
+    class="container"
+    fxLayout="row"
+    fxLayout.xs="column"
+    fxLayoutWrap
+    fxLayoutGap="0.5"
+    fxLayoutAlign="start"
+  >
+    <div fxFlex="35%" style="padding: 10px;">
+      <img src="../../assets/img/english2.jpg" width="90%" height="90%" />
+    </div>
+    <div fxFlex="65%" style="padding: 10px;">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Semper auctor neque
+      vitae tempus quam pellentesque nec nam. Curabitur gravida arcu ac tortor
+      dignissim convallis aenean et. Sed arcu non odio euismod lacinia at.
+      Sollicitudin tempor id eu nisl nunc. Auctor urna nunc id cursus metus
+      aliquam eleifend mi. Amet mattis vulputate enim nulla aliquet. Varius duis
+      at consectetur lorem. Non arcu risus quis varius quam quisque id.
+      Ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia. Risus
+      sed vulputate odio ut enim blandit volutpat maecenas volutpat. Nunc congue
+      nisi vitae suscipit tellus. Et malesuada fames ac turpis egestas integer
+      eget. Aliquet bibendum enim facilisis gravida neque convallis a. Lorem
+      ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+      incididunt ut labore et dolore magna aliqua. Semper auctor neque vitae
+      tempus quam pellentesque nec nam. Curabitur gravida arcu ac tortor
+      dignissim convallis aenean et. Sed arcu non odio euismod lacinia at.
+      Sollicitudin tempor id eu nisl nunc. Auctor urna nunc id cursus metus
+      aliquam eleifend mi. Amet mattis vulputate enim nulla aliquet. Varius duis
+      at consectetur lorem. Non arcu risus quis varius quam quisque id.
+      Ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia. Risus
+      sed vulputate odio ut enim blandit volutpat maecenas volutpat. Nunc congue
+      nisi vitae suscipit tellus. Et malesuada fames ac turpis egestas integer
+      eget. Aliquet bibendum enim facilisis gravida neque convallis a.
+    </div>
+  </div>
+  <div
+    class="container"
+    fxLayout="row"
+    fxLayout.xs="column"
+    fxLayoutWrap
+    fxLayoutGap="0.5"
+    fxLayoutAlign="start"
+  >
+    <div fxFlex="65%" style="padding: 10px;">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Semper auctor neque
+      vitae tempus quam pellentesque nec nam. Curabitur gravida arcu ac tortor
+      dignissim convallis aenean et. Sed arcu non odio euismod lacinia at.
+      Sollicitudin tempor id eu nisl nunc. Auctor urna nunc id cursus metus
+      aliquam eleifend mi. Amet mattis vulputate enim nulla aliquet. Varius duis
+      at consectetur lorem. Non arcu risus quis varius quam quisque id.
+      Ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia. Risus
+      sed vulputate odio ut enim blandit volutpat maecenas volutpat. Nunc congue
+      nisi vitae suscipit tellus. Et malesuada fames ac turpis egestas integer
+      eget. Aliquet bibendum enim facilisis gravida neque convallis a. Lorem
+      ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+      incididunt ut labore et dolore magna aliqua. Semper auctor neque vitae
+      tempus quam pellentesque nec nam. Curabitur gravida arcu ac tortor
+      dignissim convallis aenean et. Sed arcu non odio euismod lacinia at.
+      Sollicitudin tempor id eu nisl nunc. Auctor urna nunc id cursus metus
+      aliquam eleifend mi. Amet mattis vulputate enim nulla aliquet. Varius duis
+      at consectetur lorem. Non arcu risus quis varius quam quisque id.
+      Ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia. Risus
+      sed vulputate odio ut enim blandit volutpat maecenas volutpat. Nunc congue
+      nisi vitae suscipit tellus. Et malesuada fames ac turpis egestas integer
+      eget. Aliquet bibendum enim facilisis gravida neque convallis a.
+    </div>
+    <div fxFlex="35%" style="padding: 10px;">
+      <img src="../../assets/img/english.PNG" width="90%" height="90%" />
+    </div>
+  </div>
+  <div
+    class="container"
+    fxLayout="row"
+    fxLayout.xs="column"
+    fxLayoutWrap
+    fxLayoutGap="0.5"
+    fxLayoutAlign="start"
+  >
+    <div fxFlex="35%" style="padding: 10px;">
+      <img src="../../assets/img/english2.jpg" width="90%" height="90%" />
+    </div>
+    <div fxFlex="65%" style="padding: 10px;">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Semper auctor neque
+      vitae tempus quam pellentesque nec nam. Curabitur gravida arcu ac tortor
+      dignissim convallis aenean et. Sed arcu non odio euismod lacinia at.
+      Sollicitudin tempor id eu nisl nunc. Auctor urna nunc id cursus metus
+      aliquam eleifend mi. Amet mattis vulputate enim nulla aliquet. Varius duis
+      at consectetur lorem. Non arcu risus quis varius quam quisque id.
+      Ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia. Risus
+      sed vulputate odio ut enim blandit volutpat maecenas volutpat. Nunc congue
+      nisi vitae suscipit tellus. Et malesuada fames ac turpis egestas integer
+      eget. Aliquet bibendum enim facilisis gravida neque convallis a. Lorem
+      ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+      incididunt ut labore et dolore magna aliqua. Semper auctor neque vitae
+      tempus quam pellentesque nec nam. Curabitur gravida arcu ac tortor
+      dignissim convallis aenean et. Sed arcu non odio euismod lacinia at.
+      Sollicitudin tempor id eu nisl nunc. Auctor urna nunc id cursus metus
+      aliquam eleifend mi. Amet mattis vulputate enim nulla aliquet. Varius duis
+      at consectetur lorem. Non arcu risus quis varius quam quisque id.
+      Ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia. Risus
+      sed vulputate odio ut enim blandit volutpat maecenas volutpat. Nunc congue
+      nisi vitae suscipit tellus. Et malesuada fames ac turpis egestas integer
+      eget. Aliquet bibendum enim facilisis gravida neque convallis a.
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>
+<app-footer></app-footer>

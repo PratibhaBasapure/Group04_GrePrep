@@ -1,0 +1,64 @@
+<app-header></app-header>
+
+<div class="grePredictor">
+  <h2>GRE School Predictor</h2>
+  <h5>
+    Based on your Mock Test score, the list of schools that you can apply for
+    are: Your GRE Score: 311 Verbal: 150 Quantitative: 161
+  </h5>
+  <mat-form-field appearance="outline">
+    <mat-label>Search your schools...</mat-label>
+    <input
+      matInput
+      (keyup)="applyFilter($event)"
+      placeholder="Example: Canad"
+    />
+    <mat-icon matPrefix>search</mat-icon>
+  </mat-form-field>
+  <div
+    class="grePredictorTable mat-elevation-z12"
+    [hidden]="dataSource.filteredData.length === 0"
+  >
+    <table mat-table matSort [dataSource]="dataSource">
+      <ng-container matColumnDef="country">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Country</th>
+        <td mat-cell *matCellDef="let element">{{ element.country }}</td>
+      </ng-container>
+      <ng-container matColumnDef="school">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>School</th>
+        <td mat-cell *matCellDef="let element">{{ element.school }}</td>
+      </ng-container>
+      <ng-container matColumnDef="specialization">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Specialization
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.specialization }}</td>
+      </ng-container>
+      <ng-container matColumnDef="possibility">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Possibility</th>
+        <td mat-cell *matCellDef="let element">{{ element.possibility }}</td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+    <mat-paginator
+      [pageSizeOptions]="[5, 10, 20, 50, 100]"
+      showFirstLastButtons
+      class="mat-paginator-sticky"
+    ></mat-paginator>
+  </div>
+  <div
+    *ngIf="dataSource.filteredData.length === 0"
+    fxLayoutAlign="center center"
+  >
+    <img
+      src="../../assets/img/noresultsfound.PNG"
+      width="180vw"
+      height="180vh"
+      style="margin-top: 8vw;"
+    />
+  </div>
+</div>
+<router-outlet></router-outlet>
+
+<app-footer></app-footer>

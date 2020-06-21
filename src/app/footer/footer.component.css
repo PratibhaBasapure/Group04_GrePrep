@@ -1,0 +1,9 @@
+.navigation-items {
+  font-size: 14px;
+}
+.toolbar {
+  bottom: 0;
+  position: fixed;
+  z-index: 10;
+  background-color: #1967b3;
+}

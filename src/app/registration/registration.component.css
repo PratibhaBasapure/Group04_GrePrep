@@ -1,0 +1,33 @@
+mat-form-field {
+  width: 80%;
+}
+mat-card-title {
+  padding-left: 10px;
+}
+mat-card-subtitle {
+  padding-left: 10px;
+}
+mat-card-actions {
+  padding-left: 20px;
+}
+.registrationLayout {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(150deg, #1967b3 5%, #05d5ff 75%, #a6ffcb 94%)
+    no-repeat center center fixed;
+  background-size: cover;
+}
+::ng-deep .mat-card {
+  border: 55px solid #000;
+  border-radius: 30px !important;
+  border: #000 !important;
+}
+
+.registrationCard {
+  width: 90%;
+  height: auto;
+  background-color: rgba(0, 0, 0, 0.2);
+  background-image: linear-gradient(30deg, #ffffff 40%, #e8f4f8 50%);
+}

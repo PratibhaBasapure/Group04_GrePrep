@@ -1,0 +1,33 @@
+<mat-toolbar color="primary" class="toolbar">
+  <mat-toolbar-row fxLayoutAlign="space-between center">
+    <div fxLayout="row">
+      <button mat-button>About Us</button>
+
+      <button mat-button>Contact Us</button>
+
+      <button mat-button>Terms and Conditions</button>
+
+      <button mat-button>FAQs</button>
+    </div>
+    <div class="navigation-items" *ngIf="!deviceXs">
+      <span>
+        GREPrep.com
+      </span>
+      <span>
+        Get on Google Play!
+      </span>
+    </div>
+  </mat-toolbar-row>
+  <mat-toolbar-row
+    class="navigation-items"
+    *ngIf="deviceXs"
+    fxLayoutAlign="space-between end"
+  >
+    <span>
+      GREPrep.com
+    </span>
+    <span>
+      Get on Google Play!
+    </span>
+  </mat-toolbar-row>
+</mat-toolbar>

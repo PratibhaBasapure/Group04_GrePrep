@@ -1,0 +1,32 @@
+table {
+  width: 100%;
+}
+.attemptHistory {
+  padding: 20px;
+}
+th.mat-sort-header-sorted {
+  color: blue;
+}
+.attemptTable {
+  height: 54vh;
+  overflow: auto;
+}
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+.mat-paginator-sticky {
+  bottom: 0;
+  position: sticky;
+  z-index: 10;
+}
+.mat-header-cell {
+  background-color: #1967b3;
+  color: white;
+}
+::ng-deep .mat-sort-header-arrow {
+  color: #fff;
+}
+::ng-deep .mat-form-field-wrapper {
+  padding-bottom: 10px !important;
+}
