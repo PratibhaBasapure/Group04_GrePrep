@@ -33,6 +33,7 @@ import { FooterComponent } from './footer/footer.component';
 import { GrePredictorComponent } from './gre-predictor/gre-predictor.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
+import { GreComponent } from './gre/gre.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { RouterModule } from '@angular/router';
     AttemptHistoryComponent,
     FooterComponent,
     GrePredictorComponent,
+    GreComponent,
   ],
   imports: [
     BrowserModule,

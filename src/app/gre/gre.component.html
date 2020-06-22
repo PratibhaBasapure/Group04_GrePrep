@@ -1,0 +1,144 @@
+<app-header></app-header>
+<div
+  class="container"
+  fxLayout="row"
+  fxLayout.xs="column"
+  fxLayoutWrap
+  fxLayoutGap="10px"
+  fxLayoutGap.xs="5px"
+  fxLayoutAlign="start"
+  style="
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+  "
+>
+  <div class="item item-1" fxFlex="50%">
+    <mat-card
+      class="example-card"
+      [routerLink]="['/movieDetails/']"
+      routerLinkActive="active"
+    >
+      <mat-card-header>
+        <mat-card-title>Verbal</mat-card-title>
+        <mat-card-subtitle>GRE</mat-card-subtitle>
+      </mat-card-header>
+      <img
+        mat-card-image
+        src="assets/img/gre_verbal_prep.png"
+        alt="Photo of a Gre Verbal"
+        height="30%"
+      />
+      <mat-card-content>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Semper
+          auctor neque vitae tempus quam pellentesque nec nam. Curabitur gravida
+          arcu ac tortor dignissim convallis aenean et. Sed arcu non odio
+          euismod lacinia at. Sollicitudin tempor id eu nisl nunc.
+        </p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="item item-1" fxFlex="50%">
+    <mat-card
+      class="example-card"
+      [routerLink]="['/movieDetails/']"
+      routerLinkActive="active"
+    >
+      <mat-card-header>
+        <mat-card-title>Quantitative</mat-card-title>
+        <mat-card-subtitle>GRE</mat-card-subtitle>
+      </mat-card-header>
+      <img
+        mat-card-image
+        src="assets/img/gre_quant_prep.png"
+        alt="Photo of a GRE Quant"
+        height="30%"
+      />
+      <mat-card-content>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Semper
+          auctor neque vitae tempus quam pellentesque nec nam. Curabitur gravida
+          arcu ac tortor dignissim convallis aenean et. Sed arcu non odio
+          euismod lacinia at. Sollicitudin tempor id eu nisl nunc.
+        </p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+<div
+  class="container"
+  fxLayout="row"
+  fxLayout.xs="column"
+  fxLayoutWrap
+  fxLayoutGap="10px"
+  fxLayoutGap.xs="5px"
+  fxLayoutAlign="start"
+  style="
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+  "
+>
+  <div class="item item-1" fxFlex="50%">
+    <mat-card
+      class="example-card"
+      [routerLink]="['/movieDetails/']"
+      routerLinkActive="active"
+    >
+      <mat-card-header>
+        <mat-card-title>Quiz</mat-card-title>
+        <mat-card-subtitle>GRE</mat-card-subtitle>
+      </mat-card-header>
+      <img
+        mat-card-image
+        src="assets/img/gre-quiz.png"
+        alt="Photo of a GRE Quiz"
+        height="200px"
+      />
+      <mat-card-content>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Semper
+          auctor neque vitae tempus quam pellentesque nec nam. Curabitur gravida
+          arcu ac tortor dignissim convallis aenean et. Sed arcu non odio
+          euismod lacinia at. Sollicitudin tempor id eu nisl nunc.
+        </p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="item item-1" fxFlex="50%">
+    <mat-card
+      class="example-card"
+      [routerLink]="['/movieDetails/']"
+      routerLinkActive="active"
+    >
+      <mat-card-header>
+        <mat-card-title>Mock Test</mat-card-title>
+        <mat-card-subtitle>GRE</mat-card-subtitle>
+      </mat-card-header>
+      <img
+        mat-card-image
+        src="assets/img/gremock.jpg"
+        alt="Photo of a GRE mock"
+        height="200px"
+      />
+      <mat-card-content>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Semper
+          auctor neque vitae tempus quam pellentesque nec nam. Curabitur gravida
+          arcu ac tortor dignissim convallis aenean et. Sed arcu non odio
+          euismod lacinia at. Sollicitudin tempor id eu nisl nunc.
+        </p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+<router-outlet></router-outlet>
+<app-footer></app-footer>
