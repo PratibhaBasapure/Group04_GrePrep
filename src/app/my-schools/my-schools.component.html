@@ -1,140 +1,161 @@
-<app-header></app-header>
-<h1 style="padding-top: 2%; text-align: center;">My Schools</h1>
-<div style="padding-bottom: 2%;">
-  <div fxLayout="column" class="topDiv" fxLayoutGap="0%">
-    <div fxLayout="column" fxLayoutAlign="center" class="mat-elevation-z8">
+<div style="background-color: #e7ebee;">
+  <app-header></app-header>
+  <h1 style="padding-top: 2%; text-align: center;">My Schools</h1>
+  <div style="padding-bottom: 2%;">
+    <div fxLayout="column" fxLayoutGap="0%">
       <div
-        fxFlex="10%"
-        style="text-align: center; font-size: larger; padding-top: 2%;"
+        fxLayout="column"
+        fxLayoutAlign="center"
+        class="mat-elevation-z8"
+        style="background-color: white;"
       >
-        Dream Schools
-      </div>
-      <div fxFlex="80%">
-        <mat-table [dataSource]="dream_dataSource" class="mat-table" matSort>
-          <!-- Position Column -->
-          <ng-container matColumnDef="id">
-            <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{ element.id }} </mat-cell>
-          </ng-container>
+        <div
+          fxFlex="10%"
+          style="text-align: center; font-size: larger; padding-top: 2%;"
+        >
+          Dream Schools
+        </div>
+        <div fxFlex="80%">
+          <mat-table [dataSource]="dream_dataSource" class="mat-table" matSort>
+            <!-- Position Column -->
+            <ng-container matColumnDef="id">
+              <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{ element.id }} </mat-cell>
+            </ng-container>
 
-          <!-- Name Column -->
-          <ng-container matColumnDef="name">
-            <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{ element.name }} </mat-cell>
-          </ng-container>
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+              <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+              <mat-cell *matCellDef="let element">
+                {{ element.name }}
+              </mat-cell>
+            </ng-container>
 
-          <ng-container matColumnDef="actions">
-            <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
-            <mat-cell *matCellDef="let row" style="margin-right: initial;">
-              <button mat-raised-button [routerLink]="'/register'">
-                Remove From Favourites
-              </button>
-            </mat-cell>
-          </ng-container>
+            <ng-container matColumnDef="actions">
+              <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+              <mat-cell *matCellDef="let row" style="margin-right: initial;">
+                <button mat-raised-button [routerLink]="'/register'">
+                  Remove From Favourites
+                </button>
+              </mat-cell>
+            </ng-container>
 
-          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-          <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
-        </mat-table>
+            <mat-header-row
+              *matHeaderRowDef="displayedColumns"
+            ></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+          </mat-table>
+        </div>
+        <div fxFlex="10%" style="margin-left: auto; margin-right: auto;">
+          <mat-paginator
+            #paginatorDream
+            [pageSizeOptions]="[2, 3, 4, 5]"
+          ></mat-paginator>
+        </div>
       </div>
-      <div fxFlex="10%" style="margin-left: auto; margin-right: auto;">
-        <mat-paginator
-          #paginatorDream
-          [pageSizeOptions]="[2, 3, 4, 5]"
-        ></mat-paginator>
-      </div>
-    </div>
-    <div
-      fxFlex="30%"
-      fxLayout="column"
-      fxLayoutAlign="center"
-      class="mat-elevation-z8"
-    >
       <div
-        fxFlex="10%"
-        style="text-align: center; font-size: larger; padding-top: 2%;"
+        fxFlex="30%"
+        fxLayout="column"
+        fxLayoutAlign="center"
+        class="mat-elevation-z8"
+        style="background-color: white;"
       >
-        Reach Schools
-      </div>
-      <div fxFlex="80%">
-        <mat-table [dataSource]="reach_dataSource" class="mat-table" matSort>
-          <!-- Position Column -->
-          <ng-container matColumnDef="id">
-            <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{ element.id }} </mat-cell>
-          </ng-container>
+        <div
+          fxFlex="10%"
+          style="text-align: center; font-size: larger; padding-top: 2%;"
+        >
+          Reach Schools
+        </div>
+        <div fxFlex="80%">
+          <mat-table [dataSource]="reach_dataSource" class="mat-table" matSort>
+            <!-- Position Column -->
+            <ng-container matColumnDef="id">
+              <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{ element.id }} </mat-cell>
+            </ng-container>
 
-          <!-- Name Column -->
-          <ng-container matColumnDef="name">
-            <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{ element.name }} </mat-cell>
-          </ng-container>
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+              <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+              <mat-cell *matCellDef="let element">
+                {{ element.name }}
+              </mat-cell>
+            </ng-container>
 
-          <ng-container matColumnDef="actions">
-            <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
-            <mat-cell *matCellDef="let row">
-              <button mat-raised-button [routerLink]="'/register'">
-                Remove From Favourites
-              </button>
-            </mat-cell>
-          </ng-container>
+            <ng-container matColumnDef="actions">
+              <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+              <mat-cell *matCellDef="let row">
+                <button mat-raised-button [routerLink]="'/register'">
+                  Remove From Favourites
+                </button>
+              </mat-cell>
+            </ng-container>
 
-          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-          <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
-        </mat-table>
+            <mat-header-row
+              *matHeaderRowDef="displayedColumns"
+            ></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+          </mat-table>
+        </div>
+        <div fxFlex="10%" style="margin-left: auto; margin-right: auto;">
+          <mat-paginator
+            #paginatorReach
+            [pageSizeOptions]="[2, 3, 4, 5]"
+          ></mat-paginator>
+        </div>
       </div>
-      <div fxFlex="10%" style="margin-left: auto; margin-right: auto;">
-        <mat-paginator
-          #paginatorReach
-          [pageSizeOptions]="[2, 3, 4, 5]"
-        ></mat-paginator>
-      </div>
-    </div>
-    <div
-      fxFlex="30%"
-      fxLayout="column"
-      fxLayoutAlign="center"
-      class="mat-elevation-z8"
-    >
       <div
-        fxFlex="10%"
-        style="text-align: center; font-size: larger; padding-top: 2%;"
+        fxFlex="30%"
+        fxLayout="column"
+        fxLayoutAlign="center"
+        class="mat-elevation-z8"
+        style="background-color: white;"
       >
-        Safe Schools
-      </div>
-      <div fxFlex="80%">
-        <mat-table [dataSource]="safe_dataSource" class="mat-table" matSort>
-          <!-- Position Column -->
-          <ng-container matColumnDef="id">
-            <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{ element.id }} </mat-cell>
-          </ng-container>
+        <div
+          fxFlex="10%"
+          style="text-align: center; font-size: larger; padding-top: 2%;"
+        >
+          Safe Schools
+        </div>
+        <div fxFlex="80%">
+          <mat-table [dataSource]="safe_dataSource" class="mat-table" matSort>
+            <!-- Position Column -->
+            <ng-container matColumnDef="id">
+              <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{ element.id }} </mat-cell>
+            </ng-container>
 
-          <!-- Name Column -->
-          <ng-container matColumnDef="name">
-            <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{ element.name }} </mat-cell>
-          </ng-container>
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+              <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+              <mat-cell *matCellDef="let element">
+                {{ element.name }}
+              </mat-cell>
+            </ng-container>
 
-          <ng-container matColumnDef="actions">
-            <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
-            <mat-cell *matCellDef="let row">
-              <button mat-raised-button [routerLink]="'/register'">
-                Remove From Favourites
-              </button>
-            </mat-cell>
-          </ng-container>
+            <ng-container matColumnDef="actions">
+              <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+              <mat-cell *matCellDef="let row">
+                <button mat-raised-button [routerLink]="'/register'">
+                  Remove From Favourites
+                </button>
+              </mat-cell>
+            </ng-container>
 
-          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-          <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
-        </mat-table>
-      </div>
-      <div fxFlex="10%" style="margin-left: auto; margin-right: auto;">
-        <mat-paginator
-          #paginatorSafe
-          [pageSizeOptions]="[2, 3, 4, 5]"
-        ></mat-paginator>
+            <mat-header-row
+              *matHeaderRowDef="displayedColumns"
+            ></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+          </mat-table>
+        </div>
+        <div fxFlex="10%" style="margin-left: auto; margin-right: auto;">
+          <mat-paginator
+            #paginatorSafe
+            [pageSizeOptions]="[2, 3, 4, 5]"
+          ></mat-paginator>
+        </div>
       </div>
     </div>
   </div>
 </div>
-<app-footer></app-footer>
+<router-outlet></router-outlet>

@@ -8,8 +8,9 @@ th.mat-sort-header-sorted {
   color: blue;
 }
 .grePredictorTable {
-  height: 50vh;
+  height: 58vh;
   overflow: auto;
+  background-color: white;
 }
 .mat-form-field {
   font-size: 14px;

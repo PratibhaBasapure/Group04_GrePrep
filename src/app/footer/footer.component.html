@@ -1,33 +1,94 @@
-<mat-toolbar color="primary" class="toolbar">
-  <mat-toolbar-row fxLayoutAlign="space-between center">
-    <div fxLayout="row">
-      <button mat-button>About Us</button>
-
-      <button mat-button>Contact Us</button>
-
-      <button mat-button>Terms and Conditions</button>
-
-      <button mat-button>FAQs</button>
-    </div>
-    <div class="navigation-items" *ngIf="!deviceXs">
-      <span>
-        GREPrep.com
-      </span>
-      <span>
-        Get on Google Play!
-      </span>
-    </div>
-  </mat-toolbar-row>
-  <mat-toolbar-row
-    class="navigation-items"
-    *ngIf="deviceXs"
-    fxLayoutAlign="space-between end"
+<div style="background-color: #3f4d5f; color: white;">
+  <div
+    fxLayout="row"
+    fxLayout.xs="column"
+    fxLayoutWrap
+    fxLayoutGap="20px"
+    fxLayoutGap.xs="5px"
+    fxLayoutAlign="start"
+    style="padding: 2%;"
   >
-    <span>
-      GREPrep.com
-    </span>
-    <span>
-      Get on Google Play!
-    </span>
-  </mat-toolbar-row>
-</mat-toolbar>
+    <div fxFlex="30%" fxLayout="column wrap" fxLayoutAlign="center center">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <textarea matInput placeholder="Write back to us..."></textarea>
+      </mat-form-field>
+      <button mat-button color="green">Send</button>
+    </div>
+    <div fxFlex="40%">
+      <div fxLayout="column wrap" fxLayoutAlign="center center">
+        <p style="color: gray; text-decoration: underline; font-size: medium;">
+          Connect with us at..
+        </p>
+
+        <div fxLayout="row" fxLayoutGap="40px" fxLayoutAlign="center">
+          <a href="#">
+            <i
+              class="fa fa-facebook"
+              style="font-size: xxx-large; color:blue;"
+              aria-hidden="true"
+            ></i>
+          </a>
+          <a href="#">
+            <i
+              class="fa fa-instagram"
+              style="font-size: xxx-large; color: palevioletred;"
+              aria-hidden="true"
+            ></i>
+          </a>
+          <a href="#">
+            <i
+              class="fa fa-linkedin"
+              style="font-size: xxx-large; color: #3f51b5;"
+              aria-hidden="true"
+            ></i>
+          </a>
+          <a href="#">
+            <i
+              class="fa fa-youtube"
+              style="font-size: xxx-large; color: red;"
+              aria-hidden="true"
+            ></i>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div fxFlex="25%" fxLayout="column wrap" fxLayoutAlign="end end">
+      <p style="color: gray; text-decoration: underline; font-size: medium;">
+        Some quick links...
+      </p>
+      <p style="margin: 0;">
+        <a href="javascript://">Privacy Policies</a>
+      </p>
+      <p style="margin: 0;">
+        <a href="javascript://">Terms and Conditions</a>
+      </p>
+      <p style="margin: 0;">
+        <a href="javascript://">FAQs</a>
+      </p>
+      <p style="margin: 0;">
+        <a href="javascript://">Contact Us</a>
+      </p>
+      <p style="margin: 0;">
+        <a href="javascript://">About Us</a>
+      </p>
+      <p style="margin: 0;">
+        <a href="javascript://">GRE Blog</a>
+      </p>
+    </div>
+  </div>
+  <div
+    fxLayout="row"
+    fxLayout.xs="column"
+    fxLayoutWrap
+    fxLayoutGap="20px"
+    fxLayoutGap.xs="5px"
+    fxLayoutAlign="center center"
+    style="padding-top: 0.5%;"
+  >
+    <div fxFlex="100%">
+      <h5 style="font-size: medium; text-align: center;">
+        &#169; 2020 by GREPREP. All Rights Reserved.
+      </h5>
+    </div>
+  </div>
+</div>

@@ -8,8 +8,9 @@ th.mat-sort-header-sorted {
   color: blue;
 }
 .attemptTable {
-  height: 54vh;
+  height: 63vh;
   overflow: auto;
+  background-color: white;
 }
 .mat-form-field {
   font-size: 14px;
