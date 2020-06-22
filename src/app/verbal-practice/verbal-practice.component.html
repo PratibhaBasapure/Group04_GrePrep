@@ -1,0 +1,193 @@
+<app-header></app-header>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-3 col-md-3 col-lg-3">
+      <form
+        class="form-group border border-dark layout"
+        [formGroup]="form"
+        (ngSubmit)="onSubmit()"
+        style="margin-top: 50%;"
+      >
+        <div formGroupName="myCheckboxGroup">
+          <div class="label">
+            <h4>Filter Out Verbal Questions</h4>
+          </div>
+          <div class="custom-control custom-checkbox">
+            <input
+              type="checkbox"
+              class="custom-control-input"
+              formControlName="myCheckbox1"
+              id="myCheckbox1"
+            />
+            <label class="custom-control-label" for="myCheckbox1"
+              >Text Equivalance</label
+            >
+          </div>
+          <div class="custom-control custom-checkbox">
+            <input
+              type="checkbox"
+              class="custom-control-input"
+              formControlName="myCheckbox2"
+              id="myCheckbox2"
+            />
+            <label class="custom-control-label" for="myCheckbox2"
+              >Text Comparison</label
+            >
+          </div>
+          <div class="custom-control custom-checkbox">
+            <input
+              type="checkbox"
+              class="custom-control-input"
+              formControlName="myCheckbox3"
+              id="myCheckbox3"
+            />
+            <label class="custom-control-label" for="myCheckbox3"
+              >Reading Comprehension</label
+            >
+          </div>
+        </div>
+        <br />
+        <div style="text-align: center;">
+          <button mat-raised-button type="submit" (click)="onSubmit()">
+            Filter
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="col-sm-9 col-md-9 col-lg-9" style="padding-top: 1.5%;">
+      <div
+        class="form-group border border-dark layout"
+        style="font-size: x-small;"
+      >
+        <h2 style="text-align: center;">Verbal Practice Questions</h2>
+        <div class="panel-body">
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto neque
+            voluptatibus in. Repellendus quaerat animi sequi deserunt ut
+            blanditiis, dolor laborum consectetur distinctio. Doloremque sed
+            adipisci vero, esse ut tenetur?
+          </p>
+          <div class="radio">
+            <label>
+              <input
+                type="radio"
+                name="optionsRadios"
+                id="optionsRadios1"
+                value="option1"
+                checked=""
+              />
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input
+                type="radio"
+                name="optionsRadios"
+                id="optionsRadios2"
+                value="option2"
+              />Repellendus quaerat animi sequi deserunt ut
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input
+                type="radio"
+                name="optionsRadios"
+                id="optionsRadios3"
+                value="option3"
+              />
+              Doloremque sed adipisci vero, esse ut tenetur
+            </label>
+          </div>
+        </div>
+        <div class="panel-body">
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto neque
+            voluptatibus in. Repellendus quaerat animi sequi deserunt ut
+            blanditiis, dolor laborum consectetur distinctio. Doloremque sed
+            adipisci vero, esse ut tenetur?
+          </p>
+          <div class="radio">
+            <label>
+              <input
+                type="radio"
+                name="optionsRadios1"
+                id="optionsRadios4"
+                value="option4"
+                checked=""
+              />
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input
+                type="radio"
+                name="optionsRadios1"
+                id="optionsRadios5"
+                value="option5"
+              />Repellendus quaerat animi sequi deserunt ut
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input
+                type="radio"
+                name="optionsRadios1"
+                id="optionsRadios6"
+                value="option6"
+              />
+              Doloremque sed adipisci vero, esse ut tenetur
+            </label>
+          </div>
+        </div>
+        <div class="panel-body">
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto neque
+            voluptatibus in. Repellendus quaerat animi sequi deserunt ut
+            blanditiis, dolor laborum consectetur distinctio. Doloremque sed
+            adipisci vero, esse ut tenetur?
+          </p>
+          <div class="radio">
+            <label>
+              <input
+                type="radio"
+                name="optionsRadios2"
+                id="optionsRadios4"
+                value="option4"
+                checked=""
+              />
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input
+                type="radio"
+                name="optionsRadios2"
+                id="optionsRadios5"
+                value="option5"
+              />Repellendus quaerat animi sequi deserunt ut
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input
+                type="radio"
+                name="optionsRadios2"
+                id="optionsRadios6"
+                value="option6"
+              />
+              Doloremque sed adipisci vero, esse ut tenetur
+            </label>
+          </div>
+        </div>
+        <div fxLayoutAlign="flex-end">
+          <button mat-raised-button>Next</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

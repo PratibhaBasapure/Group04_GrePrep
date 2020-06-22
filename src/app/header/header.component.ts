@@ -24,9 +24,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
     );
   }
   openAttemptHistory() {
-    this.router.navigateByUrl('/attemptHistory');
+    this.router.navigate(['/attemptHistory']);
   }
   logout() {
-    this.router.navigateByUrl('/login');
+    this.router.navigate(['/login']);
+  }
+  openMySchools() {
+    this.router.navigate(['/profile/mySchools']);
   }
 }

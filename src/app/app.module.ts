@@ -34,6 +34,21 @@ import { GrePredictorComponent } from './gre-predictor/gre-predictor.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { GreComponent } from './gre/gre.component';
+import { MastersHomeComponent } from './masters-home/masters-home.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { SchoolRankingComponent } from './school-ranking/school-ranking.component';
+import { MySchoolsComponent } from './my-schools/my-schools.component';
+import { VerbalPracticeComponent } from './verbal-practice/verbal-practice.component';
+import { QuantitativePracticeComponent } from './quantitative-practice/quantitative-practice.component';
+import { WhyMastersComponent } from './why-masters/why-masters.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { TermsAndConditionComponent } from './terms-and-condition/terms-and-condition.component';
+import { SuccessStoriesComponent } from './success-stories/success-stories.component';
+import { QuizComponent } from './quiz/quiz.component';
+import { MatRadioModule } from '@angular/material/radio';
+import { TakeQuizComponent } from './take-quiz/take-quiz.component';
+import { MockTestComponent } from './mock-test/mock-test.component';
+import { TakeMockTestComponent } from './take-mock-test/take-mock-test.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +62,19 @@ import { GreComponent } from './gre/gre.component';
     FooterComponent,
     GrePredictorComponent,
     GreComponent,
+    MastersHomeComponent,
+    SchoolRankingComponent,
+    MySchoolsComponent,
+    VerbalPracticeComponent,
+    QuantitativePracticeComponent,
+    WhyMastersComponent,
+    AboutUsComponent,
+    TermsAndConditionComponent,
+    SuccessStoriesComponent,
+    QuizComponent,
+    TakeQuizComponent,
+    MockTestComponent,
+    TakeMockTestComponent,
   ],
   imports: [
     BrowserModule,
@@ -75,7 +103,9 @@ import { GreComponent } from './gre/gre.component';
     MatPaginatorModule,
     MatSortModule,
     NgbModule,
-    RouterModule
+    RouterModule,
+    MatMenuModule,
+    MatRadioModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -3,7 +3,7 @@
 }
 .toolbar {
   bottom: 0;
-  position: sticky;
+  position: fixed;
   z-index: 10;
   background-color: #1967b3;
 }

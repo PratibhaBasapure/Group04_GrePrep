@@ -6,11 +6,11 @@
       </button>
 
       <div *ngIf="!deviceXs">
-        <button mat-button [routerLink]="'/gre'">GRE</button>
+        <button mat-button [routerLink]="['/gre']">GRE</button>
 
-        <button mat-button>Masters</button>
+        <button mat-button [routerLink]="['/masters']">Masters</button>
 
-        <button mat-button [routerLink]="'/gre-predictor'">
+        <button mat-button [routerLink]="['/gre-predictor']">
           GRE Predictor
         </button>
       </div>
@@ -20,9 +20,9 @@
         Home
       </button>
 
-      <button mat-button [routerLink]="'/login'">Login</button>
+      <button mat-button [routerLink]="['/login']">Login</button>
 
-      <button mat-raised-button [routerLink]="'/registration'">
+      <button mat-raised-button [routerLink]="['/registration']">
         Register
       </button>
 
@@ -33,9 +33,10 @@
           <mat-option (click)="openAttemptHistory()" value="ae"
             >Attempt History</mat-option
           >
-          <mat-option (click)="logout()" value="ae"
-            >Logout</mat-option
+          <mat-option (click)="openMySchools()" value="ae"
+            >My Schools</mat-option
           >
+          <mat-option (click)="logout()" value="ae">Logout</mat-option>
         </mat-select>
       </button>
     </div>
@@ -45,7 +46,7 @@
 
     <button mat-button>Masters</button>
 
-    <button mat-button [routerLink]="'/gre-predictor'">
+    <button mat-button [routerLink]="['/gre-predictor']">
       GRE Predictor
     </button>
   </mat-toolbar-row>
