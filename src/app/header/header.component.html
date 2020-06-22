@@ -8,7 +8,7 @@
       <div *ngIf="!deviceXs">
         <button mat-button>GRE</button>
 
-        <button mat-button>Masters</button>
+        <button mat-button [routerLink]="'/masters'">Masters</button>
 
         <button mat-button [routerLink]="'/gre-predictor'">
           GRE Predictor

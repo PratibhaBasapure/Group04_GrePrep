@@ -1,0 +1,29 @@
+<app-header></app-header>
+<div fxLayout="column" fxLayoutGap="7.5vh" class="topDiv">
+    <div fxLayout="row" fxLayoutGap="5vw" fxLayoutAlign="center">
+        <div fxFlex="40%">
+            <a href="#"><mat-card  class="matcard">
+                <h1 fxLayoutAlign="center" class="matHeading">Why Masters?</h1>
+            </mat-card></a>
+        </div>
+        <div fxFlex="40%">
+            <a href="#"><mat-card  class="matcard">
+                <h1 fxLayoutAlign="center" class="matHeading">Masters Success Stories</h1>
+            </mat-card></a>
+        </div>
+    </div>
+    <div fxLayout="row" fxLayoutGap="5vw" fxLayoutAlign="center">
+        <div fxFlex="40%">
+            <a href="#"><mat-card  class="matcard">
+                <h1 fxLayoutAlign="center" class="matHeading">List of Schools</h1>
+            </mat-card></a>
+        </div>
+        <div fxFlex="40%">
+            <a [routerLink] = "'/schoolRanking'"><mat-card  class="matcard">
+                <h1 fxLayoutAlign="center" class="matHeading">School Rankings 2020</h1>
+            </mat-card></a>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>
+

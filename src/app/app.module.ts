@@ -33,6 +33,16 @@ import { FooterComponent } from './footer/footer.component';
 import { GrePredictorComponent } from './gre-predictor/gre-predictor.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
+import { MastersHomeComponent } from './masters-home/masters-home.component';
+import {MatMenuModule} from '@angular/material/menu';
+import { SchoolRankingComponent } from './school-ranking/school-ranking.component';
+import { MySchoolsComponent } from './my-schools/my-schools.component';
+import { VerbalPracticeComponent } from './verbal-practice/verbal-practice.component';
+import { QuantitativePracticeComponent } from './quantitative-practice/quantitative-practice.component';
+import { WhyMastersComponent } from './why-masters/why-masters.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { TermsAndConditionComponent } from './terms-and-condition/terms-and-condition.component';
+import { SuccessStoriesComponent } from './success-stories/success-stories.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +55,15 @@ import { RouterModule } from '@angular/router';
     AttemptHistoryComponent,
     FooterComponent,
     GrePredictorComponent,
+    MastersHomeComponent,
+    SchoolRankingComponent,
+    MySchoolsComponent,
+    VerbalPracticeComponent,
+    QuantitativePracticeComponent,
+    WhyMastersComponent,
+    AboutUsComponent,
+    TermsAndConditionComponent,
+    SuccessStoriesComponent,
   ],
   imports: [
     BrowserModule,
@@ -73,7 +92,8 @@ import { RouterModule } from '@angular/router';
     MatPaginatorModule,
     MatSortModule,
     NgbModule,
-    RouterModule
+    RouterModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent],
