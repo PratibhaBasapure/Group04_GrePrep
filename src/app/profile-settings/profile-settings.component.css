@@ -1,32 +1,32 @@
 .example-action-buttons {
-    padding-bottom: 20px;
-    text-align: center;
-  }
-  
-  .example-headers-align .mat-expansion-panel-header-title,
-  .example-headers-align .mat-expansion-panel-header-description {
-    flex-basis: 0;
-  }
-  
-  .example-headers-align .mat-expansion-panel-header-description {
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .example-headers-align .mat-form-field + .mat-form-field {
-    margin-left: 8px;
-  }
-  .flex-item {
-    justify-content: center;
-  }
-  
+  text-align: center;
+  margin-top: 10px;
+}
+
+:host .example-headers-align .mat-expansion-panel-header-title,
+:host .example-headers-align .mat-expansion-panel-header-description {
+  flex-basis: 0;
+}
+
+:host .example-headers-align .mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+}
+
+:host .example-headers-align .mat-form-field + .mat-form-field {
+  margin-left: 8px;
+}
+:host .flex-item {
+  justify-content: center;
+}
+
 .registrationLayout {
   display: flex;
   justify-content: center;
-  align-items: center; 
+  align-items: center;
   background-size: cover;
 }
-::ng-deep .mat-card {
+:host ::ng-deep .mat-card {
   border: 55px solid #000;
   border-radius: 30px !important;
   border: #000 !important;
@@ -36,4 +36,12 @@
 .registrationCard {
   width: 90%;
   height: auto;
+}
+
+:host ::ng-deep .mat-expansion-panel {
+  padding: 20px;
+}
+
+:host h2 {
+  margin: 0px;
 }
