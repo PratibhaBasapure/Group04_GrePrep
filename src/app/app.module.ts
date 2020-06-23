@@ -50,6 +50,9 @@ import { TakeQuizComponent } from './take-quiz/take-quiz.component';
 import { MockTestComponent } from './mock-test/mock-test.component';
 import { TakeMockTestComponent } from './take-mock-test/take-mock-test.component';
 import { ListOfSchoolsComponent } from './list-of-schools/list-of-schools.component';
+import { ProfileSettingsComponent } from './profile-settings/profile-settings.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -77,6 +80,7 @@ import { ListOfSchoolsComponent } from './list-of-schools/list-of-schools.compon
     MockTestComponent,
     TakeMockTestComponent,
     ListOfSchoolsComponent,
+    ProfileSettingsComponent,
   ],
   imports: [
     BrowserModule,
@@ -108,6 +112,8 @@ import { ListOfSchoolsComponent } from './list-of-schools/list-of-schools.compon
     RouterModule,
     MatMenuModule,
     MatRadioModule,
+    MatDatepickerModule,  
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent],

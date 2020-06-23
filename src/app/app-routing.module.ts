@@ -20,6 +20,7 @@ import { TakeQuizComponent } from './take-quiz/take-quiz.component';
 import { MockTestComponent } from './mock-test/mock-test.component';
 import { TakeMockTestComponent } from './take-mock-test/take-mock-test.component';
 import { ListOfSchoolsComponent } from './list-of-schools/list-of-schools.component';
+import { ProfileSettingsComponent } from './profile-settings/profile-settings.component';
 
 const routes: Routes = [
   {
@@ -50,6 +51,7 @@ const routes: Routes = [
   { path: 'gre/mocktest', component: MockTestComponent },
   { path: 'gre/mocktest/takeMockTest', component: TakeMockTestComponent },
   { path: 'masters/listOfSchools', component: ListOfSchoolsComponent },
+  { path: 'profile/profileSettings', component: ProfileSettingsComponent },
 ];
 
 @NgModule({
