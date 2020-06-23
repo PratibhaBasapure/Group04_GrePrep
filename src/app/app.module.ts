@@ -49,6 +49,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { TakeQuizComponent } from './take-quiz/take-quiz.component';
 import { MockTestComponent } from './mock-test/mock-test.component';
 import { TakeMockTestComponent } from './take-mock-test/take-mock-test.component';
+import { ListOfSchoolsComponent } from './list-of-schools/list-of-schools.component';
 
 @NgModule({
   declarations: [
@@ -75,6 +76,7 @@ import { TakeMockTestComponent } from './take-mock-test/take-mock-test.component
     TakeQuizComponent,
     MockTestComponent,
     TakeMockTestComponent,
+    ListOfSchoolsComponent,
   ],
   imports: [
     BrowserModule,

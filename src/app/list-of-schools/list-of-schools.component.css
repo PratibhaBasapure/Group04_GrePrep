@@ -1,0 +1,39 @@
+.example-card {
+    max-width: 800px;
+    padding: 20px;
+  }
+  
+  .example-header-image {
+    background-size: cover;
+  }
+  
+  .auto-complete {
+    padding-top: 20px;
+  }
+  .example-form {
+    min-width: 150px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 70%;
+    margin:2em;
+  }
+  
+  .header {
+    text-align: center;    
+  }
+  .card {
+      margin: 3%;
+  }
+  
+ 
+.card-container-right{
+  display: inline;
+  float: right;
+}
+
+.card-container-left{
+  display: inline;
+}
+
