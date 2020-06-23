@@ -1,253 +1,315 @@
 <app-header></app-header>
-<div class="header">    
-        <div class="auto-complete">
-            <form class="example-form" [formGroup]="testForm">
-                <mat-form-field class="example-full-width" appearance="outline">
-                    <mat-label>Search Universities</mat-label>
-                    <input type="text" aria-label="Animal" matInput formControlName="myControl"
-                        [matAutocomplete]="auto" />
-                    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete"
-                        (optionSelected)="getCard($event.option.value.id)" [displayWith]="displayFn">
-                        <mat-option *ngFor="let option of filteredOptions|async" [value]="option">
-                            {{ option.name }}
-                        </mat-option>
-                    </mat-autocomplete>
-                </mat-form-field>
-                <button mat-fab title="Reset the field" color="primary" (click)="reset()"
-                    aria-label="Example icon button with a home icon">
-                    <mat-icon>refresh</mat-icon>
-                </button>
-            </form>
-        </div>
+<div class="header">
+  <div class="auto-complete">
+    <form class="example-form" [formGroup]="testForm">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Search Universities</mat-label>
+        <input
+          type="text"
+          aria-label="Animal"
+          matInput
+          formControlName="myControl"
+          [matAutocomplete]="auto"
+        />
+        <mat-autocomplete
+          autoActiveFirstOption
+          #auto="matAutocomplete"
+          (optionSelected)="getCard($event.option.value.id)"
+          [displayWith]="displayFn"
+        >
+          <mat-option
+            *ngFor="let option of filteredOptions | async"
+            [value]="option"
+          >
+            {{ option.name }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+      <button
+        mat-fab
+        title="Reset the field"
+        color="primary"
+        (click)="reset()"
+        aria-label="Example icon button with a home icon"
+      >
+        <mat-icon>refresh</mat-icon>
+      </button>
+    </form>
+  </div>
 
-        <div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="10px" fxLayoutGap.xs="5px"
-            fxLayoutAlign="start" style="
-    padding-left: 5%;
-    padding-right: 5%;
-    padding-top: 2%;
-    padding-bottom: 2%;">
-            <div class="item item-1" fxFlex="50%" *ngIf="breedChoosen == 0 || breedChoosen == 1">
-                <mat-card class="example-card">
-                    <mat-card-header>
-                        <div mat-card-avatar class="example-header-image"
-                            style="background-image: url('/assets/img/uni.png');">
-                        </div>
-                        <mat-card-title class="card-container-left">Harvard University</mat-card-title>
-                        <mat-card-title class="card-container-right">
-                            <button mat-icon-button matTooltip="Favourite Schools" (click)="select.open()">
-                                <mat-icon>favorite</mat-icon>
+  <div
+    class="container"
+    fxLayout="row"
+    fxLayout.xs="column"
+    fxLayoutWrap
+    fxLayoutGap="10px"
+    fxLayoutGap.xs="5px"
+    fxLayoutAlign="start"
+    style="
+      padding-left: 5%;
+      padding-right: 5%;
+      padding-top: 2%;
+      padding-bottom: 2%;
+    "
+  >
+    <div
+      class="item item-1"
+      fxFlex="50%"
+      *ngIf="breedChoosen == 0 || breedChoosen == 1"
+    >
+      <mat-card class="example-card">
+        <mat-card-header>
+          <div
+            mat-card-avatar
+            class="example-header-image"
+            style="background-image: url('/assets/img/uni.png');"
+          ></div>
+          <mat-card-title class="card-container-left"
+            >Harvard University</mat-card-title
+          >
+          <mat-card-title class="card-container-right">
+            <button
+              mat-icon-button
+              matTooltip="Favourite Schools"
+              (click)="select.open()"
+            >
+              <mat-icon>favorite</mat-icon>
 
-                                <mat-select #select class="profile">
-                                    <mat-option value="ae">Add to Dream Schools</mat-option>
-                                    <mat-option value="ae">Add to Reach Schools</mat-option>
-                                    <mat-option value="ae">Add to Safe Schools</mat-option>
-                                </mat-select>
-                            </button>
-                        </mat-card-title>
-                        <mat-card-subtitle>Rank No : #1</mat-card-subtitle>
-                    </mat-card-header>
-                    <mat-card-content>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore
-                            et
-                            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-                            ut
-                            aliquip
-                            ex
-                            ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                            dolore
-                            eu
-                            fugiat
-                            nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                            deserunt
-                            mollit
-                            anim id est laborum.
-                        </p>
-                    </mat-card-content>
-                </mat-card>
-            </div>
-            <div class="item item-1" fxFlex="50%" *ngIf="breedChoosen == 0 || breedChoosen == 2">
-                <mat-card class="example-card">
-                    <mat-card-header>
-                        <div mat-card-avatar class="example-header-image"
-                            style="background-image: url('/assets/img/uni.png');">
-                        </div>
-                        <mat-card-title class="card-container-left">Stanford University</mat-card-title>
-                        <mat-card-title class="card-container-right">
-                            <button mat-icon-button matTooltip="Favourite Schools" (click)="select.open()">
-                                <mat-icon>favorite</mat-icon>
+              <mat-select #select class="profile">
+                <mat-option value="ae">Add to Dream Schools</mat-option>
+                <mat-option value="ae">Add to Reach Schools</mat-option>
+                <mat-option value="ae">Add to Safe Schools</mat-option>
+              </mat-select>
+            </button>
+          </mat-card-title>
+          <mat-card-subtitle>Rank No : #1</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div
+      class="item item-1"
+      fxFlex="50%"
+      *ngIf="breedChoosen == 0 || breedChoosen == 2"
+    >
+      <mat-card class="example-card">
+        <mat-card-header>
+          <div
+            mat-card-avatar
+            class="example-header-image"
+            style="background-image: url('/assets/img/uni.png');"
+          ></div>
+          <mat-card-title class="card-container-left"
+            >Stanford University</mat-card-title
+          >
+          <mat-card-title class="card-container-right">
+            <button
+              mat-icon-button
+              matTooltip="Favourite Schools"
+              (click)="select.open()"
+            >
+              <mat-icon>favorite</mat-icon>
 
-                                <mat-select #select class="profile">
-                                    <mat-option value="ae">Add to Dream Schools</mat-option>
-                                    <mat-option value="ae">Add to Reach Schools</mat-option>
-                                    <mat-option value="ae">Add to Safe Schools</mat-option>
-                                </mat-select>
-                            </button>
-                        </mat-card-title>
-                        <mat-card-subtitle>Rank No : #1</mat-card-subtitle>
-                    </mat-card-header>
-                    <mat-card-content>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore
-                            et
-                            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-                            ut
-                            aliquip
-                            ex
-                            ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                            dolore
-                            eu
-                            fugiat
-                            nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                            deserunt
-                            mollit
-                            anim id est laborum.
-                        </p>
-                    </mat-card-content>
-                </mat-card>
-            </div>
-        </div>
-        <div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="10px" fxLayoutGap.xs="5px"
-            fxLayoutAlign="start" style="
-    padding-left: 5%;
-    padding-right: 5%;
-    padding-top: 2%;
-    padding-bottom: 2%;">
-            <div class="item item-1" fxFlex="50%"  *ngIf="breedChoosen == 0 || breedChoosen == 3">
-                <mat-card class="example-card">
-                    <mat-card-header>
-                        <div mat-card-avatar class="example-header-image"
-                            style="background-image: url('/assets/img/uni.png');">
-                        </div>
-                        <mat-card-title class="card-container-left">Massachusetts Institute of Technology (MIT)
-                        </mat-card-title>
-                        <mat-card-title class="card-container-right">
-                            <button mat-icon-button matTooltip="Favourite Schools" (click)="select.open()">
-                                <mat-icon>favorite</mat-icon>
+              <mat-select #select class="profile">
+                <mat-option value="ae">Add to Dream Schools</mat-option>
+                <mat-option value="ae">Add to Reach Schools</mat-option>
+                <mat-option value="ae">Add to Safe Schools</mat-option>
+              </mat-select>
+            </button>
+          </mat-card-title>
+          <mat-card-subtitle>Rank No : #1</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  <div
+    class="container"
+    fxLayout="row"
+    fxLayout.xs="column"
+    fxLayoutWrap
+    fxLayoutGap="10px"
+    fxLayoutGap.xs="5px"
+    fxLayoutAlign="start"
+    style="
+      padding-left: 5%;
+      padding-right: 5%;
+      padding-top: 2%;
+      padding-bottom: 2%;
+    "
+  >
+    <div
+      class="item item-1"
+      fxFlex="50%"
+      *ngIf="breedChoosen == 0 || breedChoosen == 3"
+    >
+      <mat-card class="example-card">
+        <mat-card-header>
+          <div
+            mat-card-avatar
+            class="example-header-image"
+            style="background-image: url('/assets/img/uni.png');"
+          ></div>
+          <mat-card-title class="card-container-left"
+            >Massachusetts Institute of Technology (MIT)
+          </mat-card-title>
+          <mat-card-title class="card-container-right">
+            <button
+              mat-icon-button
+              matTooltip="Favourite Schools"
+              (click)="select.open()"
+            >
+              <mat-icon>favorite</mat-icon>
 
-                                <mat-select #select class="profile">
-                                    <mat-option value="ae">Add to Dream Schools</mat-option>
-                                    <mat-option value="ae">Add to Reach Schools</mat-option>
-                                    <mat-option value="ae">Add to Safe Schools</mat-option>
-                                </mat-select>
-                            </button>
-                        </mat-card-title>
-                        <mat-card-subtitle>Rank No : #1</mat-card-subtitle>
-                    </mat-card-header>
-                    <mat-card-content>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore
-                            et
-                            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-                            ut
-                            aliquip
-                            ex
-                            ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                            dolore
-                            eu
-                            fugiat
-                            nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                            deserunt
-                            mollit
-                            anim id est laborum.
-                        </p>
-                    </mat-card-content>
-                </mat-card>
-            </div>
-            <div class="item item-1" fxFlex="50%" *ngIf="breedChoosen == 0 || breedChoosen == 4">
-                <mat-card class="example-card">
-                    <mat-card-header>
-                        <div mat-card-avatar class="example-header-image"
-                            style="background-image: url('/assets/img/uni.png');">
-                        </div>
-                        <mat-card-title class="card-container-left">University of California, Berkeley (UCB)
-                        </mat-card-title>
-                        <mat-card-title class="card-container-right">
-                            <button mat-icon-button matTooltip="Favourite Schools" (click)="select.open()">
-                                <mat-icon>favorite</mat-icon>
+              <mat-select #select class="profile">
+                <mat-option value="ae">Add to Dream Schools</mat-option>
+                <mat-option value="ae">Add to Reach Schools</mat-option>
+                <mat-option value="ae">Add to Safe Schools</mat-option>
+              </mat-select>
+            </button>
+          </mat-card-title>
+          <mat-card-subtitle>Rank No : #1</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div
+      class="item item-1"
+      fxFlex="50%"
+      *ngIf="breedChoosen == 0 || breedChoosen == 4"
+    >
+      <mat-card class="example-card">
+        <mat-card-header>
+          <div
+            mat-card-avatar
+            class="example-header-image"
+            style="background-image: url('/assets/img/uni.png');"
+          ></div>
+          <mat-card-title class="card-container-left"
+            >University of California, Berkeley (UCB)
+          </mat-card-title>
+          <mat-card-title class="card-container-right">
+            <button
+              mat-icon-button
+              matTooltip="Favourite Schools"
+              (click)="select.open()"
+            >
+              <mat-icon>favorite</mat-icon>
 
-                                <mat-select #select class="profile">
-                                    <mat-option value="ae">Add to Dream Schools</mat-option>
-                                    <mat-option value="ae">Add to Reach Schools</mat-option>
-                                    <mat-option value="ae">Add to Safe Schools</mat-option>
-                                </mat-select>
-                            </button>
-                        </mat-card-title>
-                        <mat-card-subtitle>Rank No : #1</mat-card-subtitle>
-                    </mat-card-header>
-                    <mat-card-content>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore
-                            et
-                            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-                            ut
-                            aliquip
-                            ex
-                            ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                            dolore
-                            eu
-                            fugiat
-                            nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                            deserunt
-                            mollit
-                            anim id est laborum.
-                        </p>
-                    </mat-card-content>
-                </mat-card>
-            </div>
-        </div>
-        <div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="10px" fxLayoutGap.xs="5px"
-            fxLayoutAlign="start" style="
-    padding-left: 5%;
-    padding-right: 5%;
-    padding-top: 2%;
-    padding-bottom: 2%;">
-            <div class="item item-1" fxFlex="50%" *ngIf="breedChoosen == 0 || breedChoosen == 5">
-                <mat-card class="example-card">
-                    <mat-card-header>
-                        <div mat-card-avatar class="example-header-image"
-                            style="background-image: url('/assets/img/uni.png');">
-                        </div>
-                        <mat-card-title class="card-container-left">Columbia University</mat-card-title>
-                        <mat-card-title class="card-container-right">
-                            <button mat-icon-button matTooltip="Favourite Schools" (click)="select.open()">
-                                <mat-icon>favorite</mat-icon>
+              <mat-select #select class="profile">
+                <mat-option value="ae">Add to Dream Schools</mat-option>
+                <mat-option value="ae">Add to Reach Schools</mat-option>
+                <mat-option value="ae">Add to Safe Schools</mat-option>
+              </mat-select>
+            </button>
+          </mat-card-title>
+          <mat-card-subtitle>Rank No : #1</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  <div
+    class="container"
+    fxLayout="row"
+    fxLayout.xs="column"
+    fxLayoutWrap
+    fxLayoutGap="10px"
+    fxLayoutGap.xs="5px"
+    fxLayoutAlign="start"
+    style="
+      padding-left: 5%;
+      padding-right: 5%;
+      padding-top: 2%;
+      padding-bottom: 2%;
+    "
+  >
+    <div
+      class="item item-1"
+      fxFlex="50%"
+      *ngIf="breedChoosen == 0 || breedChoosen == 5"
+    >
+      <mat-card class="example-card">
+        <mat-card-header>
+          <div
+            mat-card-avatar
+            class="example-header-image"
+            style="background-image: url('/assets/img/uni.png');"
+          ></div>
+          <mat-card-title class="card-container-left"
+            >Columbia University</mat-card-title
+          >
+          <mat-card-title class="card-container-right">
+            <button
+              mat-icon-button
+              matTooltip="Favourite Schools"
+              (click)="select.open()"
+            >
+              <mat-icon>favorite</mat-icon>
 
-                                <mat-select #select class="profile">
-                                    <mat-option value="ae">Add to Dream Schools</mat-option>
-                                    <mat-option value="ae">Add to Reach Schools</mat-option>
-                                    <mat-option value="ae">Add to Safe Schools</mat-option>
-                                </mat-select>
-                            </button>
-                        </mat-card-title>
-                        <mat-card-subtitle>Rank No : #1</mat-card-subtitle>
-                    </mat-card-header>
-                    <mat-card-content>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore
-                            et
-                            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-                            ut
-                            aliquip
-                            ex
-                            ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                            dolore
-                            eu
-                            fugiat
-                            nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                            deserunt
-                            mollit
-                            anim id est laborum.
-                        </p>
-                    </mat-card-content>
-                </mat-card>
-            </div>
-        </div>    
+              <mat-select #select class="profile">
+                <mat-option value="ae">Add to Dream Schools</mat-option>
+                <mat-option value="ae">Add to Reach Schools</mat-option>
+                <mat-option value="ae">Add to Safe Schools</mat-option>
+              </mat-select>
+            </button>
+          </mat-card-title>
+          <mat-card-subtitle>Rank No : #1</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
 </div>
 <router-outlet></router-outlet>
 <app-footer></app-footer>

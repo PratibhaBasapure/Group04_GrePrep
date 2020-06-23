@@ -12,35 +12,34 @@ export interface Options {
 @Component({
   selector: 'app-list-of-schools',
   templateUrl: './list-of-schools.component.html',
-  styleUrls: ['./list-of-schools.component.css']
+  styleUrls: ['./list-of-schools.component.css'],
 })
-
 export class ListOfSchoolsComponent implements OnInit {
-
   filteredOptions: Observable<Options[]>;
-  
+
   title = 'demo-deploy';
   testForm = new FormGroup({
     myControl: new FormControl(),
   });
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
 
   options: Options[] = [
     { name: 'Harvard University', id: 1 },
     { name: 'Stanford University', id: 2 },
     { name: 'Massachusetts Institute of Technology (MIT)', id: 3 },
     { name: 'University of California, Berkeley (UCB)', id: 4 },
-    { name: 'Columbia University', id: 5 }
+    { name: 'Columbia University', id: 5 },
   ];
   breedChoosen: number = 0;
 
   ngOnInit(): void {
-    this.filteredOptions = this.testForm.controls['myControl'].valueChanges
-    .pipe(
+    this.filteredOptions = this.testForm.controls[
+      'myControl'
+    ].valueChanges.pipe(
       startWith<string | Options>(''),
-      map(value => typeof value === 'string' ? value : value.name),
-      map(name => name ? this._filter(name) : this.options.slice())
+      map((value) => (typeof value === 'string' ? value : value.name)),
+      map((name) => (name ? this._filter(name) : this.options.slice()))
     );
   }
 
@@ -56,16 +55,17 @@ export class ListOfSchoolsComponent implements OnInit {
       this.breedChoosen = 0;
     }
   }
-  
+
   displayFn(breed: Options): string {
     return breed && breed.name ? breed.name : '';
   }
 
   private _filter(name: string): Options[] {
-    if(name) {
+    if (name) {
       const filterValue = name.toLowerCase();
-      return this.options.filter(option => option.name.toLowerCase().indexOf(filterValue) === 0);
+      return this.options.filter(
+        (option) => option.name.toLowerCase().indexOf(filterValue) === 0
+      );
     }
   }
 }
-
