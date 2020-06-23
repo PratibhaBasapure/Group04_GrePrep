@@ -1,10 +1,10 @@
 @import "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css";
 
-ngb-carousel {
+:host ngb-carousel {
   max-width: 60%;
   margin: 50px auto;
 }
 
-ngb-carousel img {
+:host ngb-carousel img {
   width: 100%;
 }

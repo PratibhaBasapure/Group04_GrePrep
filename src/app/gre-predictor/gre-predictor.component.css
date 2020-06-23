@@ -21,13 +21,13 @@ th.mat-sort-header-sorted {
   position: sticky;
   z-index: 10;
 }
-.mat-header-cell {
+:host .mat-header-cell {
   background-color: #1967b3;
   color: white;
 }
-::ng-deep .mat-sort-header-arrow {
+:host ::ng-deep .mat-sort-header-arrow {
   color: #fff;
 }
-::ng-deep .mat-form-field-wrapper {
+:host ::ng-deep .mat-form-field-wrapper {
   padding-bottom: 10px !important;
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import {
   FormGroup,
   FormControl,
@@ -33,6 +33,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   selector: 'app-registration',
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.css'],
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class RegistrationComponent implements OnInit {
   signupForm: FormGroup;

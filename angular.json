@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Assignment2": {
+    "GrePrep": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/Assignment2",
+            "outputPath": "dist/GrePrep",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -61,18 +61,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "Assignment2:build"
+            "browserTarget": "GrePrep:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "Assignment2:build:production"
+              "browserTarget": "GrePrep:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Assignment2:build"
+            "browserTarget": "GrePrep:build"
           }
         },
         "test": {
@@ -106,18 +106,18 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "Assignment2:serve"
+            "devServerTarget": "GrePrep:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "Assignment2:serve:production"
+              "devServerTarget": "GrePrep:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "Assignment2",
+  "defaultProject": "GrePrep",
   "cli": {
     "analytics": "9ce4ccbe-ffeb-4a4d-b13e-04f9fd17b921"
   }

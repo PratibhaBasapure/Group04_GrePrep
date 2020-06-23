@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -89,6 +89,7 @@ const ELEMENT_DATA: GrePredictor[] = [
   selector: 'app-gre-predictor',
   templateUrl: './gre-predictor.component.html',
   styleUrls: ['./gre-predictor.component.css'],
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class GrePredictorComponent implements OnInit {
   constructor() {}

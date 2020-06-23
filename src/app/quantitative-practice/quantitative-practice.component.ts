@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-quantitative-practice',
   templateUrl: './quantitative-practice.component.html',
-  styleUrls: ['./quantitative-practice.component.css']
+  styleUrls: ['./quantitative-practice.component.css'],
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class QuantitativePracticeComponent implements OnInit {
 

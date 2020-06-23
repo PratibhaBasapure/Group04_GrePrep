@@ -1,8 +1,8 @@
-::ng-deep .profile div.mat-select-arrow-wrapper {
+:host ::ng-deep .profile div.mat-select-arrow-wrapper {
   display: none;
 }
 
-::ng-deep .profile.mat-select {
+:host ::ng-deep .profile.mat-select {
   display: inline;
 }
 .toolbar {

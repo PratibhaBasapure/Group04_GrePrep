@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
@@ -28,6 +28,7 @@ const ELEMENT_DATA: Attempt[] = [
   selector: 'app-attempt-history',
   templateUrl: './attempt-history.component.html',
   styleUrls: ['./attempt-history.component.css'],
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class AttemptHistoryComponent implements OnInit {
   constructor() {}

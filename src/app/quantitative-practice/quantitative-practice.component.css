@@ -3,7 +3,7 @@
   margin-top: 30px;
 }
 
-h3 {
+:host h3 {
   margin-bottom: 15px;
 }
 

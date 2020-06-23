@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
@@ -13,6 +13,7 @@ import { LoginAndSignupDialogComponent } from '../login-and-signup-dialog/login-
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class LoginComponent implements OnInit {
   title = 'Login';

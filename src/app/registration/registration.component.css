@@ -1,13 +1,13 @@
-mat-form-field {
+:host mat-form-field {
   width: 80%;
 }
-mat-card-title {
+:host mat-card-title {
   padding-left: 10px;
 }
-mat-card-subtitle {
+:host mat-card-subtitle {
   padding-left: 10px;
 }
-mat-card-actions {
+:host mat-card-actions {
   padding-left: 20px;
 }
 .registrationLayout {
@@ -19,7 +19,7 @@ mat-card-actions {
     no-repeat center center fixed;
   background-size: cover;
 }
-::ng-deep .mat-card {
+:host ::ng-deep .mat-card {
   border: 55px solid #000;
   border-radius: 30px !important;
   border: #000 !important;

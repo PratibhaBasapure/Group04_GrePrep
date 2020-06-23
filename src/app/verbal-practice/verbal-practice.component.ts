@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-verbal-practice',
   templateUrl: './verbal-practice.component.html',
-  styleUrls: ['./verbal-practice.component.css']
+  styleUrls: ['./verbal-practice.component.css'],
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class VerbalPracticeComponent implements OnInit {
 

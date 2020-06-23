@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
@@ -7,7 +7,8 @@ import { SchoolRankingDataSource, SchoolRankingItem } from './school-ranking-dat
 @Component({
   selector: 'app-school-ranking',
   templateUrl: './school-ranking.component.html',
-  styleUrls: ['./school-ranking.component.css']
+  styleUrls: ['./school-ranking.component.css'],
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class SchoolRankingComponent implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;

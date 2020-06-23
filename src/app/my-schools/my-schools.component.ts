@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
@@ -36,7 +36,8 @@ const SAFE_SCHOOLS: Schools[] = [
 @Component({
   selector: 'app-my-schools',
   templateUrl: './my-schools.component.html',
-  styleUrls: ['./my-schools.component.css']
+  styleUrls: ['./my-schools.component.css'],
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class MySchoolsComponent implements OnInit{
   displayedColumns: string[] = ['id', 'name', 'actions'];

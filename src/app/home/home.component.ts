@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import {
   NgbCarousel,
   NgbSlideEvent,
@@ -9,6 +9,7 @@ import {
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class HomeComponent implements OnInit {
   ngOnInit(): void {}

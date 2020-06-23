@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { MediaObserver, MediaChange } from '@angular/flex-layout';
@@ -7,6 +7,7 @@ import { MediaObserver, MediaChange } from '@angular/flex-layout';
   selector: 'app-footer',
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.css'],
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class FooterComponent implements OnInit {
   mediaSubscribe: Subscription;

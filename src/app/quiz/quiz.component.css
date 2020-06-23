@@ -1,6 +1,6 @@
 .quiz {
   padding: 2%;
 }
-.mat-radio-button ~ .mat-radio-button {
+:host .mat-radio-button ~ .mat-radio-button {
   margin-left: 16px;
 }

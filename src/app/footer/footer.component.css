@@ -9,14 +9,14 @@
   width: 100%;
   color: black;
 }
-::ng-deep .mat-form-field-outline {
+:host ::ng-deep .mat-form-field-outline {
   background-color: white;
   outline-style: none;
 }
-.mat-button {
+:host .mat-button {
   background-color: green;
 }
-.mat-form-field-appearance-outline:not(.mat-form-field-disabled)
+:host .mat-form-field-appearance-outline:not(.mat-form-field-disabled)
   .mat-form-field-flex:hover
   .mat-form-field-outline {
   border: none;

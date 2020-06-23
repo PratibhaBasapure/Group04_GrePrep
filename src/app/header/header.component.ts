@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { MediaObserver, MediaChange } from '@angular/flex-layout';
 import { Subscription } from 'rxjs';
@@ -7,6 +7,7 @@ import { Subscription } from 'rxjs';
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   mediaSubscribe: Subscription;
