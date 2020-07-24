@@ -147,7 +147,7 @@ export class TakeMockTestComponent implements OnInit {
 
   singleChoiceAnswer(value: number, question: Question) {
     var flag = false;
-    var emailId = 'padmeshdonthu@gmail.com';
+    var emailId = this.userService.getUserEmail();
 
     if (this.userAnswers == null) {
       this.userAnswers = new UserAnswers();
@@ -199,7 +199,7 @@ export class TakeMockTestComponent implements OnInit {
 
   multiChoiceAnswer(value: number, question: Question, event: any) {
     var flag = false;
-    var emailId = 'padmeshdonthu@gmail.com';
+    var emailId = this.userService.getUserEmail();
 
     if (event.checked) {
       if (this.userAnswers == null) {
