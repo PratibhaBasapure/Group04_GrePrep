@@ -22,7 +22,7 @@
           <div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start center" fxLayoutGap="10px">
             <div fxFlex="50%" fxLayoutGap="10px">
               <mat-label>First Name : </mat-label>
-              <span *ngIf="!makeFirstNameEditable"> {{ userDetails.firstName }}</span>
+              <span *ngIf="!makeFirstNameEditable"> {{userDetails?.firstName}}</span>
               <mat-form-field *ngIf="makeFirstNameEditable" appearance="outline">
                 <input matInput type="text" required placeholder="Enter your full name" formControlName="firstName"
                   id="firstName" [(ngModel)]="userDetails.firstName" />
@@ -37,7 +37,7 @@
                 Save
               </button>
               <button *ngIf="makeFirstNameEditable" mat-raised-button color="primary" type="button"
-                (click)="submitUserName()">
+                (click)="cancelUserName()">
                 Cancel
               </button>
             </div>

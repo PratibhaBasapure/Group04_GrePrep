@@ -5,6 +5,7 @@ import { MatAccordion } from '@angular/material/expansion';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { UserService } from '../services/user.service';
 import { User } from '../models/user.model';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(
@@ -31,7 +32,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class ProfileSettingsComponent implements OnInit {
   @ViewChild(MatAccordion) accordion: MatAccordion;
-  userDetails:User;
+  userDetails: User = { firstName: '', mobileNumber: 0 };
   firstName: string = 'queen elizabeth';
   contactNum: number = 9023456789;
 
@@ -50,7 +51,8 @@ export class ProfileSettingsComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private userService: UserService
+    private userService: UserService,
+    private _snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -74,7 +76,7 @@ export class ProfileSettingsComponent implements OnInit {
     this.userService.getUserProfile().subscribe(
       res => {
         this.userDetails = res['user'];
-        console.log("Detaisl"+this.userDetails);
+        console.log("Details" + JSON.stringify(this.userDetails));
       },
       err => {
         console.log(err);
@@ -105,16 +107,13 @@ export class ProfileSettingsComponent implements OnInit {
     }
     else {
       this.makeFirstNameEditable = false;
-      this.userDetails.firstName=this.signupForm.controls['firstName'].value;
-      console.log(this.userDetails);
-      this.userService.updateUserName(this.userDetails).subscribe(
+      this.userDetails.firstName = this.signupForm.controls['firstName'].value;
+      this.userService.updateUserDetails(this.userDetails).subscribe(
         res => {
-          // this.showSucessMessage = true;
-         console.log("Error");
+          this._snackBar.open("Updated successfully !!", '', { duration: 1000 });
         },
         err => {
-          console.log("Error");
-          //  this.serverErrorMessages = 'Something went wrong.Please contact admin.';
+          this._snackBar.open("Something went wrong. Unable to update. Please try later !!", '', { duration: 300 });
         }
       );
     }
@@ -122,7 +121,15 @@ export class ProfileSettingsComponent implements OnInit {
   editUserName() {
     this.makeFirstNameEditable = true;
   }
-
+  cancelUserName(){
+    this.submitted = true;
+    if (this.signupForm.invalid) {
+      return;
+    }
+    else {
+      this.makeFirstNameEditable = false;
+    }
+  }
   submitContactNumber() {
     if (this.contactNumberForm.invalid) {
       console.log(this.contactNumberForm.controls["mobileNum"].errors);
@@ -130,12 +137,29 @@ export class ProfileSettingsComponent implements OnInit {
     }
     else {
       this.makeContactNumberEditable = false;
+      this.userDetails.mobileNumber = this.contactNumberForm.controls['mobileNum'].value;
+      this.userService.updateUserDetails(this.userDetails).subscribe(
+        res => {
+          this._snackBar.open("Updated successfully !!", '', { duration: 1000 });
+        },
+        err => {
+          this._snackBar.open("Something went wrong. Unable to update. Please try later !!", '', { duration: 300 });
+        }
+      );
     }
   }
   editContactNumber() {
     this.makeContactNumberEditable = true;
   }
-
+  cancelMobileNumber(){
+    this.submitted = true;
+    if (this.contactNumberForm.invalid) {    
+      return;
+    }
+    else {
+      this.makeContactNumberEditable = false;
+    }
+  }
   submitPassword() {
     if (this.passwordChangeForm.invalid) {
       return;

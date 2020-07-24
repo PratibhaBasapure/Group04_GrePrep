@@ -33,7 +33,7 @@ module.exports.authenticate = (req, res, next) => {
         if (err) return res.status(400).json(err);
         // registered user
         else if (user) return res.status(200).json({
-            "token": user.generateJwt(), "email": user.email            
+            "token": user.generateJwt(), "email": user.email
         });
         // unknown user or wrong password
         else return res.status(404).json(info);
@@ -51,19 +51,22 @@ module.exports.userProfile = (req, res, next) => {
     );
 }
 
-module.exports.updateFirstName = async (req, res) => {
+module.exports.updateUserDetails = async (req, res, next) => {
     const updates = Object.keys(req.body)
-    console.log(req.body);
+    console.log("body" + req.body);
+    console.log("body" + req.body.firstName);
     try {
-        const user = await UserModel.findOneAndUpdate({ email: req.params.email }, req.body, function (err, user) {
-            res.send(user);
-        });
-        console.log(user);
+        const user = await User.findOneAndUpdate({ email: req.body.email }, { $set: { firstName: req.body.firstName, mobileNumber: req.body.mobileNumber } }, { new: true },
+            function (err, user) {
+                res.send(user);
+                console.log(user);
+            });
+        
         if (!user) {
             return res.status(404).send({ message: 'You do not seem to be registered' })
-        }
-        res.status(201).send(user)
+        }        
     } catch (error) {
+        console.log(error);
         res.status(400).send(error)
     }
 }

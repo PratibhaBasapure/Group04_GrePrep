@@ -59,6 +59,7 @@ import { UserService } from './services/user.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthGuard } from './auth/auth.guard';
 import { AuthInterceptor } from './auth/auth.interceptor';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -123,6 +124,7 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     HttpClientModule,
     MatProgressSpinnerModule,
     MatCheckboxModule,
+    MatSnackBarModule,
   ],
   providers: [
     {

@@ -36,8 +36,8 @@ export class UserService {
     return this.http.get('/user/userProfile');
   }
 
-  updateUserName(user: User) {
-    return this.http.post('/user/userProfile/updateFirstName', user);
+  updateUserDetails(user: User) {
+    return this.http.post('/user/userProfile/updateUserDetails', user);
   }
   //Helper Methods
 
