@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "node server.js",
+    "start": "node server.js && ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -32,6 +32,7 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "font-awesome": "^4.7.0",
+    "materialize-css": "^1.0.0-rc.2",
     "mongoose": "^5.9.25",
     "path": "^0.12.7",
     "rxjs": "~6.5.4",

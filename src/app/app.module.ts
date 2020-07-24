@@ -46,13 +46,17 @@ import { TermsAndConditionComponent } from './terms-and-condition/terms-and-cond
 import { SuccessStoriesComponent } from './success-stories/success-stories.component';
 import { QuizComponent } from './quiz/quiz.component';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { TakeQuizComponent } from './take-quiz/take-quiz.component';
 import { MockTestComponent } from './mock-test/mock-test.component';
 import { TakeMockTestComponent } from './take-mock-test/take-mock-test.component';
 import { ListOfSchoolsComponent } from './list-of-schools/list-of-schools.component';
 import { ProfileSettingsComponent } from './profile-settings/profile-settings.component';
-import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { HttpClientModule } from '@angular/common/http';
+import { QuestionManagerService } from './question-manager.service';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -112,10 +116,13 @@ import { MatNativeDateModule } from '@angular/material/core';
     RouterModule,
     MatMenuModule,
     MatRadioModule,
-    MatDatepickerModule,  
-    MatNativeDateModule
+    MatDatepickerModule,
+    MatNativeDateModule,
+    HttpClientModule,
+    MatProgressSpinnerModule,
+    MatCheckboxModule,
   ],
-  providers: [],
+  providers: [QuestionManagerService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

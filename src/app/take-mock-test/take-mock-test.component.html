@@ -1,141 +1,133 @@
-<div style="background-color: #e7ebee; height: 100%;">
+<div style="background-color: #e7ebee; min-height: 100%;">
   <app-header></app-header>
-  <div style="overflow: auto; height: 79%; background-color: #e7ebee;">
-    <div
-      class="container"
-      fxLayout="row"
-      fxLayout.xs="column"
-      fxLayoutWrap
-      fxLayoutGap="10px"
-      fxLayoutGap.xs="5px"
-      fxLayoutAlign="start"
-      style="padding-left: 2%; padding-right: 2%; padding-top: 2%;"
-    >
-      <div>
-        <h2>Mock Test</h2>
-        <h3>Section 1 Verbal</h3>
-        <p style="font-weight: bold;">
-          1. Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto
-          neque voluptatibus in. Repellendus quaerat animi sequi deserunt ut
-          blanditiis, dolor laborum consectetur distinctio. Doloremque sed
-          adipisci vero, esse ut tenetur?
-        </p>
-        <mat-radio-group
-          class="example-radio-group"
-          aria-label="Select the number of questions you want to practice"
-        >
-          <mat-radio-button class="example-radio-button" value="1"
-            >Option 1</mat-radio-button
-          >
-          <mat-radio-button class="example-radio-button" value="2"
-            >Option 2</mat-radio-button
-          >
-          <mat-radio-button class="example-radio-button" value="3"
-            >Option 3</mat-radio-button
-          >
-          <mat-radio-button class="example-radio-button" value="4"
-            >Option 4</mat-radio-button
-          >
-          <mat-radio-button class="example-radio-button" value="5"
-            >Option 5</mat-radio-button
-          >
-        </mat-radio-group>
+  <div class="loading-indicator" *ngIf="loading">
+    <mat-spinner></mat-spinner>
+  </div>
+  <div
+    class="container"
+    style="padding-top: 20px; padding-bottom: 20px;"
+    *ngIf="!loading"
+  >
+    <div class="row">
+      <div class="col s12">
+        <div *ngIf="mode == 'quiz'">
+          <div *ngFor="let question of filteredQuestions">
+            <div class="row">
+              <div
+                class="col s3"
+                style="
+                  background-color: #283593 !important;
+                  padding: 10px;
+                  color: white;
+                  font-size: medium;
+                "
+              >
+                Question {{ pager.index + 1 }} of {{ pager.count }}
+              </div>
+              <div
+                *ngIf="config.duration"
+                class="col s3"
+                style="
+                  background-color: #283593 !important;
+                  padding: 10px;
+                  color: white;
+                  float: right;
+                  font-size: medium;
+                "
+              >
+                Time: {{ ellapsedTime }} / {{ duration }}
+              </div>
+            </div>
+            <div>{{ pager.index + 1 }}. {{ question.title }}</div>
+            <br />
+            <div class="row">
+              <div class="col s12">
+                <div *ngIf="question.answer.length == 1">
+                  <mat-radio-group>
+                    <mat-radio-button
+                      *ngFor="let option of question.options; let a = index"
+                      [value]="a"
+                      class="col s12"
+                      [checked]="getStatus(a, question)"
+                      (change)="singleChoiceAnswer(a, question)"
+                    >
+                      {{ option }}
+                    </mat-radio-button>
+                  </mat-radio-group>
+                </div>
+                <div *ngIf="question.answer.length != 1">
+                  <div *ngFor="let option of question.options; let j = index">
+                    <mat-checkbox
+                      style="margin-top: 12px;"
+                      class="col s12"
+                      color="accent"
+                      [checked]="getStatus(j, question)"
+                      (change)="multiChoiceAnswer(j, question, $event)"
+                    >
+                      {{ option }}
+                    </mat-checkbox>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <br />
+          <hr />
+          <div class="row" style="margin-top: 20px;">
+            <div class="col s3">
+              <button
+                class="btn waves-effect waves-light indigo darken-3"
+                *ngIf="config.allowBack"
+                (click)="goTo(0)"
+              >
+                First
+              </button>
+            </div>
+            <div class="col s3">
+              <button
+                class="btn waves-effect waves-light indigo darken-3"
+                *ngIf="config.allowBack"
+                (click)="goTo(pager.index - 1)"
+              >
+                Previous
+              </button>
+            </div>
+            <div class="col s3">
+              <button
+                class="btn waves-effect waves-light indigo darken-3"
+                *ngIf="config.allowBack"
+                (click)="goTo(pager.index + 1)"
+              >
+                Next
+              </button>
+            </div>
+            <div class="col s3">
+              <button
+                class="btn waves-effect waves-light indigo darken-3"
+                *ngIf="config.allowBack"
+                (click)="goTo(pager.count - 1)"
+              >
+                Last
+              </button>
+            </div>
+          </div>
+        </div>
+        <hr />
+        <br />
+        <div class="row">
+          <div class="center-align">
+            <div *ngIf="mode != 'result' && pager.count - 1 == pager.index">
+              <button
+                class="btn waves-effect waves-light"
+                color="primary"
+                (click)="onSubmit()"
+              >
+                Submit Your Answers
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-    <div
-      class="container"
-      fxLayout="row"
-      fxLayout.xs="column"
-      fxLayoutWrap
-      fxLayoutGap="10px"
-      fxLayoutGap.xs="5px"
-      fxLayoutAlign="start"
-      style="padding-left: 2%; padding-right: 2%; padding-top: 1%;"
-    >
-      <div>
-        <p style="font-weight: bold;">
-          2. Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto
-          neque voluptatibus in. Repellendus quaerat animi sequi deserunt ut
-          blanditiis, dolor laborum consectetur distinctio. Doloremque sed
-          adipisci vero, esse ut tenetur?
-        </p>
-        <mat-radio-group
-          class="example-radio-group"
-          aria-label="Select the number of questions you want to practice"
-        >
-          <mat-radio-button class="example-radio-button" value="1"
-            >Option 1</mat-radio-button
-          >
-          <mat-radio-button class="example-radio-button" value="2"
-            >Option 2</mat-radio-button
-          >
-          <mat-radio-button class="example-radio-button" value="3"
-            >Option 3</mat-radio-button
-          >
-          <mat-radio-button class="example-radio-button" value="4"
-            >Option 4</mat-radio-button
-          >
-          <mat-radio-button class="example-radio-button" value="5"
-            >Option 5</mat-radio-button
-          >
-        </mat-radio-group>
-      </div>
-    </div>
-    <div
-      class="container"
-      fxLayout="row"
-      fxLayout.xs="column"
-      fxLayoutWrap
-      fxLayoutGap="10px"
-      fxLayoutGap.xs="5px"
-      fxLayoutAlign="start"
-      style="padding-left: 2%; padding-right: 2%; padding-top: 1%;"
-    >
-      <div>
-        <p style="font-weight: bold;">
-          3. Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto
-          neque voluptatibus in. Repellendus quaerat animi sequi deserunt ut
-          blanditiis, dolor laborum consectetur distinctio. Doloremque sed
-          adipisci vero, esse ut tenetur?
-        </p>
-        <mat-radio-group
-          class="example-radio-group"
-          aria-label="Select the number of questions you want to practice"
-        >
-          <mat-radio-button class="example-radio-button" value="1"
-            >Option 1</mat-radio-button
-          >
-          <mat-radio-button class="example-radio-button" value="2"
-            >Option 2</mat-radio-button
-          >
-          <mat-radio-button class="example-radio-button" value="3"
-            >Option 3</mat-radio-button
-          >
-          <mat-radio-button class="example-radio-button" value="4"
-            >Option 4</mat-radio-button
-          >
-          <mat-radio-button class="example-radio-button" value="5"
-            >Option 5</mat-radio-button
-          >
-        </mat-radio-group>
-      </div>
-    </div>
-    <div
-      class="container"
-      fxLayout="row"
-      fxLayout.xs="column"
-      fxLayoutWrap
-      fxLayoutGap="10px"
-      fxLayoutGap.xs="5px"
-      fxLayoutAlign="center"
-      style="padding-bottom: 2%;"
-    >
-      <button mat-raised-button color="primary">
-        Next
-      </button>
-      <button mat-raised-button color="warn">
-        Submit Answers
-      </button>
     </div>
   </div>
 </div>
