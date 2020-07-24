@@ -3,177 +3,90 @@
     <mat-card-title>Create Account</mat-card-title>
     <mat-card-subtitle>Welcome to the world of learning!</mat-card-subtitle>
     <mat-card-content>
-      <div
-        class="container"
-        fxLayout="row"
-        fxLayout.xs="column"
-        fxLayoutWrap
-        fxLayoutGap="0.5"
-        fxLayoutAlign="center"
-      >
+      <div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5" fxLayoutAlign="center">
         <div fxFlex="50">
           <form [formGroup]="signupForm" (ngSubmit)="signup()">
-            <div
-              class="container"
-              fxLayout="row"
-              fxLayout.xs="column"
-              fxLayoutWrap
-              fxLayoutGap="0.5"
-              fxLayoutAlign="center"
-            >
+            <div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5"
+              fxLayoutAlign="center">
               <div fxFlex="50%">
                 <mat-form-field appearance="outline">
                   <mat-label>First Name</mat-label>
 
-                  <input
-                    matInput
-                    type="text"
-                    required
-                    placeholder="Enter your first name"
-                    formControlName="firstName"
-                    id="firstName"
-                  />
+                  <input matInput type="text" required placeholder="Enter your first name" formControlName="firstName"
+                    id="firstName" />
                   <mat-icon matPrefix>account_circle</mat-icon>
                   <mat-hint align="end">Example: John</mat-hint>
-                  <mat-error *ngIf="hasError('firstName', 'required')"
-                    >First Name is required</mat-error
-                  >
+                  <mat-error *ngIf="hasError('firstName', 'required')">First Name is required</mat-error>
                 </mat-form-field>
               </div>
               <div fxFlex="50%">
                 <mat-form-field appearance="outline">
                   <mat-label>Last Name</mat-label>
 
-                  <input
-                    matInput
-                    type="text"
-                    required
-                    placeholder="Enter your last name"
-                    formControlName="lastName"
-                    id="lastName"
-                  />
+                  <input matInput type="text" required placeholder="Enter your last name" formControlName="lastName"
+                    id="lastName" />
                   <mat-icon matPrefix>account_circle</mat-icon>
                   <mat-hint align="end">Example: Doe</mat-hint>
-                  <mat-error *ngIf="hasError('lastName', 'required')"
-                    >Last Name is required</mat-error
-                  >
+                  <mat-error *ngIf="hasError('lastName', 'required')">Last Name is required</mat-error>
                 </mat-form-field>
               </div>
             </div>
             <br />
-            <div
-              class="container"
-              fxLayout="row"
-              fxLayout.xs="column"
-              fxLayoutWrap
-              fxLayoutGap="0.5"
-              fxLayoutAlign="center"
-            >
+            <div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5"
+              fxLayoutAlign="center">
               <div fxFlex="50%">
                 <mat-form-field appearance="outline">
                   <mat-label>Email address</mat-label>
 
-                  <input
-                    matInput
-                    type="email"
-                    required
-                    placeholder="Enter your Email address"
-                    formControlName="emailId"
-                    id="emailId"
-                  />
+                  <input matInput type="email" required placeholder="Enter your Email address" formControlName="email"
+                    id="email" />
                   <mat-icon matPrefix>email</mat-icon>
                   <mat-hint align="end">Example: xyz@gmail.com</mat-hint>
-                  <mat-error *ngIf="hasError('emailId', 'required')"
-                    >Email address is required</mat-error
-                  >
-                  <mat-error *ngIf="hasError('emailId', 'email')"
-                    >Emaild address is not valid</mat-error
-                  >
+                  <mat-error *ngIf="hasError('email', 'required')">Email address is required</mat-error>
+                  <mat-error *ngIf="hasError('email', 'email') || hasError('email', 'pattern')">Emaild address is not valid</mat-error>                  
                 </mat-form-field>
               </div>
               <div fxFlex="50%">
                 <mat-form-field appearance="outline">
                   <mat-label>Mobile number</mat-label>
 
-                  <input
-                    matInput
-                    required
-                    placeholder="Enter your mobile number"
-                    formControlName="phoneNumber"
-                    id="phoneNumber"
-                    maxlength="10"
-                    minlength="10"
-                  />
+                  <input matInput required placeholder="Enter your mobile number" formControlName="mobileNumber"
+                    id="mobileNumber" maxlength="10" minlength="10" />
                   <mat-icon matPrefix>phone</mat-icon>
                   <mat-hint align="end">Example: 9024125836</mat-hint>
-                  <mat-error *ngIf="hasError('phoneNumber', 'required')"
-                    >Phone number is required</mat-error
-                  >
-                  <mat-error
-                    *ngIf="
-                      !signupForm.get('phoneNumber').hasError('required') &&
-                      signupForm.get('phoneNumber').hasError('pattern')
-                    "
-                  >
+                  <mat-error *ngIf="hasError('mobileNumber', 'required')">Phone number is required</mat-error>
+                  <mat-error *ngIf="
+                      !signupForm.get('mobileNumber').hasError('required') &&
+                      signupForm.get('mobileNumber').hasError('pattern')
+                    ">
                     Phone number is not valid
                   </mat-error>
                 </mat-form-field>
               </div>
             </div>
             <br />
-            <div
-              class="container"
-              fxLayout="row"
-              fxLayout.xs="column"
-              fxLayoutWrap
-              fxLayoutGap="0.5"
-              fxLayoutAlign="center"
-            >
+            <div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5"
+              fxLayoutAlign="center">
               <div fxFlex="50%">
                 <mat-form-field appearance="outline">
                   <mat-label>Password</mat-label>
-                  <input
-                    matInput
-                    [type]="hide ? 'password' : 'text'"
-                    required
-                    placeholder="Enter your password"
-                    formControlName="password"
-                    id="password"
-                    minlength="8"
-                  />
+                  <input matInput [type]="hide ? 'password' : 'text'" required placeholder="Enter your password"
+                    formControlName="password" id="password" minlength="8" />
                   <mat-icon matPrefix>lock</mat-icon>
-                  <mat-icon
-                    matSuffix
-                    (click)="hide = !hide"
-                    style="cursor: pointer;"
-                    >{{ hide ? "visibility_off" : "visibility" }}</mat-icon
-                  >
-                  <mat-error *ngIf="hasError('password', 'required')"
-                    >Password is required</mat-error
-                  >
-                  <mat-error *ngIf="hasError('password', 'minlength')"
-                    >The minimum length is 8 characters</mat-error
-                  >
+                  <mat-icon matSuffix (click)="hide = !hide" style="cursor: pointer;">
+                    {{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+                  <mat-error *ngIf="hasError('password', 'required')">Password is required</mat-error>
+                  <mat-error *ngIf="hasError('password', 'minlength')">The minimum length is 8 characters</mat-error>
                 </mat-form-field>
               </div>
               <div fxFlex="50%">
                 <mat-form-field appearance="outline">
                   <mat-label>Confirm Password</mat-label>
-                  <input
-                    matInput
-                    [type]="hide ? 'password' : 'text'"
-                    placeholder="Confirm your password"
-                    formControlName="confirmPassword"
-                    id="confirmPassword"
-                    [errorStateMatcher]="matcher"
-                  />
+                  <input matInput [type]="hide ? 'password' : 'text'" placeholder="Confirm your password"
+                    formControlName="confirmPassword" id="confirmPassword" [errorStateMatcher]="matcher" />
                   <mat-icon matPrefix>lock</mat-icon>
-                  <mat-icon
-                    matSuffix
-                    (click)="hide = !hide"
-                    style="cursor: pointer;"
-                    >{{ hide ? "visibility_off" : "visibility" }}</mat-icon
-                  >
+                  <mat-icon matSuffix (click)="hide = !hide" style="cursor: pointer;">
+                    {{ hide ? "visibility_off" : "visibility" }}</mat-icon>
                   <mat-error *ngIf="signupForm.hasError('notSame')">
                     Passwords do not match
                   </mat-error>
@@ -181,20 +94,9 @@
               </div>
             </div>
             <br />
-            <div
-              class="container"
-              fxLayout="row"
-              fxLayout.xs="column"
-              fxLayoutWrap
-              fxLayoutGap="0.5"
-              fxLayoutAlign="start"
-            >
-              <button
-                mat-raised-button
-                type="submit"
-                color="primary"
-                [disabled]="!signupForm.valid"
-              >
+            <div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5"
+              fxLayoutAlign="start">
+              <button mat-raised-button type="submit" color="primary" [disabled]="!signupForm.valid">
                 Start Learning!
               </button>
             </div>
@@ -202,14 +104,8 @@
         </div>
         <div fxFlex="50">
           <br />
-          <div
-            class="container"
-            fxLayout="row"
-            fxLayout.xs="column"
-            fxLayoutWrap
-            fxLayoutGap="0.5"
-            fxLayoutAlign="start center"
-          >
+          <div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5"
+            fxLayoutAlign="start center">
             Already a member?&nbsp;&nbsp;
             <a href="/login">
               <button mat-stroked-button color="primary">
@@ -221,18 +117,21 @@
           <a [routerLink]="['']">Go to Home</a>
           <br />
           <br />
-          <div
-            class="container"
-            fxLayout="row"
-            fxLayout.xs="column"
-            fxLayoutWrap
-            fxLayoutGap="0.5"
-            fxLayoutAlign="end"
-          >
+          <div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5" fxLayoutAlign="end">
             <img src="../../assets/img/english.PNG" width="100%" height="300" />
           </div>
+        </div>
+        <div class="success" *ngIf="showSucessMessage">
+          Saved successfully
+        </div>
+        
+        <!-- Error message -->
+        <div class="alert" *ngIf="serverErrorMessages">
+          {{serverErrorMessages}}
         </div>
       </div>
     </mat-card-content>
   </mat-card>
+  <!-- Success message -->
+
 </div>

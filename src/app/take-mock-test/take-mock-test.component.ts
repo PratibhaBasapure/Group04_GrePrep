@@ -21,12 +21,13 @@ export class TakeMockTestComponent implements OnInit {
   questions: Question[];
   mode = 'quiz';
   loading = true;
+  greScore = 0;
   userAnswers: UserAnswers = null;
   config: QuestionConfig = {
     allowBack: true,
     allowReview: true,
     autoMove: false, // if true, it will move to next question automatically when answered.
-    duration: 10800, // indicates the time (in secs) in which quiz needs to be completed. 0 means unlimited.
+    duration: 4500, // indicates the time (in secs) in which quiz needs to be completed. 0 means unlimited.
     pageSize: 1,
     requiredAll: false, // indicates if you must answer all the questions before submitting.
     richText: false,
@@ -108,6 +109,39 @@ export class TakeMockTestComponent implements OnInit {
   onSubmit() {
     this.mode = 'result';
     console.log(this.questions);
+    this.questionService
+      .saveUserAnswers(this.userAnswers)
+      .subscribe((data: boolean) => {
+        if (data) {
+          this.calculateGreScore();
+        }
+      });
+  }
+
+  calculateGreScore() {
+    var unitQuestionScore = (340 * 1.0) / this.questions.length;
+    var totalScore = 0;
+    var answers = this.userAnswers.questionAnswers;
+    var questions = this.questions;
+    for (var i = 0; i < answers.length; i++) {
+      for (var j = 0; j < questions.length; j++) {
+        if (answers[i].questionId == questions[i].questionId) {
+          var numberAnswers = questions[i].answer.map(function (item) {
+            return parseInt(item, 10);
+          });
+          if (
+            numberAnswers.sort().join(',') ===
+            answers[i].answers.sort().join(',')
+          ) {
+            totalScore += unitQuestionScore;
+          } else {
+            totalScore += 0;
+          }
+          break;
+        }
+      }
+    }
+    this.greScore = totalScore;
   }
 
   singleChoiceAnswer(value: number, question: Question) {
@@ -117,6 +151,7 @@ export class TakeMockTestComponent implements OnInit {
     if (this.userAnswers == null) {
       this.userAnswers = new UserAnswers();
       this.userAnswers.userId = emailId;
+      this.userAnswers.testType = 'MT';
       var questionAnswers = new Answers();
       this.userAnswers.questionAnswers = [];
       questionAnswers.questionId = question.questionId;
@@ -169,6 +204,7 @@ export class TakeMockTestComponent implements OnInit {
       if (this.userAnswers == null) {
         this.userAnswers = new UserAnswers();
         this.userAnswers.userId = emailId;
+        this.userAnswers.testType = 'MT';
         var questionAnswers = new Answers();
         this.userAnswers.questionAnswers = [];
         questionAnswers.questionId = question.questionId;

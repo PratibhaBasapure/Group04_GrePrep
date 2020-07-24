@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -54,9 +53,12 @@ import { ListOfSchoolsComponent } from './list-of-schools/list-of-schools.compon
 import { ProfileSettingsComponent } from './profile-settings/profile-settings.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import { HttpClientModule } from '@angular/common/http';
 import { QuestionManagerService } from './question-manager.service';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { UserService } from './services/user.service';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthGuard } from './auth/auth.guard';
+import { AuthInterceptor } from './auth/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -122,7 +124,16 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatProgressSpinnerModule,
     MatCheckboxModule,
   ],
-  providers: [QuestionManagerService],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+    UserService,
+    AuthGuard,
+    QuestionManagerService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

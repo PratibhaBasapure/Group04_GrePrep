@@ -39,6 +39,10 @@
               </div>
             </div>
             <div>{{ pager.index + 1 }}. {{ question.title }}</div>
+            <div *ngIf="question.image != null" class="center-align">
+              <br />
+              <img src="{{ question.image }}" />
+            </div>
             <br />
             <div class="row">
               <div class="col s12">
@@ -112,9 +116,9 @@
             </div>
           </div>
         </div>
-        <hr />
-        <br />
-        <div class="row">
+        <div class="row" *ngIf="mode != 'result'">
+          <hr />
+          <br />
           <div class="center-align">
             <div *ngIf="mode != 'result' && pager.count - 1 == pager.index">
               <button
@@ -124,6 +128,20 @@
               >
                 Submit Your Answers
               </button>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="mode == 'result'">
+          <div class="container result">
+            <div class="row valign-wrapper">
+              <div class="col valign">
+                <div class="card hoverable blue-grey darken-1">
+                  <div class="card-content white-text">
+                    <span class="card-title">Mock Test Score</span>
+                    <p>Your GRE Score is {{ greScore }}</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

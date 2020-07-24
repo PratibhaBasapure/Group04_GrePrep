@@ -1,9 +1,10 @@
 const express = require("express");
 const router = express.Router();
-const Question = require("../model/question");
+const Question = require("../models/question");
+const questionController = require("../controllers/question");
 
 router.get("/", (req, res) => {
-  Question.find()
+  Question.aggregate([{ $sample: { size: 40 } }])
     .exec()
     .then((questionList) => {
       res.status(200).json(questionList);
@@ -13,5 +14,7 @@ router.get("/", (req, res) => {
       res.status(500).json(err);
     });
 });
+
+router.post("/saveUserAnswers", questionController.saveUserAnswers);
 
 module.exports = router;

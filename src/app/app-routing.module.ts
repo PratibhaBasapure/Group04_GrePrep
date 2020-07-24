@@ -21,6 +21,7 @@ import { MockTestComponent } from './mock-test/mock-test.component';
 import { TakeMockTestComponent } from './take-mock-test/take-mock-test.component';
 import { ListOfSchoolsComponent } from './list-of-schools/list-of-schools.component';
 import { ProfileSettingsComponent } from './profile-settings/profile-settings.component';
+import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
   {
@@ -45,7 +46,7 @@ const routes: Routes = [
   { path: 'attemptHistory', component: AttemptHistoryComponent },
   { path: '***', redirectTo: '' },
   { path: 'gre-predictor', component: GrePredictorComponent },
-  { path: 'gre', component: GreComponent },
+  { path: 'gre', component: GreComponent,canActivate:[AuthGuard] },
   { path: 'gre/quiz', component: QuizComponent },
   { path: 'gre/quiz/takeQuiz', component: TakeQuizComponent },
   { path: 'gre/mocktest', component: MockTestComponent },

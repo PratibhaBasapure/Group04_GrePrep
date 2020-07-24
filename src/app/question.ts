@@ -5,7 +5,7 @@ export class Question {
   type: String;
   subType: String;
   image: String;
-  answer: String[];
+  answer: string[];
   options: String[];
   answered: boolean;
 }

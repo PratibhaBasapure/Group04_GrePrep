@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators, FormControl, FormGroupDirective, Ng
 import { Router } from '@angular/router';
 import { MatAccordion } from '@angular/material/expansion';
 import { ErrorStateMatcher } from '@angular/material/core';
+import { UserService } from '../services/user.service';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(
@@ -29,7 +30,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class ProfileSettingsComponent implements OnInit {
   @ViewChild(MatAccordion) accordion: MatAccordion;
-
+  userDetails;
   firstName: string = 'queen elizabeth';
   contactNum: number = 9023456789;
 
@@ -47,7 +48,8 @@ export class ProfileSettingsComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private userService: UserService
   ) { }
 
   ngOnInit(): void {
@@ -66,6 +68,17 @@ export class ProfileSettingsComponent implements OnInit {
         confirmPassword: new FormControl('', [Validators.required]),
       },
       { validator: this.checkPasswords }
+    );
+
+    this.userService.getUserProfile().subscribe(
+      res => {
+        this.userDetails = res['user'];
+        console.log("Detaisl"+this.userDetails);
+      },
+      err => {
+        console.log(err);
+
+      }
     );
   }
 
@@ -91,6 +104,18 @@ export class ProfileSettingsComponent implements OnInit {
     }
     else {
       this.makeFirstNameEditable = false;
+      this.userDetails.firstName=this.signupForm.controls['firstName'].value;
+      console.log(this.userDetails);
+      this.userService.updateUserName(this.userDetails).subscribe(
+        res => {
+          // this.showSucessMessage = true;
+         console.log("Error");
+        },
+        err => {
+          console.log("Error");
+          //  this.serverErrorMessages = 'Something went wrong.Please contact admin.';
+        }
+      );
     }
   }
   editUserName() {
@@ -110,8 +135,8 @@ export class ProfileSettingsComponent implements OnInit {
     this.makeContactNumberEditable = true;
   }
 
-  submitPassword(){
-    if (this.passwordChangeForm.invalid) {     
+  submitPassword() {
+    if (this.passwordChangeForm.invalid) {
       return;
     }
   }
