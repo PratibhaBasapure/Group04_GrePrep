@@ -1,5 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl, FormGroupDirective, NgForm } from '@angular/forms';
+import {
+  FormGroup,
+  FormBuilder,
+  Validators,
+  FormControl,
+  FormGroupDirective,
+  NgForm,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatAccordion } from '@angular/material/expansion';
 import { ErrorStateMatcher } from '@angular/material/core';
@@ -23,15 +30,14 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   }
 }
 
-
 @Component({
   selector: 'app-profile-settings',
   templateUrl: './profile-settings.component.html',
-  styleUrls: ['./profile-settings.component.css']
+  styleUrls: ['./profile-settings.component.css'],
 })
 export class ProfileSettingsComponent implements OnInit {
   @ViewChild(MatAccordion) accordion: MatAccordion;
-  userDetails:User;
+  userDetails: User;
   firstName: string = 'queen elizabeth';
   contactNum: number = 9023456789;
 
@@ -51,14 +57,22 @@ export class ProfileSettingsComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private userService: UserService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.signupForm = this.formBuilder.group({
       firstName: ['', [Validators.required]],
     });
     this.contactNumberForm = this.formBuilder.group({
-      mobileNum: ['', [Validators.required, Validators.pattern("^[0-9]*$"), Validators.minLength(10), Validators.maxLength(10)]],
+      mobileNum: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern('^[0-9]*$'),
+          Validators.minLength(10),
+          Validators.maxLength(10),
+        ],
+      ],
     });
     this.passwordChangeForm = this.formBuilder.group(
       {
@@ -72,14 +86,10 @@ export class ProfileSettingsComponent implements OnInit {
     );
 
     this.userService.getUserProfile().subscribe(
-      res => {
+      (res) => {
         this.userDetails = res['user'];
-        console.log("Detaisl"+this.userDetails);
       },
-      err => {
-        console.log(err);
-
-      }
+      (err) => {}
     );
   }
 
@@ -89,7 +99,10 @@ export class ProfileSettingsComponent implements OnInit {
   public hasErrorInContactNum = (controlName: string, errorName: string) => {
     return this.contactNumberForm.controls[controlName].hasError(errorName);
   };
-  public hasErrorInChangePassword = (controlName: string, errorName: string) => {
+  public hasErrorInChangePassword = (
+    controlName: string,
+    errorName: string
+  ) => {
     return this.passwordChangeForm.controls[controlName].hasError(errorName);
   };
   checkPasswords(group: FormGroup) {
@@ -102,20 +115,12 @@ export class ProfileSettingsComponent implements OnInit {
     this.submitted = true;
     if (this.signupForm.invalid) {
       return;
-    }
-    else {
+    } else {
       this.makeFirstNameEditable = false;
-      this.userDetails.firstName=this.signupForm.controls['firstName'].value;
-      console.log(this.userDetails);
+      this.userDetails.firstName = this.signupForm.controls['firstName'].value;
       this.userService.updateUserName(this.userDetails).subscribe(
-        res => {
-          // this.showSucessMessage = true;
-         console.log("Error");
-        },
-        err => {
-          console.log("Error");
-          //  this.serverErrorMessages = 'Something went wrong.Please contact admin.';
-        }
+        (res) => {},
+        (err) => {}
       );
     }
   }
@@ -125,10 +130,9 @@ export class ProfileSettingsComponent implements OnInit {
 
   submitContactNumber() {
     if (this.contactNumberForm.invalid) {
-      console.log(this.contactNumberForm.controls["mobileNum"].errors);
+      console.log(this.contactNumberForm.controls['mobileNum'].errors);
       return;
-    }
-    else {
+    } else {
       this.makeContactNumberEditable = false;
     }
   }

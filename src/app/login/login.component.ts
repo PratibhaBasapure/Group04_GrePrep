@@ -43,8 +43,6 @@ export class LoginComponent implements OnInit {
   };
 
   login() {
-    console.log(this.loginForm.value.password);
-    console.log(this.loginForm.value.email);
     this.userService.login(this.loginForm.value).subscribe(
       (res) => {
         this.userService.setToken(res['token']);
