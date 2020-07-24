@@ -126,7 +126,7 @@ export class ProfileSettingsComponent implements OnInit {
       this.makeFirstNameEditable = false;
       this.userDetails.firstName = this.signupForm.controls['firstName'].value;
       this.userService.updateUserDetails(this.userDetails).subscribe(
-        (res) => {},
+        (res) => {
           this._snackBar.open("Updated successfully !!", '', { duration: 1000 });
         },
         err => {
