@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
-import { environment } from '../../environments/environment';
 import { User } from '../models/user.model';
 
 @Injectable({
@@ -23,11 +21,7 @@ export class UserService {
   //HttpMethods
 
   postUser(user: User) {
-    return this.http.post(
-      '/user/register',
-      user,
-      this.noAuthHeader
-    );
+    return this.http.post('/user/register', user, this.noAuthHeader);
   }
 
   login(authCredentials) {
@@ -43,10 +37,7 @@ export class UserService {
   }
 
   updateUserName(user: User) {
-    return this.http.post(
-      '/user/userProfile/updateFirstName',
-      user
-    );
+    return this.http.post('/user/userProfile/updateFirstName', user);
   }
   //Helper Methods
 
