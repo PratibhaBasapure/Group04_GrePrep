@@ -1,10 +1,4 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import {
-  FormGroup,
-  FormBuilder,
-  Validators,
-  AbstractControl,
-} from '@angular/forms';
 import { Question } from '../question';
 import { QuestionManagerService } from '../question-manager.service';
 import { QuestionConfig } from '../question-config';
@@ -15,7 +9,10 @@ import { UserService } from '../services/user.service';
 @Component({
   selector: 'app-take-mock-test',
   templateUrl: './take-mock-test.component.html',
-  styleUrls: ['./take-mock-test.component.css'],
+  styleUrls: [
+    '../../../node_modules/materialize-css/dist/css/materialize.min.css',
+    './take-mock-test.component.css',
+  ],
   encapsulation: ViewEncapsulation.Emulated,
 })
 export class TakeMockTestComponent implements OnInit {
@@ -50,7 +47,10 @@ export class TakeMockTestComponent implements OnInit {
   ellapsedTime = '00:00';
   duration = '';
 
-  constructor(private questionService: QuestionManagerService, private userService: UserService) {}
+  constructor(
+    private questionService: QuestionManagerService,
+    private userService: UserService
+  ) {}
 
   ngOnInit(): void {
     this.loadQuestions();
@@ -109,7 +109,6 @@ export class TakeMockTestComponent implements OnInit {
   }
   onSubmit() {
     this.mode = 'result';
-    console.log(this.questions);
     this.questionService
       .saveUserAnswers(this.userAnswers)
       .subscribe((data: boolean) => {
@@ -178,7 +177,6 @@ export class TakeMockTestComponent implements OnInit {
         this.userAnswers.questionAnswers.push(questionAnswers);
       }
     }
-    console.log(this.userAnswers);
   }
   getStatus(value: Number, question: Question): Boolean {
     if (this.userAnswers == null) {
