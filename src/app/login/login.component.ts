@@ -60,8 +60,9 @@ export class LoginComponent implements OnInit {
     //   this.router.navigate(['home']);
     // });
     this.userService.login(this.loginForm.value).subscribe(
-      res => {
+      res => {     
         this.userService.setToken(res['token']);
+        this.userService.setUserEmail(res['email']);
         this.router.navigate(['gre']);
       },
       err => {

@@ -51,6 +51,18 @@ updateUserName(user:User){
     localStorage.removeItem('token');
   }
 
+  setUserEmail(email: string) {
+    localStorage.setItem('email', email);
+  }
+
+  getUserEmail() {
+    return localStorage.getItem('email');
+  }
+
+  deleteUserEmail() {
+    localStorage.removeItem('email');
+  }
+
   getUserPayload() {
     var token = this.getToken();
     if (token) {
