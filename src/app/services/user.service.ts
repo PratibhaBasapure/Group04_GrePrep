@@ -24,7 +24,7 @@ export class UserService {
 
   postUser(user: User) {
     return this.http.post(
-      environment.apiBaseUrl + '/user/register',
+      '/user/register',
       user,
       this.noAuthHeader
     );
@@ -32,19 +32,19 @@ export class UserService {
 
   login(authCredentials) {
     return this.http.post(
-      environment.apiBaseUrl + '/user/authenticate',
+      '/user/authenticate',
       authCredentials,
       this.noAuthHeader
     );
   }
 
   getUserProfile() {
-    return this.http.get(environment.apiBaseUrl + '/user/userProfile');
+    return this.http.get('/user/userProfile');
   }
 
   updateUserName(user: User) {
     return this.http.post(
-      environment.apiBaseUrl + '/user/userProfile/updateFirstName',
+      '/user/userProfile/updateFirstName',
       user
     );
   }
