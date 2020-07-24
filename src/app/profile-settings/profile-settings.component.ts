@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { MatAccordion } from '@angular/material/expansion';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { UserService } from '../services/user.service';
+import { User } from '../models/user.model';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(
@@ -30,7 +31,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class ProfileSettingsComponent implements OnInit {
   @ViewChild(MatAccordion) accordion: MatAccordion;
-  userDetails;
+  userDetails:User;
   firstName: string = 'queen elizabeth';
   contactNum: number = 9023456789;
 

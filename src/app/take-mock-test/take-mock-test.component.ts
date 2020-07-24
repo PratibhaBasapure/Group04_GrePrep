@@ -10,6 +10,7 @@ import { QuestionManagerService } from '../question-manager.service';
 import { QuestionConfig } from '../question-config';
 import { UserAnswers } from '../user-answers';
 import { Answers } from '../answers';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-take-mock-test',
@@ -49,7 +50,7 @@ export class TakeMockTestComponent implements OnInit {
   ellapsedTime = '00:00';
   duration = '';
 
-  constructor(private questionService: QuestionManagerService) {}
+  constructor(private questionService: QuestionManagerService, private userService: UserService) {}
 
   ngOnInit(): void {
     this.loadQuestions();

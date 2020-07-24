@@ -18,6 +18,7 @@ export class AuthGuard implements CanActivate {
       if (!this.userService.isLoggedIn()) {
         this.router.navigateByUrl('/login');
         this.userService.deleteToken();
+        this.userService.deleteUserEmail();
         return false;
       }
     return true;
