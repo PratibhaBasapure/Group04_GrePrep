@@ -19,23 +19,22 @@
       <button mat-button [routerLink]="''">
         Home
       </button>
+      
+        <button mat-button [routerLink]="['/login']" *ngIf="!isLoggedIn">Login</button>
+        <button mat-raised-button [routerLink]="['/registration']" *ngIf="!isLoggedIn">
+          Register
+        </button>
+            
+        <button mat-icon-button matTooltip="Profile" (click)="select.open()" *ngIf="isLoggedIn">
+          <mat-icon>account_circle</mat-icon>
 
-      <button mat-button [routerLink]="['/login']">Login</button>
-
-      <button mat-raised-button [routerLink]="['/registration']">
-        Register
-      </button>
-
-      <button mat-icon-button matTooltip="Profile" (click)="select.open()">
-        <mat-icon>account_circle</mat-icon>
-
-        <mat-select #select class="profile">
-          <mat-option (click)="openAttemptHistory()" value="ae">Attempt History</mat-option>
-          <mat-option (click)="openMySchools()" value="ae">My Schools</mat-option>
-          <mat-option routerLink="/profile/profileSettings" value="ae">Profile Settings</mat-option>
-          <mat-option (click)="logout()" value="ae">Logout</mat-option>
-        </mat-select>
-      </button>
+          <mat-select #select class="profile">
+            <mat-option (click)="openAttemptHistory()" value="ae">Attempt History</mat-option>
+            <mat-option (click)="openMySchools()" value="ae">My Schools</mat-option>
+            <mat-option routerLink="/profile/profileSettings" value="ae">Profile Settings</mat-option>
+            <mat-option (click)="logout()" value="ae">Logout</mat-option>
+          </mat-select>
+        </button>      
     </div>
   </mat-toolbar-row>
   <mat-toolbar-row *ngIf="deviceXs" fxLayoutAlign="space-between end">

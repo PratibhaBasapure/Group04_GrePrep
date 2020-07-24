@@ -18,8 +18,17 @@ mongoose.connect(mongoUrl, {
 var app = express();
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: "true" }));
+app.use(bodyParser.urlencoded({ extended: "false" }));
 app.use(passport.initialize());
 app.use('/user', rtsUser);
-
+app.use((err, req, res, next) => {
+  if (err.name === 'ValidationError') {
+      var valErrors = [];
+      Object.keys(err.errors).forEach(key => valErrors.push(err.errors[key].message));
+      res.status(422).send(valErrors)
+  }
+  else{
+      console.log(err);
+  }
+});
 module.exports = app;

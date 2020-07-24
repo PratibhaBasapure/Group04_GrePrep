@@ -53,6 +53,10 @@ import { ListOfSchoolsComponent } from './list-of-schools/list-of-schools.compon
 import { ProfileSettingsComponent } from './profile-settings/profile-settings.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { UserService } from './services/user.service';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthGuard } from './auth/auth.guard';
+import { AuthInterceptor } from './auth/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -113,9 +117,14 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatMenuModule,
     MatRadioModule,
     MatDatepickerModule,  
-    MatNativeDateModule
+    MatNativeDateModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  },UserService,AuthGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

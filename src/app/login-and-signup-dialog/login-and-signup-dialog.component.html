@@ -1,17 +1,11 @@
 <h1 mat-dialog-title>Welcome</h1>
 <div mat-dialog-content style="overflow-y: hidden;">
   <mat-list>
-    <mat-list-item *ngIf="data.firstName != null"
-      >First Name: {{ data.firstName }}</mat-list-item
-    >
-    <mat-list-item *ngIf="data.lastName != null"
-      >Last Name: {{ data.lastName }}</mat-list-item
-    >
+    <mat-list-item *ngIf="data.firstName != null">First Name: {{ data.firstName }}</mat-list-item>
+    <mat-list-item *ngIf="data.lastName != null">Last Name: {{ data.lastName }}</mat-list-item>
     <mat-list-item>Email Address: {{ data.email }}</mat-list-item>
-    <mat-list-item *ngIf="data.phoneNumber != null"
-      >Phone Number: {{ data.phoneNumber }}</mat-list-item
-    >
-    <mat-list-item>Password: {{ data.password }}</mat-list-item>
+    <mat-list-item *ngIf="data.phoneNumber != null">Phone Number: {{ data.phoneNumber }}</mat-list-item>
+    <mat-list-item>{{ data.password }}</mat-list-item>
   </mat-list>
   <div mat-dialog-actions>
     <button mat-button (click)="onNoClick()">Close</button>
