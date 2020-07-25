@@ -48,7 +48,7 @@ module.exports.updateMockTest = (req, res, next) => {
   history.mockTests = req.body.mockTest;
   History.find({});
 };
-
+//adding the range of scores 
 module.exports.addRange = (req, res, next) => {
   var range = new Range();
   range.rangeID = req.body.rangeID;
@@ -61,6 +61,7 @@ module.exports.addRange = (req, res, next) => {
     }
   });
 };
+//getting the user
 module.exports.predictColleges = async (req, res, next) => {
   var history = {};
   await History.find({ userEmailID: req.body.userEmailID }, (err, document) => {
@@ -84,7 +85,7 @@ module.exports.predictColleges = async (req, res, next) => {
       ranges.forEach((range) => {
         rangeMap[range.rangeID] = range.colleges;
       });
-
+//dividing the categories of the schools based on values
       var scoreIndex = 9 - floor(score / 5 - 59);
 
       var dreamColleges = [];
@@ -110,6 +111,7 @@ module.exports.predictColleges = async (req, res, next) => {
           dreamColleges = dreamColleges.concat(rangeMap[i]);
         }
       }
+      //sending the response
       res.send({
         DreamColleges: dreamColleges,
         ReachColleges: reachColleges,
@@ -121,7 +123,7 @@ module.exports.predictColleges = async (req, res, next) => {
     }
   });
 };
-
+//exporting the excel
 module.exports.updateRangeExcel = (request, res, next) => {
   var form = new IncomingForm();
 
