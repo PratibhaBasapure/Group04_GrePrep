@@ -59,7 +59,7 @@ import { UserService } from './services/user.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthGuard } from './auth/auth.guard';
 import { AuthInterceptor } from './auth/auth.interceptor';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SchoolService } from './services/school.service';
 import { HttpModule } from '@angular/http';
 
@@ -137,11 +137,11 @@ import { HttpModule } from '@angular/http';
     UserService,
     AuthGuard,
     QuestionManagerService,
-    MatDatepickerModule,  
+    MatDatepickerModule,
     MatNativeDateModule,
     HttpClientModule,
     HttpModule,
-    SchoolService
+    SchoolService,
   ],
   bootstrap: [AppComponent],
 })
