@@ -32,14 +32,9 @@ export class TakeMockTestComponent implements OnInit {
   // Setting the configuration for the Test
   config: QuestionConfig = {
     allowBack: true,
-    allowReview: true,
     autoMove: false, // if true, it will move to next question automatically when answered.
     duration: 7200, // indicates the time (in secs) in which quiz needs to be completed. 0 means unlimited.
     pageSize: 1,
-    requiredAll: false, // indicates if you must answer all the questions before submitting.
-    richText: false,
-    shuffleQuestions: false,
-    shuffleOptions: false,
     showClock: false,
     showPager: true,
     theme: 'none',
