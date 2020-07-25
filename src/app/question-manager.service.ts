@@ -25,4 +25,16 @@ export class QuestionManagerService {
       this.noAuthHeader
     );
   }
+
+  saveUserGreScore(emailId: String, score: Number) {
+    var body = {
+      userEmailID: emailId,
+      mockTest: score,
+    };
+    return this.httpClient.post(
+      '/predictor/addHistory',
+      body,
+      this.noAuthHeader
+    );
+  }
 }

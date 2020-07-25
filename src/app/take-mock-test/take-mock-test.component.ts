@@ -121,9 +121,18 @@ export class TakeMockTestComponent implements OnInit {
         .subscribe((data: boolean) => {
           if (data) {
             this.calculateGreScore();
+            this.saveUserGreScore();
           }
         });
     }
+  }
+
+  saveUserGreScore() {
+    this.questionService
+      .saveUserGreScore(this.userService.getUserEmail(), this.greScore)
+      .subscribe((data: any) => {
+        console.log(data);
+      });
   }
 
   calculateGreScore() {
@@ -154,7 +163,8 @@ export class TakeMockTestComponent implements OnInit {
 
   singleChoiceAnswer(value: number, question: Question) {
     var flag = false;
-    var emailId = 'padmeshdonthu@gmail.com';
+    var emailId = this.userService.getUserEmail();
+    console.log(emailId);
 
     if (this.userAnswers == null) {
       this.userAnswers = new UserAnswers();
@@ -205,7 +215,8 @@ export class TakeMockTestComponent implements OnInit {
 
   multiChoiceAnswer(value: number, question: Question, event: any) {
     var flag = false;
-    var emailId = 'padmeshdonthu@gmail.com';
+    var emailId = this.userService.getUserEmail();
+    console.log(emailId);
 
     if (event.checked) {
       if (this.userAnswers == null) {
