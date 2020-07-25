@@ -14,6 +14,8 @@ export class MockTestComponent implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit(): void {}
+
+  // Method to navigate the user to take mock test page
   next() {
     this.router.navigate(['takeMockTest'], { relativeTo: this.route });
   }

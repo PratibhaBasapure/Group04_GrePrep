@@ -14,14 +14,17 @@ export class QuestionManagerService {
 
   constructor(private httpClient: HttpClient) {}
 
+  // Get request to get list of questions from the database
   getQuestions(): Observable<Question[]> {
     return this.httpClient.get<Question[]>(this.baseUrl);
   }
 
+  // Post request to save the user answers for the attempted test to the database
   saveUserAnswers(userAnswers: UserAnswers) {
     return this.httpClient.post(this.baseUrl + '/saveUserAnswers', userAnswers);
   }
 
+  // Post request to save the calculated GRE Score for the Mock Test to the database
   saveUserGreScore(emailId: String, score: Number) {
     var body = {
       userEmailID: emailId,

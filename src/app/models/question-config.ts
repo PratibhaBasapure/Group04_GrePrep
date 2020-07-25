@@ -1,3 +1,4 @@
+// This is a class which stores all the possible configurations for the questions which are shown in the UI
 export class QuestionConfig {
   allowBack: boolean;
   allowReview: boolean;
