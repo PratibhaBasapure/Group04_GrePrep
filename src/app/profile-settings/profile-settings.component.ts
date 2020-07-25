@@ -180,5 +180,17 @@ export class ProfileSettingsComponent implements OnInit {
     if (this.passwordChangeForm.invalid) {
       return;
     }
+    else{
+      this.userDetails.password = this.passwordChangeForm.controls['password'].value;
+      this.userService.updateUserPassword(this.userDetails).subscribe(
+        (res) => {
+          this._snackBar.open("Updated successfully. Please log in again to continue.!!", '', { duration: 1000 });
+          this.userService.logout();          
+        },
+        err => {
+          this._snackBar.open("Something went wrong. Unable to update. Please try later !!", '', { duration: 300 });
+        }
+      );
+    }
   }
 }

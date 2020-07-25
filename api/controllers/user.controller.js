@@ -3,6 +3,8 @@ const passport = require('passport');
 const User = mongoose.model('User');
 const _ = require('lodash');
 const { use } = require('passport');
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 module.exports.register = (req, res, next) => {
     console.log("inside regsiter conrroll");
@@ -61,13 +63,42 @@ module.exports.updateUserDetails = async (req, res, next) => {
                 res.send(user);
                 console.log(user);
             });
-        
+
         if (!user) {
             return res.status(404).send({ message: 'You do not seem to be registered' })
-        }        
+        }
     } catch (error) {
         console.log(error);
         res.status(400).send(error)
     }
 }
 
+module.exports.updateUserPassword = async (req, res, next) => {
+    const updates = Object.keys(req.body)
+    console.log("body" + req.body);
+    console.log("body" + req.body.password);
+    let user = await User.findOne({ email: req.body.email })
+    let encryptedPassword;
+    try {
+        bcrypt.genSalt(10, (err, salt) => {
+            bcrypt.hash(req.body.password, salt, (err, hash) => {
+                req.body.password = hash;
+                console.log(req.body.password);
+                User.findOneAndUpdate({ email: req.body.email }, { password: req.body.password }, { new: true },
+                    function (err, response) {
+                        // Handle any possible database errors
+                        if (err) {
+                            console.log("we hit an error" + err);
+                            res.json({
+                                message: 'Database Update Failure'
+                            });
+                        }
+                        res.send(response);
+                    });
+            });
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(400).send(error)
+    }
+}
