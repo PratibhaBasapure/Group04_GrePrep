@@ -1,78 +1,73 @@
-<div style="background-color: #e7ebee; height: 100%;">
+<div style="background-color: #e7ebee; min-height: 100%;">
   <app-header></app-header>
-  <div class="mockTest">
-    <div
-      class="container"
-      fxLayout="column"
-      fxLayoutWrap
-      fxLayoutGap="10px"
-      fxLayoutGap.xs="5px"
-      fxLayoutAlign="center stretch"
-    >
-      <h2>GRE Mock Test</h2>
-    </div>
-    <div
-      class="container"
-      fxLayout="row"
-      fxLayout.xs="column"
-      fxLayoutWrap
-      fxLayoutGap="10px"
-      fxLayoutGap.xs="5px"
-      fxLayoutAlign="center"
-    >
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas cumque
-      excepturi nisi blanditiis reprehenderit fugiat commodi, officiis
-      dignissimos eos dicta earum dolorum expedita voluptates eius esse,
-      eligendi molestiae vitae laboriosam. Lorem ipsum, dolor sit amet
-      consectetur adipisicing elit. Culpa incidunt dolorem quaerat itaque,saepe
-      ullam iste delectus vel sunt, explicabo, vero placeat aperiam quisquam
-      velit voluptatibus ipsa. Ipsam, laudantium impedit. Lorem ipsum dolor sit
-      amet consectetur, adipisicing elit. Quas cumque excepturi nisi blanditiis
-      reprehenderit fugiat commodi, officiis dignissimos eos dicta earum dolorum
-      expedita voluptates eius esse, eligendi molestiae vitae laboriosam. Lorem
-      ipsum, dolor sit amet consectetur adipisicing elit. Culpa incidunt dolorem
-      quaerat itaque,saepe ullam iste delectus vel sunt, explicabo, vero placeat
-      aperiam quisquam velit voluptatibus ipsa. Ipsam, laudantium impedit Lorem
-      ipsum dolor sit amet consectetur, adipisicing elit. Quas cumque excepturi
-      nisi blanditiis reprehenderit fugiat commodi, officiis dignissimos eos
-      dicta earum dolorum expedita voluptates eius esse, eligendi molestiae
-      vitae laboriosam. Lorem ipsum, dolor sit amet consectetur adipisicing
-      elit. Culpa incidunt dolorem quaerat itaque,saepe ullam iste delectus vel
-      sunt, explicabo, vero placeat aperiam quisquam velit voluptatibus ipsa.
-      Ipsam, laudantium impedit. Lorem ipsum dolor sit amet consectetur,
-      adipisicing elit. Quas cumque excepturi nisi blanditiis reprehenderit
-      fugiat commodi, officiis dignissimos eos dicta earum dolorum expedita
-      voluptates eius esse, eligendi molestiae vitae laboriosam. Lorem ipsum,
-      dolor sit amet consectetur adipisicing elit. Culpa incidunt dolorem
-      quaerat itaque,saepe ullam iste delectus vel sunt, explicabo, vero placeat
-      aperiam quisquam velit voluptatibus ipsa. Ipsam, laudantium impedit Lorem
-      ipsum dolor sit amet consectetur, adipisicing elit. Quas cumque excepturi
-      nisi blanditiis reprehenderit fugiat commodi, officiis dignissimos eos
-      dicta earum dolorum expedita voluptates eius esse, eligendi molestiae
-      vitae laboriosam. Lorem ipsum, dolor sit amet consectetur adipisicing
-      elit. Culpa incidunt dolorem quaerat itaque,saepe ullam iste delectus vel
-      sunt, explicabo, vero placeat aperiam quisquam velit voluptatibus ipsa.
-      Ipsam, laudantium impedit. Lorem ipsum dolor sit amet consectetur,
-      adipisicing elit. Quas cumque excepturi nisi blanditiis reprehenderit
-      fugiat commodi, officiis dignissimos eos dicta earum dolorum expedita
-      voluptates eius esse, eligendi molestiae vitae laboriosam. Lorem ipsum,
-      dolor sit amet consectetur adipisicing elit. Culpa incidunt dolorem
-      quaerat itaque,saepe ullam iste delectus vel sunt, explicabo, vero placeat
-      aperiam quisquam velit voluptatibus ipsa. Ipsam, laudantium impedit
+  <div class="container" style="padding-top: 20px; padding-bottom: 20px;">
+    <h2 class="center-align">GRE Mock Test</h2>
+    <div class="row">
+      <div class="center-align">
+        Use the GREPrep Mock Test to help you prepare for the computer-delivered
+        GRE General Test. The mock tests are designed to help you:
+        <ul class="collection">
+          <li class="collection-item">
+            Understand what's being tested Gain familiarity with the various
+            question types
+          </li>
+          <li class="collection-item">
+            Practice your test-taking strategies, such as time management, by
+            taking a test under timed conditions
+          </li>
+          <li class="collection-item">
+            Use the concepts you have prepared in quantitative and verbal
+            question types
+          </li>
+        </ul>
+      </div>
     </div>
     <br />
-    <div
-      class="container"
-      fxLayout="row"
-      fxLayout.xs="column"
-      fxLayoutWrap
-      fxLayoutGap="10px"
-      fxLayoutGap.xs="5px"
-      fxLayoutAlign="center"
-    >
-      <button mat-raised-button color="primary" (click)="next()">
-        Start your Mock Test
-      </button>
+    <div class="row">
+      <div class="center-align">
+        <h5>Instructions</h5>
+        <ul class="collection">
+          <li class="collection-item">
+            The Mock Test will be held for 2 hours i.e. 120 mins which will have
+            50 questions.
+          </li>
+          <li class="collection-item">
+            The questions consist of Verbal and Quantitative types.
+          </li>
+          <li class="collection-item">
+            The questions can either be multiple choice or single choice types
+          </li>
+          <li class="collection-item">
+            Once you submit your test, you can get your mock test score
+          </li>
+          <li class="collection-item">
+            You can use buttons like First, Previous, Next, and Last to move to
+            questions
+          </li>
+          <li class="collection-item">
+            The Mock Test does not include the Analytical Writing
+          </li>
+          <li class="collection-item">
+            Click on Start Your Mock Test button below to start your Mock Test.
+          </li>
+          <li class="collection-item">
+            Once you click on the button, the test starts immediately and the
+            clock starts automatically
+          </li>
+          <li class="collection-item">All the best for your Mock Test!!</li>
+        </ul>
+      </div>
+    </div>
+    <br />
+    <div class="row">
+      <div class="center-align">
+        <button
+          class="btn waves-effect waves-light indigo darken-3"
+          (click)="next()"
+        >
+          Start your Mock Test
+        </button>
+      </div>
     </div>
   </div>
 </div>

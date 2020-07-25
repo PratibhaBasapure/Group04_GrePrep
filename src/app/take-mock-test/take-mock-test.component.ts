@@ -26,7 +26,7 @@ export class TakeMockTestComponent implements OnInit {
     allowBack: true,
     allowReview: true,
     autoMove: false, // if true, it will move to next question automatically when answered.
-    duration: 4500, // indicates the time (in secs) in which quiz needs to be completed. 0 means unlimited.
+    duration: 7200, // indicates the time (in secs) in which quiz needs to be completed. 0 means unlimited.
     pageSize: 1,
     requiredAll: false, // indicates if you must answer all the questions before submitting.
     richText: false,
@@ -141,9 +141,18 @@ export class TakeMockTestComponent implements OnInit {
     const diff = (now.getTime() - this.startTime.getTime()) / 1000;
     var confirmation = true;
     if (diff < this.config.duration) {
-      confirmation = confirm(
-        'Are you sure you want to submit the test? You can review once before submitting!'
-      );
+      if (
+        this.userAnswers == null ||
+        this.userAnswers.questionAnswers.length < this.questions.length
+      ) {
+        confirmation = confirm(
+          'One or more questions are unanswered. Would you still wish to submit the test?'
+        );
+      } else {
+        confirmation = confirm(
+          'Are you sure you want to submit the test? You can review your answers before submitting!'
+        );
+      }
     }
     if (confirmation) {
       this.mode = 'result';

@@ -4,7 +4,7 @@ const Question = require("../models/question");
 const questionController = require("../controllers/question");
 
 router.get("/", (req, res) => {
-  Question.aggregate([{ $sample: { size: 40 } }])
+  Question.aggregate([{ $sample: { size: 50 } }])
     .exec()
     .then((questionList) => {
       res.status(200).json(questionList);

@@ -4,8 +4,11 @@ import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-mock-test',
   templateUrl: './mock-test.component.html',
-  styleUrls: ['./mock-test.component.css'],
-  encapsulation: ViewEncapsulation.Emulated
+  styleUrls: [
+    '../../../node_modules/materialize-css/dist/css/materialize.min.css',
+    './mock-test.component.css',
+  ],
+  encapsulation: ViewEncapsulation.Emulated,
 })
 export class MockTestComponent implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router) {}
