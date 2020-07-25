@@ -18,6 +18,7 @@ mongoose.connect(mongoUrl, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
+const schoolRoutes = require("./api/routes/schoolRoutes");
 
 var app = express();
 
@@ -41,4 +42,6 @@ app.use((err, req, res, next) => {
     console.log(err);
   }
 });
+app.use("/schoolRankings", schoolRoutes);
+
 module.exports = app;

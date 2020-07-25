@@ -1,31 +1,89 @@
 import { AfterViewInit, Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatTable } from '@angular/material/table';
-import { SchoolRankingDataSource, SchoolRankingItem } from './school-ranking-datasource';
+import { MatTable, MatTableDataSource } from '@angular/material/table';
+
+import { SchoolService } from '../services/school.service';
+import { School } from '../models/school.model';
+import { FormGroup, FormControl } from '@angular/forms';
+
+interface schoolRanking {
+  value: Number;
+  viewValue: string;
+}
 
 @Component({
   selector: 'app-school-ranking',
   templateUrl: './school-ranking.component.html',
-  styleUrls: ['./school-ranking.component.css'],
-  encapsulation: ViewEncapsulation.Emulated
+  styleUrls: [
+    '../../../node_modules/materialize-css/dist/css/materialize.min.css',
+    './school-ranking.component.css'],
+  encapsulation: ViewEncapsulation.Emulated,
+  providers: [SchoolService]
 })
-export class SchoolRankingComponent implements AfterViewInit, OnInit {
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
-  @ViewChild(MatTable) table: MatTable<SchoolRankingItem>;
-  dataSource: SchoolRankingDataSource;
+export class SchoolRankingComponent implements OnInit {
 
-  /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
+  dataSource: MatTableDataSource<School>;
+  schoolList: School[] = new Array();
+  isLoading: boolean = true;
+  selectedRanking:Number;
+
+  form: FormGroup;
+  rankings: schoolRanking[] = [
+    {value: 0, viewValue: 'Global Ranking'},
+    {value: 1, viewValue: 'Computer Science Ranking'},
+    {value: 2, viewValue: 'Electrical Ranking'},
+    {value: 3, viewValue: 'Mechanical Ranking'}
+  ];
+
+   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['id', 'name'];
+  rankingControl = new FormControl(this.rankings[1].value);
 
-  ngOnInit() {
-    this.dataSource = new SchoolRankingDataSource();
+  @ViewChild('paginator', {static: true}) paginator: MatPaginator;
+
+  constructor(public schoolService: SchoolService){
+    this.form = new FormGroup({
+      school: this.rankingControl
+    });
   }
 
-  ngAfterViewInit() {
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
-    this.table.dataSource = this.dataSource;
+  ngOnInit() {
+   this.refreshEmployeeList();
+  }
+
+  refreshEmployeeList(){
+   this.schoolService.getSchoolList().subscribe((res) => {
+      this.schoolService.schools = res as School[];
+      this.dataSource = new MatTableDataSource(this.schoolService.schools);
+      this.isLoading = false;
+      this.dataSource.paginator = this.paginator;
+    });
+  }
+
+  public onChange(event): void {
+    console.log(event.value);
+    this.selectedRanking = event.value.value;
+    console.log(this.selectedRanking);
+    if(this.selectedRanking == 1){
+      this.schoolService.schools=this.schoolService.schools.sort((a, b) => (a.csRank < b.csRank ? -1 : 1));
+      this.dataSource = new MatTableDataSource(this.schoolService.schools);
+      this.dataSource.paginator = this.paginator;
+    }
+    else if(this.selectedRanking == 2){
+      this.schoolService.schools= this.schoolService.schools.sort((a, b) => (a.eceRank < b.eceRank ? -1 : 1));
+      this.dataSource = new MatTableDataSource(this.schoolService.schools);
+      this.dataSource.paginator = this.paginator;
+    }
+    else if(this.selectedRanking == 3) {
+      this.schoolService.schools= this.schoolService.schools.sort((a, b) => (a.mechRank < b.mechRank ? -1 : 1));
+      this.dataSource = new MatTableDataSource(this.schoolService.schools);
+      this.dataSource.paginator = this.paginator;
+    }
+    else{
+      this.schoolService.schools= this.schoolService.schools.sort((a, b) => (a.globalRank < b.globalRank ? -1 : 1));
+      this.dataSource = new MatTableDataSource(this.schoolService.schools);
+      this.dataSource.paginator = this.paginator;
+    }
   }
 }
