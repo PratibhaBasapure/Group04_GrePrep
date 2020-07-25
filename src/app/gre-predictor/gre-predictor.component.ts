@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { PredictionServiceService } from './prediction-service.service';
+import { UserService } from '../services/user.service';
 
 export interface GrePredictor {
   country: string;
@@ -92,22 +94,60 @@ const ELEMENT_DATA: GrePredictor[] = [
   encapsulation: ViewEncapsulation.Emulated
 })
 export class GrePredictorComponent implements OnInit {
-  constructor() {}
+  constructor(
+    private predictionService: PredictionServiceService,
+    private userService: UserService
+  ) { }
 
+  collegeList: GrePredictor[] = [];
   displayedColumns: string[] = [
-    'country',
     'school',
-    'specialization',
-    'possibility',
+    'possibility'
   ];
-  dataSource = new MatTableDataSource<GrePredictor>(ELEMENT_DATA);
+  dataSource: MatTableDataSource<GrePredictor>;
+  // dataSource = new MatTableDataSource<GrePredictor>(this.collegeList);
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   ngOnInit(): void {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    this.getCollegeData();
+
   }
+
+  private getCollegeData() {
+    this.predictionService.getColleges(this.userService.getUserEmail).subscribe(
+      (res) => {
+        console.log(res);
+        const dreamCollege = res['DreamColleges'].map((x) => {
+          return {
+            school: x,
+            possibility: 'Dream'
+          };
+        });
+        const reachCollege = res['ReachColleges'].map((x) => {
+          return {
+            school: x,
+            possibility: 'Reach'
+          };
+        });
+        const safeCollege = res['SafeColleges'].map((x) => {
+          return {
+            school: x,
+            possibility: 'Safe'
+          };
+        });
+
+        this.collegeList = [...dreamCollege, ...reachCollege, ...safeCollege];
+        this.dataSource = new MatTableDataSource<GrePredictor>(this.collegeList);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
+
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
