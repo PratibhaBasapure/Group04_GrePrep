@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { PredictionServiceService } from './prediction-service.service';
+import { PredictionServiceService } from '../services/prediction-service.service';
 import { UserService } from '../services/user.service';
 
 export interface GrePredictor {

@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { Question } from '../question';
-import { QuestionManagerService } from '../question-manager.service';
-import { QuestionConfig } from '../question-config';
-import { UserAnswers } from '../user-answers';
-import { Answers } from '../answers';
+import { Question } from '../models/question';
+import { QuestionManagerService } from '../services/question-manager.service';
+import { QuestionConfig } from '../models/question-config';
+import { UserAnswers } from '../models/user-answers';
+import { Answers } from '../models/answers';
 import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
 
