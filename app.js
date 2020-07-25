@@ -5,6 +5,7 @@ var bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 
 const rtsUser = require("./api/routes/user.router");
+const predictorRouter = require("./api/routes/predictor.router")
 const passport = require('passport');
 require('./api/config/passportConfig');
 
@@ -18,9 +19,10 @@ mongoose.connect(mongoUrl, {
 var app = express();
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: "false" }));
+app.use(bodyParser.urlencoded({ extended: "true" }));
 app.use(passport.initialize());
 app.use('/user', rtsUser);
+app.use('/predictor',predictorRouter)
 app.use((err, req, res, next) => {
   if (err.name === 'ValidationError') {
       var valErrors = [];
