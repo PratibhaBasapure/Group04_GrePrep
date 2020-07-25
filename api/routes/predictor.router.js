@@ -6,7 +6,7 @@ const ctrlPredictor = require("../controllers/predictor.controller");
 
 router.post("/uploadExcel", ctrlPredictor.updateRangeExcel);
 router.post("/addRange", ctrlPredictor.addRange);
-router.get("/predict", ctrlPredictor.predictColleges);
+router.post("/predict", ctrlPredictor.predictColleges);
 router.post("/addHistory", ctrlPredictor.addMockTest);
 
 module.exports = router;
