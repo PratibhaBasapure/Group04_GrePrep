@@ -231,7 +231,6 @@ export class TakeMockTestComponent implements OnInit {
   singleChoiceAnswer(value: number, question: Question) {
     var flag = false;
     var emailId = this.userService.getUserEmail();
-    console.log(emailId);
 
     if (this.userAnswers == null) {
       this.userAnswers = new UserAnswers();
@@ -282,11 +281,10 @@ export class TakeMockTestComponent implements OnInit {
     }
   }
 
-    // Save the answer after every question selection by the user
+  // Save the answer after every question selection by the user
   multiChoiceAnswer(value: number, question: Question, event: any) {
     var flag = false;
     var emailId = this.userService.getUserEmail();
-    console.log(emailId);
 
     if (event.checked) {
       if (this.userAnswers == null) {
