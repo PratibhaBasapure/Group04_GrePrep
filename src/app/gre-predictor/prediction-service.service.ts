@@ -13,6 +13,6 @@ export class PredictionServiceService {
     const requestBody = {
       userEmailID: user
     }
-    return this.http.post('/predictor/predict',requestBody);
+    return this.http.post('/predictor/predict', requestBody);
   }
 }
