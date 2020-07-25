@@ -1,3 +1,4 @@
+// Author - Padmesh Donthu
 // A class which stores the list of questions that are available in the database
 export class Question {
   _id: String;

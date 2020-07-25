@@ -1,3 +1,4 @@
+// Author - Padmesh Donthu
 const mongoose = require("mongoose");
 
 const userAnswersSchema = mongoose.Schema({

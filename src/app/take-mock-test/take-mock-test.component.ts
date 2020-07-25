@@ -1,3 +1,4 @@
+// Author - Padmesh Donthu
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Question } from '../models/question';
 import { QuestionManagerService } from '../services/question-manager.service';
