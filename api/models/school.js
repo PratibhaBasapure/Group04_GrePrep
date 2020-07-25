@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+// This is the mongoose model which we use to fetch data from MongoDB
 var School = mongoose.model('School', {
     id: {type: Number},
     name: {type: String},

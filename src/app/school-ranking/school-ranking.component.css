@@ -1,5 +1,5 @@
 .mat-elevation-z8 {
-  height: 55%;
+  height: 45%;
   width: 60%;
   margin: auto;
   background-color: white;
@@ -43,6 +43,6 @@ th.mat-sort-header-sorted {
   padding-bottom: 10px !important;
 }
 .ranking-table {
-  height: 55vh;
+  height: 45vh;
   overflow: auto;
 }

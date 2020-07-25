@@ -21,6 +21,7 @@ interface schoolRanking {
   encapsulation: ViewEncapsulation.Emulated,
   providers: [SchoolService]
 })
+//Component responsible for displaying the school ranking
 export class SchoolRankingComponent implements OnInit {
 
   dataSource: MatTableDataSource<School>;
@@ -52,6 +53,7 @@ export class SchoolRankingComponent implements OnInit {
    this.refreshEmployeeList();
   }
 
+  //To fetch and display the school rankings
   refreshEmployeeList(){
    this.schoolService.getSchoolList().subscribe((res) => {
       this.schoolService.schools = res as School[];
@@ -61,6 +63,7 @@ export class SchoolRankingComponent implements OnInit {
     });
   }
 
+  //Function is executed when the value in the drop down is changed
   public onChange(event): void {
     console.log(event.value);
     this.selectedRanking = event.value.value;

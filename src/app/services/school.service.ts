@@ -13,6 +13,7 @@ export class SchoolService {
   schools: School[];
   readonly baseURL = '/schoolRankings';
 
+  //Used to fetch all the school details from the API
   getSchoolList(){
     return this.http.get(this.baseURL);
   }
