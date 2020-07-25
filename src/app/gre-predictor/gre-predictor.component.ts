@@ -14,20 +14,17 @@ export interface GrePredictor {
   selector: 'app-gre-predictor',
   templateUrl: './gre-predictor.component.html',
   styleUrls: ['./gre-predictor.component.css'],
-  encapsulation: ViewEncapsulation.Emulated
+  encapsulation: ViewEncapsulation.Emulated,
 })
 export class GrePredictorComponent implements OnInit {
   constructor(
     private predictionService: PredictionServiceService,
     private userService: UserService
-  ) { }
+  ) {}
 
   collegeList: GrePredictor[] = [];
   totalScore: any;
-  displayedColumns: string[] = [
-    'school',
-    'possibility'
-  ];
+  displayedColumns: string[] = ['school', 'possibility'];
   dataSource: MatTableDataSource<GrePredictor>;
   // dataSource = new MatTableDataSource<GrePredictor>(this.collegeList);
 
@@ -35,42 +32,45 @@ export class GrePredictorComponent implements OnInit {
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   ngOnInit(): void {
     this.getCollegeData();
-
   }
 
   private getCollegeData() {
-    this.predictionService.getColleges(this.userService.getUserEmail()).subscribe(
-      (res) => {
-        console.log(res);
-        const dreamCollege = res['DreamColleges'].map((x) => {
-          return {
-            school: x,
-            possibility: 'Dream'
-          };
-        });
-        const reachCollege = res['ReachColleges'].map((x) => {
-          return {
-            school: x,
-            possibility: 'Reach'
-          };
-        });
-        const safeCollege = res['SafeColleges'].map((x) => {
-          return {
-            school: x,
-            possibility: 'Safe'
-          };
-        });
+    this.predictionService
+      .getColleges(this.userService.getUserEmail())
+      .subscribe(
+        (res) => {
+          console.log(res);
+          const dreamCollege = res['DreamColleges'].map((x) => {
+            return {
+              school: x,
+              possibility: 'Dream',
+            };
+          });
+          const reachCollege = res['ReachColleges'].map((x) => {
+            return {
+              school: x,
+              possibility: 'Reach',
+            };
+          });
+          const safeCollege = res['SafeColleges'].map((x) => {
+            return {
+              school: x,
+              possibility: 'Safe',
+            };
+          });
 
-        this.collegeList = [...dreamCollege, ...reachCollege, ...safeCollege];
-        this.dataSource = new MatTableDataSource<GrePredictor>(this.collegeList);
-        this.totalScore = res.Score;
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
-      },
-      err => {
-        console.log(err);
-      }
-    );
+          this.collegeList = [...dreamCollege, ...reachCollege, ...safeCollege];
+          this.dataSource = new MatTableDataSource<GrePredictor>(
+            this.collegeList
+          );
+          this.totalScore = res['Score'];
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
   }
 
   applyFilter(event: Event) {
