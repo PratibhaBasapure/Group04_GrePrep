@@ -31,6 +31,8 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   }
 }
 
+declare var M: any;
+
 @Component({
   selector: 'app-profile-settings',
   templateUrl: './profile-settings.component.html',
@@ -191,6 +193,17 @@ export class ProfileSettingsComponent implements OnInit {
           this._snackBar.open("Something went wrong. Unable to update. Please try later !!", '', { duration: 300 });
         }
       );
+    }
+  }
+
+  deleteUserAccount(){
+    if (confirm('Are you sure to delete your account ?') == true) {    
+      console.log(  this.userDetails.email);
+      this.userDetails.email=this.userService.getUserEmail() ;
+      this.userService.deleteUserAccount(this.userDetails).subscribe((res) => {             
+        M.toast({ html: 'Deleted successfully', classes: 'rounded' });
+        this.userService.logout();   
+      });
     }
   }
 }

@@ -44,6 +44,11 @@ export class UserService {
   updateUserPassword(user: User) {
     return this.http.post('/user/userProfile/updateUserPassword', user);
   }
+
+  deleteUserAccount(user: User) {
+    console.log("user detaisl "+JSON.stringify(user))
+    return this.http.post('/user/userProfile/deleteUser', user);
+  }
   //Helper Methods
 
   setToken(token: string) {
