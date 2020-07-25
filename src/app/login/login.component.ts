@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
       (res) => {
         this.userService.setToken(res['token']);
         this.userService.setUserEmail(res['email']);
-        this.router.navigate(['gre']);
+        this.router.navigate(['/']);
       },
       (err) => {
         this.serverErrorMessages = err.error.message;
