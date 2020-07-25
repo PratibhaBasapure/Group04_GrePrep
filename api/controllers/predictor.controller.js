@@ -8,7 +8,6 @@ const xlsxFile = require("read-excel-file/node");
 var IncomingForm = require("formidable").IncomingForm;
 const { floor } = require("lodash");
 
-
 // Adds the mock test score to the database for the user.
 module.exports.addMockTest = (req, res, next) => {
   var history = new History();
@@ -49,7 +48,7 @@ module.exports.updateMockTest = (req, res, next) => {
   history.mockTests = req.body.mockTest;
   History.find({});
 };
-//adding the range of scores 
+//adding the range of scores
 module.exports.addRange = (req, res, next) => {
   var range = new Range();
   range.rangeID = req.body.rangeID;
@@ -69,8 +68,12 @@ module.exports.predictColleges = async (req, res, next) => {
     if (!err && document.length == 1) {
       history = document[0].mockTests;
     } else {
-      res.status(400).send(["User Doesnt not Exist"]);
-      return next(err);
+      res.send({
+        DreamColleges: [],
+        ReachColleges: [],
+        SafeColleges: [],
+        Score: -1,
+      });
     }
   });
   const mapSort = new Map([...history.entries()].sort((a, b) => b[1] - a[1]));
@@ -86,7 +89,7 @@ module.exports.predictColleges = async (req, res, next) => {
       ranges.forEach((range) => {
         rangeMap[range.rangeID] = range.colleges;
       });
-//dividing the categories of the schools based on values
+      //dividing the categories of the schools based on values
       var scoreIndex = 9 - floor(score / 5 - 59);
 
       var dreamColleges = [];
