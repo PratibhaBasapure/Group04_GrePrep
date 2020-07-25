@@ -61,6 +61,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SchoolService } from './services/school.service';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
@@ -89,6 +90,7 @@ import { SchoolService } from './services/school.service';
     TakeMockTestComponent,
     ListOfSchoolsComponent,
     ProfileSettingsComponent,
+    ForgotPasswordComponent,
   ],
   imports: [
     BrowserModule,

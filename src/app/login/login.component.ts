@@ -58,4 +58,7 @@ export class LoginComponent implements OnInit {
   onCancel() {
     this.location.back;
   }
+  forgotPassword(){
+    this.router.navigate(['/forgotPassward']);
+  }
 }
