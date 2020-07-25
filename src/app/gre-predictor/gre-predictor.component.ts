@@ -38,7 +38,7 @@ export class GrePredictorComponent implements OnInit {
   }
 
   private getCollegeData() {
-    this.predictionService.getColleges(this.userService.getUserEmail).subscribe(
+    this.predictionService.getColleges(this.userService.getUserEmail()).subscribe(
       (res) => {
         console.log(res);
         const dreamCollege = res['DreamColleges'].map((x) => {
