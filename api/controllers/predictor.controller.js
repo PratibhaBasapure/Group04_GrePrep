@@ -7,6 +7,8 @@ const xlsxFile = require("read-excel-file/node");
 var IncomingForm = require("formidable").IncomingForm;
 const { floor } = require("lodash");
 
+
+// Adds the mock test score to the database for the user.
 module.exports.addMockTest = (req, res, next) => {
   var history = new History();
   var date = new Date();
