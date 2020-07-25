@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const User = mongoose.model('User');
 const _ = require('lodash');
+const { use } = require('passport');
 
 module.exports.register = (req, res, next) => {
     console.log("inside regsiter conrroll");
@@ -31,7 +32,9 @@ module.exports.authenticate = (req, res, next) => {
         // error from passport middleware
         if (err) return res.status(400).json(err);
         // registered user
-        else if (user) return res.status(200).json({ "token": user.generateJwt() });
+        else if (user) return res.status(200).json({
+            "token": user.generateJwt(), "email": user.email
+        });
         // unknown user or wrong password
         else return res.status(404).json(info);
     })(req, res);
@@ -48,24 +51,23 @@ module.exports.userProfile = (req, res, next) => {
     );
 }
 
-module.exports.updateFirstName = async (user) => {
-    await User.updateOne(
-        {
-            _id: user._id,
-        },
-        {
-            $set: { firstName: user.firstName, mobileNumber: user.mobileNumber },
-        }
-    )
-        .exec()
-        .then((result) => {
-            console.log(result);
-            return true;
-        })
-        .catch((err) => {
-            console.log(err);
-            return false;
-        });
+module.exports.updateUserDetails = async (req, res, next) => {
+    const updates = Object.keys(req.body)
+    console.log("body" + req.body);
+    console.log("body" + req.body.firstName);
+    try {
+        const user = await User.findOneAndUpdate({ email: req.body.email }, { $set: { firstName: req.body.firstName, mobileNumber: req.body.mobileNumber } }, { new: true },
+            function (err, user) {
+                res.send(user);
+                console.log(user);
+            });
+        
+        if (!user) {
+            return res.status(404).send({ message: 'You do not seem to be registered' })
+        }        
+    } catch (error) {
+        console.log(error);
+        res.status(400).send(error)
+    }
+}
 
-    return true;
-};

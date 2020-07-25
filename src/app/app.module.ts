@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -46,17 +45,21 @@ import { TermsAndConditionComponent } from './terms-and-condition/terms-and-cond
 import { SuccessStoriesComponent } from './success-stories/success-stories.component';
 import { QuizComponent } from './quiz/quiz.component';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { TakeQuizComponent } from './take-quiz/take-quiz.component';
 import { MockTestComponent } from './mock-test/mock-test.component';
 import { TakeMockTestComponent } from './take-mock-test/take-mock-test.component';
 import { ListOfSchoolsComponent } from './list-of-schools/list-of-schools.component';
 import { ProfileSettingsComponent } from './profile-settings/profile-settings.component';
-import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { QuestionManagerService } from './question-manager.service';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { UserService } from './services/user.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthGuard } from './auth/auth.guard';
 import { AuthInterceptor } from './auth/auth.interceptor';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -116,15 +119,23 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     RouterModule,
     MatMenuModule,
     MatRadioModule,
-    MatDatepickerModule,  
+    MatDatepickerModule,
     MatNativeDateModule,
-    HttpClientModule
+    HttpClientModule,
+    MatProgressSpinnerModule,
+    MatCheckboxModule,
+    MatSnackBarModule,
   ],
-  providers: [{
-    provide: HTTP_INTERCEPTORS,
-    useClass: AuthInterceptor,
-    multi: true
-  },UserService,AuthGuard],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+    UserService,
+    AuthGuard,
+    QuestionManagerService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

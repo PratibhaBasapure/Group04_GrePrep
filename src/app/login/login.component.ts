@@ -14,7 +14,7 @@ import { UserService } from '../services/user.service';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  encapsulation: ViewEncapsulation.Emulated
+  encapsulation: ViewEncapsulation.Emulated,
 })
 export class LoginComponent implements OnInit {
   title = 'Login';
@@ -35,8 +35,7 @@ export class LoginComponent implements OnInit {
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required]),
     });
-    if(this.userService.isLoggedIn())
-    this.router.navigate(['gre']);
+    if (this.userService.isLoggedIn()) this.router.navigate(['gre']);
   }
 
   public hasError = (controlName: string, errorName: string) => {
@@ -44,32 +43,17 @@ export class LoginComponent implements OnInit {
   };
 
   login() {
-    console.log(this.loginForm.value.password);
-    console.log(this.loginForm.value.email);
-
-    // const dialogRef = this.dialog.open(LoginAndSignupDialogComponent, {
-    //   width: '500px',
-    //   data: {
-    //     email: this.loginForm.value.email,
-    //     password: this.loginForm.value.password,
-    //   },
-    // });
-
-    // dialogRef.afterClosed().subscribe((result) => {
-    //   console.log('The dialog was closed');
-    //   this.router.navigate(['home']);
-    // });
     this.userService.login(this.loginForm.value).subscribe(
-      res => {
+      (res) => {
         this.userService.setToken(res['token']);
+        this.userService.setUserEmail(res['email']);
         this.router.navigate(['gre']);
       },
-      err => {
+      (err) => {
         this.serverErrorMessages = err.error.message;
       }
     );
   }
-  
 
   onCancel() {
     this.location.back;

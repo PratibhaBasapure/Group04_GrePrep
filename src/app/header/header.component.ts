@@ -33,6 +33,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
   logout() {
     this.userService.deleteToken();    
+    this.userService.deleteUserEmail();
     this.router.navigate(['/login']);
   }
   openMySchools() {
