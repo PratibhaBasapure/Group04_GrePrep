@@ -22,6 +22,7 @@ import { TakeMockTestComponent } from './take-mock-test/take-mock-test.component
 import { ListOfSchoolsComponent } from './list-of-schools/list-of-schools.component';
 import { ProfileSettingsComponent } from './profile-settings/profile-settings.component';
 import { AuthGuard } from './auth/auth.guard';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 const routes: Routes = [
   {
@@ -33,6 +34,10 @@ const routes: Routes = [
     component: LoginComponent,
   },
   { path: 'registration', component: RegistrationComponent },
+  {
+    path: 'forgotPassward',
+    component: ForgotPasswordComponent,
+  },
   { path: 'masters', component: MastersHomeComponent },
   { path: 'masters/ranking', component: SchoolRankingComponent },
   {
