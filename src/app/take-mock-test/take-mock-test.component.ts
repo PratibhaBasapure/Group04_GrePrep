@@ -5,6 +5,7 @@ import { QuestionConfig } from '../question-config';
 import { UserAnswers } from '../user-answers';
 import { Answers } from '../answers';
 import { UserService } from '../services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-take-mock-test',
@@ -49,7 +50,8 @@ export class TakeMockTestComponent implements OnInit {
 
   constructor(
     private questionService: QuestionManagerService,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -108,14 +110,20 @@ export class TakeMockTestComponent implements OnInit {
     }
   }
   onSubmit() {
-    this.mode = 'result';
-    this.questionService
-      .saveUserAnswers(this.userAnswers)
-      .subscribe((data: boolean) => {
-        if (data) {
-          this.calculateGreScore();
-        }
-      });
+    if (
+      confirm(
+        'Are you sure you want to submit the test? You can review once before submitting!'
+      )
+    ) {
+      this.mode = 'result';
+      this.questionService
+        .saveUserAnswers(this.userAnswers)
+        .subscribe((data: boolean) => {
+          if (data) {
+            this.calculateGreScore();
+          }
+        });
+    }
   }
 
   calculateGreScore() {
@@ -146,7 +154,7 @@ export class TakeMockTestComponent implements OnInit {
 
   singleChoiceAnswer(value: number, question: Question) {
     var flag = false;
-    var emailId = this.userService.getUserEmail();
+    var emailId = 'padmeshdonthu@gmail.com';
 
     if (this.userAnswers == null) {
       this.userAnswers = new UserAnswers();
@@ -197,7 +205,7 @@ export class TakeMockTestComponent implements OnInit {
 
   multiChoiceAnswer(value: number, question: Question, event: any) {
     var flag = false;
-    var emailId = this.userService.getUserEmail();
+    var emailId = 'padmeshdonthu@gmail.com';
 
     if (event.checked) {
       if (this.userAnswers == null) {
@@ -241,6 +249,16 @@ export class TakeMockTestComponent implements OnInit {
           break;
         }
       }
+    }
+  }
+
+  quitTest() {
+    if (
+      confirm(
+        'Are you sure you want to quit the test? You still have enough time left!'
+      )
+    ) {
+      this.router.navigate(['/gre']);
     }
   }
 }
