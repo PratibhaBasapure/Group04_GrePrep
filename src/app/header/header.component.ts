@@ -13,8 +13,8 @@ import { UserService } from '../services/user.service';
 export class HeaderComponent implements OnInit, OnDestroy {
   mediaSubscribe: Subscription;
   deviceXs: boolean;
-  isLoggedIn:any;
-  constructor(private router: Router, private mediaObserver: MediaObserver, private userService:UserService) {}
+  isLoggedIn: any;
+  constructor(private router: Router, private mediaObserver: MediaObserver, private userService: UserService) { }
   ngOnDestroy(): void {
     this.mediaSubscribe.unsubscribe();
   }
@@ -32,9 +32,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.router.navigate(['/attemptHistory']);
   }
   logout() {
-    this.userService.deleteToken();    
-    this.userService.deleteUserEmail();
-    this.router.navigate(['/login']);
+    this.userService.logout();
   }
   openMySchools() {
     this.router.navigate(['/profile/mySchools']);

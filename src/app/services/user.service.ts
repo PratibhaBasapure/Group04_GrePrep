@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../models/user.model';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +17,7 @@ export class UserService {
 
   noAuthHeader = { headers: new HttpHeaders({ NoAuth: 'True' }) };
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) { }
 
   //HttpMethods
 
@@ -25,19 +26,23 @@ export class UserService {
   }
 
   login(authCredentials) {
-    return this.http.post(
-      '/user/authenticate',
-      authCredentials,
-      this.noAuthHeader
-    );
+    return this.http.post('/user/authenticate', authCredentials, this.noAuthHeader);
   }
-
+  logout() {
+    this.deleteToken();
+    this.deleteUserEmail();
+    this.router.navigate(['/login']);
+  }
   getUserProfile() {
     return this.http.get('/user/userProfile');
   }
 
   updateUserDetails(user: User) {
     return this.http.post('/user/userProfile/updateUserDetails', user);
+  }
+
+  updateUserPassword(user: User) {
+    return this.http.post('/user/userProfile/updateUserPassword', user);
   }
   //Helper Methods
 

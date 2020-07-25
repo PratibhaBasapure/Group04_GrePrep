@@ -9,6 +9,6 @@ router.post("/register", ctrlUser.register);
 router.post("/authenticate", ctrlUser.authenticate);
 router.get("/userProfile", jwtHelper.verifyJwtToken, ctrlUser.userProfile);
 router.post('/userProfile/updateUserDetails', ctrlUser.updateUserDetails);
-//router.post('/userProfile/updateUserPassword', ctrlUser.updateUserPassword);
+router.post('/userProfile/updateUserPassword', ctrlUser.updateUserPassword);
 
 module.exports = router;
