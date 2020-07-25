@@ -6,43 +6,54 @@
       </button>
 
       <div *ngIf="!deviceXs">
-        <button mat-button [routerLink]="['/gre']">GRE</button>
+        <button mat-button routerLink="/gre">GRE</button>
 
-        <button mat-button [routerLink]="['/masters']">Masters</button>
+        <button mat-button routerLink="/masters">Masters</button>
 
-        <button mat-button [routerLink]="['/gre-predictor']">
+        <button mat-button routerLink="/gre-predictor">
           GRE Predictor
         </button>
       </div>
     </div>
     <div>
-      <button mat-button [routerLink]="''">
+      <button mat-button routerLink="/">
         Home
       </button>
-      
-        <button mat-button [routerLink]="['/login']" *ngIf="!isLoggedIn">Login</button>
-        <button mat-raised-button [routerLink]="['/registration']" *ngIf="!isLoggedIn">
-          Register
-        </button>
-            
-        <button mat-icon-button matTooltip="Profile" (click)="select.open()" *ngIf="isLoggedIn">
-          <mat-icon>account_circle</mat-icon>
 
-          <mat-select #select class="profile">
-            <mat-option (click)="openAttemptHistory()" value="ae">Attempt History</mat-option>
-            <mat-option (click)="openMySchools()" value="ae">My Schools</mat-option>
-            <mat-option routerLink="/profile/profileSettings" value="ae">Profile Settings</mat-option>
-            <mat-option (click)="logout()" value="ae">Logout</mat-option>
-          </mat-select>
-        </button>      
+      <button mat-button routerLink="/login" *ngIf="!isLoggedIn">Login</button>
+      <button mat-raised-button routerLink="/registration" *ngIf="!isLoggedIn">
+        Register
+      </button>
+
+      <button
+        mat-icon-button
+        matTooltip="Profile"
+        (click)="select.open()"
+        *ngIf="isLoggedIn"
+      >
+        <mat-icon>account_circle</mat-icon>
+
+        <mat-select #select class="profile">
+          <mat-option (click)="openAttemptHistory()" value="ae"
+            >Attempt History</mat-option
+          >
+          <mat-option (click)="openMySchools()" value="ae"
+            >My Schools</mat-option
+          >
+          <mat-option routerLink="/profile/profileSettings" value="ae"
+            >Profile Settings</mat-option
+          >
+          <mat-option (click)="logout()" value="ae">Logout</mat-option>
+        </mat-select>
+      </button>
     </div>
   </mat-toolbar-row>
   <mat-toolbar-row *ngIf="deviceXs" fxLayoutAlign="space-between end">
-    <button mat-button [routerLink]="['/gre']">GRE</button>
+    <button mat-button routerLink="/gre">GRE</button>
 
-    <button mat-button [routerLink]="['/masters']">Masters</button>
+    <button mat-button routerLink="/masters">Masters</button>
 
-    <button mat-button [routerLink]="['/gre-predictor']">
+    <button mat-button routerLink="/gre-predictor">
       GRE Predictor
     </button>
   </mat-toolbar-row>

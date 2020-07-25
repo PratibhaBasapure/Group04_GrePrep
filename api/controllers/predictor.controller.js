@@ -112,6 +112,7 @@ module.exports.predictColleges = async (req, res, next) => {
         DreamColleges: dreamColleges,
         ReachColleges: reachColleges,
         SafeColleges: safeColleges,
+        Score: score,
       });
     } else {
       return next(err);

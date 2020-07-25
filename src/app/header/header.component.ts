@@ -8,20 +8,23 @@ import { UserService } from '../services/user.service';
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
-  encapsulation: ViewEncapsulation.Emulated
+  encapsulation: ViewEncapsulation.Emulated,
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   mediaSubscribe: Subscription;
   deviceXs: boolean;
   isLoggedIn: any;
-  constructor(private router: Router, private mediaObserver: MediaObserver, private userService: UserService) { }
+  constructor(
+    private router: Router,
+    private mediaObserver: MediaObserver,
+    private userService: UserService
+  ) {}
   ngOnDestroy(): void {
     this.mediaSubscribe.unsubscribe();
   }
 
   ngOnInit(): void {
     this.isLoggedIn = this.userService.isLoggedIn();
-    console.log(this.isLoggedIn);
     this.mediaSubscribe = this.mediaObserver.media$.subscribe(
       (result: MediaChange) => {
         this.deviceXs = result.mqAlias === 'xs' ? true : false;
