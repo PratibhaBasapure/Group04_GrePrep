@@ -10,6 +10,9 @@ export class PredictionServiceService {
   constructor(private http: HttpClient) { }
 
   getColleges(user) {
-    return this.http.get('/predictor/predict?userEmailID=' + user);
+    const requestBody = {
+      userEmailID: user
+    }
+    return this.http.post('/predictor/predict',requestBody);
   }
 }
