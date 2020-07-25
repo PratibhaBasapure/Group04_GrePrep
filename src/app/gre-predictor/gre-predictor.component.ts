@@ -33,7 +33,7 @@ export class GrePredictorComponent implements OnInit {
   ngOnInit(): void {
     this.getCollegeData();
   }
-
+/** Getting the data corresponding to the school, that is the possibility **/
   private getCollegeData() {
     this.predictionService
       .getColleges(this.userService.getUserEmail())
@@ -58,7 +58,7 @@ export class GrePredictorComponent implements OnInit {
               possibility: 'Safe',
             };
           });
-
+/** adding to the current object **/
           this.collegeList = [...dreamCollege, ...reachCollege, ...safeCollege];
           this.dataSource = new MatTableDataSource<GrePredictor>(
             this.collegeList
