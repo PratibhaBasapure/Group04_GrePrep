@@ -19,11 +19,7 @@ export class QuestionManagerService {
   }
 
   saveUserAnswers(userAnswers: UserAnswers) {
-    return this.httpClient.post(
-      this.baseUrl + '/saveUserAnswers',
-      userAnswers,
-      this.noAuthHeader
-    );
+    return this.httpClient.post(this.baseUrl + '/saveUserAnswers', userAnswers);
   }
 
   saveUserGreScore(emailId: String, score: Number) {
@@ -31,10 +27,6 @@ export class QuestionManagerService {
       userEmailID: emailId,
       mockTest: score,
     };
-    return this.httpClient.post(
-      '/predictor/addHistory',
-      body,
-      this.noAuthHeader
-    );
+    return this.httpClient.post('/predictor/addHistory', body);
   }
 }

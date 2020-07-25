@@ -99,22 +99,53 @@ export class TakeMockTestComponent implements OnInit {
 
   onSelect(question: Question) {
     if (this.config.autoMove) {
-      this.goTo(this.pager.index + 1);
+      this.goTo(this.pager.index + 1, question);
     }
   }
 
-  goTo(index: number) {
-    if (index >= 0 && index < this.pager.count) {
-      this.pager.index = index;
-      this.mode = 'quiz';
+  goTo(index: number, question: Question) {
+    var flag = false;
+    var confirmation = false;
+    if (this.userAnswers != null) {
+      for (var i = 0; i < this.userAnswers.questionAnswers.length; i++) {
+        if (
+          this.userAnswers.questionAnswers[i].questionId == question.questionId
+        ) {
+          if (this.userAnswers.questionAnswers[i].answers.length == 0) {
+            flag = false;
+            break;
+          } else {
+            flag = true;
+            confirmation = true;
+            break;
+          }
+        }
+      }
+    }
+
+    if (!flag) {
+      confirmation = confirm(
+        'Caution: You have not answered this question.\n Do you want to continue?'
+      );
+    }
+
+    if (confirmation) {
+      if (index >= 0 && index < this.pager.count) {
+        this.pager.index = index;
+        this.mode = 'quiz';
+      }
     }
   }
   onSubmit() {
-    if (
-      confirm(
+    const now = new Date();
+    const diff = (now.getTime() - this.startTime.getTime()) / 1000;
+    var confirmation = true;
+    if (diff < this.config.duration) {
+      confirmation = confirm(
         'Are you sure you want to submit the test? You can review once before submitting!'
-      )
-    ) {
+      );
+    }
+    if (confirmation) {
       this.mode = 'result';
       this.questionService
         .saveUserAnswers(this.userAnswers)
@@ -271,5 +302,9 @@ export class TakeMockTestComponent implements OnInit {
     ) {
       this.router.navigate(['/gre']);
     }
+  }
+
+  goToGreHome() {
+    this.router.navigate(['/gre']);
   }
 }

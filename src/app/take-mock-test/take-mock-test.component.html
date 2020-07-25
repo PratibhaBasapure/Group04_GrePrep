@@ -74,45 +74,45 @@
                 </div>
               </div>
             </div>
-          </div>
-          <br />
-          <hr />
-          <div class="row" style="margin-top: 20px;">
-            <div class="col s3">
-              <button
-                class="btn waves-effect waves-light indigo darken-3"
-                *ngIf="config.allowBack"
-                (click)="goTo(0)"
-              >
-                First
-              </button>
-            </div>
-            <div class="col s3">
-              <button
-                class="btn waves-effect waves-light indigo darken-3"
-                *ngIf="config.allowBack"
-                (click)="goTo(pager.index - 1)"
-              >
-                Previous
-              </button>
-            </div>
-            <div class="col s3">
-              <button
-                class="btn waves-effect waves-light indigo darken-3"
-                *ngIf="config.allowBack"
-                (click)="goTo(pager.index + 1)"
-              >
-                Next
-              </button>
-            </div>
-            <div class="col s3">
-              <button
-                class="btn waves-effect waves-light indigo darken-3"
-                *ngIf="config.allowBack"
-                (click)="goTo(pager.count - 1)"
-              >
-                Last
-              </button>
+            <br />
+            <hr />
+            <div class="row" style="margin-top: 20px;">
+              <div class="col s3">
+                <button
+                  class="btn waves-effect waves-light indigo darken-3"
+                  *ngIf="config.allowBack"
+                  (click)="goTo(0, question)"
+                >
+                  First
+                </button>
+              </div>
+              <div class="col s3">
+                <button
+                  class="btn waves-effect waves-light indigo darken-3"
+                  *ngIf="config.allowBack"
+                  (click)="goTo(pager.index - 1, question)"
+                >
+                  Previous
+                </button>
+              </div>
+              <div class="col s3">
+                <button
+                  class="btn waves-effect waves-light indigo darken-3"
+                  *ngIf="config.allowBack"
+                  (click)="goTo(pager.index + 1, question)"
+                >
+                  Next
+                </button>
+              </div>
+              <div class="col s3">
+                <button
+                  class="btn waves-effect waves-light indigo darken-3"
+                  *ngIf="config.allowBack"
+                  (click)="goTo(pager.count - 1, question)"
+                >
+                  Last
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -132,9 +132,9 @@
           </div>
         </div>
         <div *ngIf="mode == 'result'">
-          <div class="container result">
-            <div class="row valign-wrapper">
-              <div class="col valign">
+          <div class="container">
+            <div class="row">
+              <div class="center-align">
                 <div
                   class="card hoverable blue-grey darken-1"
                   style="padding: 20px;"
@@ -146,16 +146,27 @@
                 </div>
               </div>
             </div>
+            <div class="row">
+              <div class="center-align">
+                <button
+                  class="btn waves-effect waves-light indigo darken-3"
+                  (click)="goToGreHome()"
+                >
+                  Back to GRE
+                </button>
+              </div>
+            </div>
           </div>
         </div>
-        <div>
-          <button
-            class="btn waves-effect waves-light"
-            color="primary"
-            (click)="quitTest()"
-          >
-            Quit your Test
-          </button>
+        <div class="row" *ngIf="mode != 'result'">
+          <div class="center-align">
+            <button
+              class="btn waves-effect waves-light red darken-3"
+              (click)="quitTest()"
+            >
+              Quit your Test
+            </button>
+          </div>
         </div>
       </div>
     </div>
