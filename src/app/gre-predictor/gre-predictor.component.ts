@@ -23,6 +23,7 @@ export class GrePredictorComponent implements OnInit {
   ) { }
 
   collegeList: GrePredictor[] = [];
+  totalScore: any;
   displayedColumns: string[] = [
     'school',
     'possibility'
@@ -62,6 +63,7 @@ export class GrePredictorComponent implements OnInit {
 
         this.collegeList = [...dreamCollege, ...reachCollege, ...safeCollege];
         this.dataSource = new MatTableDataSource<GrePredictor>(this.collegeList);
+        this.totalScore = res.Score;
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
       },
