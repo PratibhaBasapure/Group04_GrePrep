@@ -102,3 +102,25 @@ module.exports.updateUserPassword = async (req, res, next) => {
         res.status(400).send(error)
     }
 }
+
+module.exports.deleteUser = async (req, res, next) => {
+    const updates = Object.keys(req.body)
+    console.log("body" + req.body);
+    console.log("body" + req.body.email);
+    try {
+        const user = await User.findOneAndDelete({ email: req.body.email },
+            function (err, user) {
+                if (err) {
+                    console.log(err)
+                    return res.status(404).send({ message: 'You do not seem to be registered' })
+                }
+                else {
+                    console.log("Deleted User : ", user);
+                    res.send(user);
+                }
+            });
+    } catch (error) {
+        console.log(error);
+        res.status(400).send(error)
+    }
+}
