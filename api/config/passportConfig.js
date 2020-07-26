@@ -1,3 +1,5 @@
+//  Author: Pratibha B(B00847415)
+// authentication middleware to verify registered user
 const passport = require('passport');
 const localStrategy = require('passport-local').Strategy;
 const mongoose = require('mongoose');

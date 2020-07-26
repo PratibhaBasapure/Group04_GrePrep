@@ -1,3 +1,4 @@
+//  Author: Pratibha B(B00847415)
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
