@@ -68,7 +68,7 @@ export class ForgotPasswordComponent implements OnInit {
     return this.forgotPasswordForm.controls[controlName].hasError(errorName);
   };
 
-  login() {    
+  resetPassword() {    
     if (this.forgotPasswordForm.invalid) {
       return;
     }
@@ -76,9 +76,9 @@ export class ForgotPasswordComponent implements OnInit {
       this.userDetails.password = this.forgotPasswordForm.controls['password'].value;
       this.userDetails.email = this.forgotPasswordForm.controls['email'].value;
       this.userService.updateUserPassword(this.userDetails).subscribe(
-        (res) => {
-          this._snackBar.open("Updated successfully. Please log in again to continue.!!", '', { duration: 1000 });
+        (res) => {         
           this.userService.logout();          
+          alert("Password updated successfully. Please login using new password to continue.")
         },
         err => {
           this._snackBar.open("Something went wrong. Unable to update. Please try later !!", '', { duration: 300 });

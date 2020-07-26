@@ -17,14 +17,12 @@ module.exports.register = (req, res, next) => {
     user.save((err, doc) => {
         if (!err)
             res.send(doc);
-        else {
-            console.log(err);
+        else {            
             if (err.code == 11000)
                 res.status(422).send(['Duplicate email adrress found.']);
             else
                 return next(err);
         }
-
     });
 }
 
@@ -54,29 +52,23 @@ module.exports.userProfile = (req, res, next) => {
 }
 
 module.exports.updateUserDetails = async (req, res, next) => {
-    const updates = Object.keys(req.body)
-    console.log("body" + req.body);
-    console.log("body" + req.body.firstName);
+    const updates = Object.keys(req.body)  
     try {
         const user = await User.findOneAndUpdate({ email: req.body.email }, { $set: { firstName: req.body.firstName, mobileNumber: req.body.mobileNumber } }, { new: true },
             function (err, user) {
-                res.send(user);
-                console.log(user);
+                res.send(user);                
             });
 
         if (!user) {
             return res.status(404).send({ message: 'You do not seem to be registered' })
         }
-    } catch (error) {
-        console.log(error);
+    } catch (error) {        
         res.status(400).send(error)
     }
 }
 
 module.exports.updateUserPassword = async (req, res, next) => {
-    const updates = Object.keys(req.body)
-    console.log("body" + req.body);
-    console.log("body" + req.body.password);
+    const updates = Object.keys(req.body)   
     let user = await User.findOne({ email: req.body.email })
     let encryptedPassword;
     try {
@@ -97,16 +89,13 @@ module.exports.updateUserPassword = async (req, res, next) => {
                     });
             });
         });
-    } catch (error) {
-        console.log(error);
+    } catch (error) {        
         res.status(400).send(error)
     }
 }
 
 module.exports.deleteUser = async (req, res, next) => {
-    const updates = Object.keys(req.body)
-    console.log("body" + req.body);
-    console.log("body" + req.body.email);
+    const updates = Object.keys(req.body)   
     try {
         const user = await User.findOneAndDelete({ email: req.body.email },
             function (err, user) {
