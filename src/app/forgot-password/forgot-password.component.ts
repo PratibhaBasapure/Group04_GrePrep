@@ -77,7 +77,11 @@ export class ForgotPasswordComponent implements OnInit {
       this.userDetails.password = this.forgotPasswordForm.controls['password'].value;
       this.userDetails.email = this.forgotPasswordForm.controls['email'].value;
       this.userService.updateUserPassword(this.userDetails).subscribe(
-        (res) => {         
+        (res) => {                   
+          if(res == null){
+            this.serverErrorMessages = "You do not seem to be registered. Please check your email";
+            return;
+          }
           this.userService.logout();          
           alert("Password updated successfully. Please login using new password to continue.")
         },
