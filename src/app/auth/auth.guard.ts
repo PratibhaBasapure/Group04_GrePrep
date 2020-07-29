@@ -1,3 +1,4 @@
+//  Author: Pratibha B(B00847415)
 import { Injectable } from '@angular/core';
 import {
   CanActivate,
@@ -5,7 +6,7 @@ import {
   RouterStateSnapshot,
 } from '@angular/router';
 import { Observable } from 'rxjs';
-
+//  Author: Pratibha B(B00847415)
 import { Router } from '@angular/router';
 import { UserService } from '../services/user.service';
 

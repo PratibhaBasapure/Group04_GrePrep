@@ -51,7 +51,7 @@
             <span *ngIf="!makeContactNumberEditable">
               {{ userDetails.mobileNumber }}</span>
             <mat-form-field *ngIf="makeContactNumberEditable" appearance="outline">
-              <input matInput type="text" required placeholder="Enter your full name" formControlName="mobileNum"
+              <input matInput type="text" required placeholder="Enter your name" formControlName="mobileNum"
                 id="contactNum" [(ngModel)]="userDetails.mobileNumber" />
               <mat-icon matPrefix> contact_phone</mat-icon>
               <mat-error *ngIf="hasErrorInContactNum('mobileNum', 'required')">Contact Number is required</mat-error>

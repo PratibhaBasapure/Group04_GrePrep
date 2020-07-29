@@ -1,3 +1,4 @@
+//  Author: Pratibha B(B00847415)
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {
   FormGroup,
@@ -61,7 +62,7 @@ export class ProfileSettingsComponent implements OnInit {
     private router: Router,
     private userService: UserService,
     private _snackBar: MatSnackBar
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.signupForm = this.formBuilder.group({
@@ -140,7 +141,7 @@ export class ProfileSettingsComponent implements OnInit {
   editUserName() {
     this.makeFirstNameEditable = true;
   }
-  cancelUserName(){
+  cancelUserName() {
     this.submitted = true;
     if (this.signupForm.invalid) {
       return;
@@ -169,9 +170,9 @@ export class ProfileSettingsComponent implements OnInit {
   editContactNumber() {
     this.makeContactNumberEditable = true;
   }
-  cancelMobileNumber(){
+  cancelMobileNumber() {
     this.submitted = true;
-    if (this.contactNumberForm.invalid) {    
+    if (this.contactNumberForm.invalid) {
       return;
     }
     else {
@@ -182,12 +183,13 @@ export class ProfileSettingsComponent implements OnInit {
     if (this.passwordChangeForm.invalid) {
       return;
     }
-    else{
+    else {
       this.userDetails.password = this.passwordChangeForm.controls['password'].value;
       this.userService.updateUserPassword(this.userDetails).subscribe(
         (res) => {
-          this._snackBar.open("Updated successfully. Please log in again to continue.!!", '', { duration: 1000 });
-          this.userService.logout();          
+          this._snackBar.open("", '', { duration: 1000 });
+          alert("Password updated successfully. Please log in again to continue.")
+          this.userService.logout();
         },
         err => {
           this._snackBar.open("Something went wrong. Unable to update. Please try later !!", '', { duration: 300 });
@@ -196,13 +198,13 @@ export class ProfileSettingsComponent implements OnInit {
     }
   }
 
-  deleteUserAccount(){
-    if (confirm('Are you sure to delete your account ?') == true) {    
-      console.log(  this.userDetails.email);
-      this.userDetails.email=this.userService.getUserEmail() ;
-      this.userService.deleteUserAccount(this.userDetails).subscribe((res) => {             
-        M.toast({ html: 'Deleted successfully', classes: 'rounded' });
-        this.userService.logout();   
+  deleteUserAccount() {
+    if (confirm('Are you sure to delete your account ?') == true) {
+      console.log(this.userDetails.email);
+      this.userDetails.email = this.userService.getUserEmail();
+      this.userService.deleteUserAccount(this.userDetails).subscribe((res) => {
+        alert("Deleted successfully. Thank you for availing GREPrep Service. Have a bright future.")
+        this.userService.logout();
       });
     }
   }

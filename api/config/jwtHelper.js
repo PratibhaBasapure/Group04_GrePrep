@@ -1,3 +1,5 @@
+//  Author: Pratibha B(B00847415)
+// to verify token for subsequent requests after user logs in
 const jwt = require('jsonwebtoken');
 
 module.exports.verifyJwtToken = (req, res, next) => {
