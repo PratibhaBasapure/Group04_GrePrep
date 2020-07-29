@@ -18,7 +18,6 @@ module.exports.saveUserAnswers = (req, res, next) => {
       res.status(201).json(id);
     })
     .catch((err) => {
-      console.log(err);
       res.status(201).json(-1);
     });
 };
@@ -71,7 +70,6 @@ module.exports.getQuizQuestions = (req, res, next) => {
 
 // Method to get list of verbal or quantitative questions for practice tests
 module.exports.getVerbalAndQuantQuestions = (req, res, next) => {
-  console.log(req.query);
   Question.aggregate([
     { $match: { subType: req.query.questionType } },
     { $sample: { size: parseInt(req.query.questionCount, 10) } },

@@ -93,11 +93,8 @@ export class ProfileSettingsComponent implements OnInit {
     this.userService.getUserProfile().subscribe(
       (res) => {
         this.userDetails = res['user'];
-        console.log("Details" + JSON.stringify(this.userDetails));
       },
       err => {
-        console.log(err);
-
       }
     );
   }
@@ -152,7 +149,6 @@ export class ProfileSettingsComponent implements OnInit {
   }
   submitContactNumber() {
     if (this.contactNumberForm.invalid) {
-      console.log(this.contactNumberForm.controls['mobileNum'].errors);
       return;
     } else {
       this.makeContactNumberEditable = false;
@@ -200,7 +196,6 @@ export class ProfileSettingsComponent implements OnInit {
 
   deleteUserAccount() {
     if (confirm('Are you sure to delete your account ?') == true) {
-      console.log(this.userDetails.email);
       this.userDetails.email = this.userService.getUserEmail();
       this.userService.deleteUserAccount(this.userDetails).subscribe((res) => {
         alert("Deleted successfully. Thank you for availing GREPrep Service. Have a bright future.")

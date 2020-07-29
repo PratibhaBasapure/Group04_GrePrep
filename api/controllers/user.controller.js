@@ -8,7 +8,6 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 module.exports.register = (req, res, next) => {
-    console.log("inside regsiter conrroll");
     var user = new User();
     user.firstName = req.body.firstName;
     user.lastName = req.body.lastName;
@@ -76,12 +75,10 @@ module.exports.updateUserPassword = async (req, res, next) => {
         bcrypt.genSalt(10, (err, salt) => {
             bcrypt.hash(req.body.password, salt, (err, hash) => {
                 req.body.password = hash;
-                console.log(req.body.password);
                 User.findOneAndUpdate({ email: req.body.email }, { password: req.body.password }, { new: true },
                     function (err, response) {
                         // Handle any possible database errors
                         if (err) {
-                            console.log("we hit an error" + err);
                             res.json({
                                 message: 'Database Update Failure'
                             });
@@ -101,16 +98,13 @@ module.exports.deleteUser = async (req, res, next) => {
         const user = await User.findOneAndDelete({ email: req.body.email },
             function (err, user) {
                 if (err) {
-                    console.log(err)
                     return res.status(404).send({ message: 'You do not seem to be registered' })
                 }
                 else {
-                    console.log("Deleted User : ", user);
                     res.send(user);
                 }
             });
     } catch (error) {
-        console.log(error);
         res.status(400).send(error)
     }
 }

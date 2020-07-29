@@ -53,14 +53,12 @@ export class QuestionManagerService {
   // Get request to get the list of questions for the Quiz
   getQuestionsForQuiz(): Observable<Question[]> {
     let url = this.baseUrl + '/getQuizQuestions/' + this.questionCount;
-    console.log(url);
     return this.httpClient.get<Question[]>(url);
   }
 
   // Get request to get the list of questions for the Verbal Practice
   getQuestionsForVerbalAndQuantPractice(): Observable<Question[]> {
     let url = this.baseUrl + '/getVerbalAndQuantQuestions';
-    console.log(url);
     var requestParams = new HttpParams();
     requestParams = requestParams.set(
       'questionCount',

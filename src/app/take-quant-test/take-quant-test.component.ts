@@ -146,7 +146,6 @@ export class TakeQuantTestComponent implements OnInit {
       this.questionService
         .saveUserAnswers(this.userAnswers)
         .subscribe((data: any) => {
-          console.log(data);
           this.calculateVerbalPracticeScore();
           this.saveUserQuantPracticeScore(data);
         });

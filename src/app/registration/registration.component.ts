@@ -89,12 +89,11 @@ export class RegistrationComponent implements OnInit {
         lastName: this.signupForm.value.lastName,
         mobileNumber: this.signupForm.value.mobileNumber,
         email: this.signupForm.value.email,
-        password:'Regsitered success. Please login to continue',
+        password:'Registered successfully. Please login to continue',
       },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
       this.router.navigate(['login']);
     });
       },
