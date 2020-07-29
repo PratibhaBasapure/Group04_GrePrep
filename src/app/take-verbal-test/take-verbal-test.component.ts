@@ -9,22 +9,22 @@ import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-take-quiz',
-  templateUrl: './take-quiz.component.html',
+  selector: 'app-take-verbal-test',
+  templateUrl: './take-verbal-test.component.html',
   styleUrls: [
     '../../../node_modules/materialize-css/dist/css/materialize.min.css',
-    './take-quiz.component.css',
+    './take-verbal-test.component.css',
   ],
   encapsulation: ViewEncapsulation.Emulated,
 })
-export class TakeQuizComponent implements OnInit {
+export class TakeVerbalTestComponent implements OnInit {
   // Class variables that are used in the html for reactivity
   questions: Question[];
   mode = 'quiz';
   loading = true;
 
   // Stores the final gre score based on the answers
-  quizScore = 0;
+  verbalPracticeScore = 0;
 
   // Stores all the user answers
   userAnswers: UserAnswers = null;
@@ -61,11 +61,13 @@ export class TakeQuizComponent implements OnInit {
 
   // Gets the questions for the quiz using the question service
   loadQuestions() {
-    this.questionService.getQuestionsForQuiz().subscribe((data: Question[]) => {
-      this.questions = data;
-      this.loading = false;
-      this.pager.count = this.questions.length;
-    });
+    this.questionService
+      .getQuestionsForVerbalAndQuantPractice()
+      .subscribe((data: Question[]) => {
+        this.questions = data;
+        this.loading = false;
+        this.pager.count = this.questions.length;
+      });
   }
 
   // Used to get the next question based on the button click
@@ -146,21 +148,25 @@ export class TakeQuizComponent implements OnInit {
       this.questionService
         .saveUserAnswers(this.userAnswers)
         .subscribe((data: any) => {
-          this.calculateQuizScore();
-          this.saveUserQuizScore(data);
+          this.calculateVerbalPracticeScore();
+          this.saveUserVerbalPracticeScore(data);
         });
     }
   }
 
   // Method to save the gre score which is calculated to the database
-  saveUserQuizScore(data: any) {
+  saveUserVerbalPracticeScore(data: any) {
     this.questionService
-      .saveUserQuizScore(this.userService.getUserEmail(), this.quizScore, data)
+      .saveUserVerbalPracticeScore(
+        this.userService.getUserEmail(),
+        this.verbalPracticeScore,
+        data
+      )
       .subscribe((data: any) => {});
   }
 
   // Method to calculate the quiz score based on the user answers
-  calculateQuizScore() {
+  calculateVerbalPracticeScore() {
     var unitQuestionScore = 1;
     var totalScore = 0;
     var answers = this.userAnswers.questionAnswers;
@@ -183,7 +189,7 @@ export class TakeQuizComponent implements OnInit {
         }
       }
     }
-    this.quizScore = totalScore;
+    this.verbalPracticeScore = totalScore;
   }
 
   // Save the answer after every question selection by the user
@@ -194,7 +200,7 @@ export class TakeQuizComponent implements OnInit {
     if (this.userAnswers == null) {
       this.userAnswers = new UserAnswers();
       this.userAnswers.userId = emailId;
-      this.userAnswers.testType = 'Quiz';
+      this.userAnswers.testType = this.questionService.questionType;
       var questionAnswers = new Answers();
       this.userAnswers.questionAnswers = [];
       questionAnswers.questionId = question.questionId;
@@ -255,7 +261,7 @@ export class TakeQuizComponent implements OnInit {
       if (this.userAnswers == null) {
         this.userAnswers = new UserAnswers();
         this.userAnswers.userId = emailId;
-        this.userAnswers.testType = 'Quiz';
+        this.userAnswers.testType = this.questionService.questionType;
         var questionAnswers = new Answers();
         this.userAnswers.questionAnswers = [];
         questionAnswers.questionId = question.questionId;

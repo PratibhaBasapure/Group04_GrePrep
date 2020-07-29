@@ -1,34 +1,41 @@
+// Author - Padmesh Donthu
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { QuestionManagerService } from '../services/question-manager.service';
 
 @Component({
   selector: 'app-verbal-practice',
   templateUrl: './verbal-practice.component.html',
-  styleUrls: ['./verbal-practice.component.css'],
-  encapsulation: ViewEncapsulation.Emulated
+  styleUrls: [
+    '../../../node_modules/materialize-css/dist/css/materialize.min.css',
+    './verbal-practice.component.css',
+  ],
+  encapsulation: ViewEncapsulation.Emulated,
 })
 export class VerbalPracticeComponent implements OnInit {
+  // Inject router and services to the component
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private questionService: QuestionManagerService
+  ) {}
 
-  form: FormGroup;
-  constructor(private router: Router) { }
-  ngOnInit() {
-    this.form = new FormGroup({
-      myCheckboxGroup: new FormGroup({
-        myCheckbox1: new FormControl(false),
-        myCheckbox2: new FormControl(false),
-        myCheckbox3: new FormControl(false),
-      }),
+  ngOnInit(): void {}
+
+  // Method to route the user to quantitative test page
+  next() {
+    this.router.navigate(['takeVerbalPracticeTest'], {
+      relativeTo: this.route,
     });
-
-  }
-  onSubmit() {
-    if (this.form.invalid) {
-      return;
-    }
-    else {
-     this.router.navigate(["/quiz"]);
-    }
   }
 
+  // Method to set the number of questions for the verbal practice test
+  setNumberOfQuestions(questionCount: number) {
+    this.questionService.questionCount = questionCount;
+  }
+
+  // Method to set the verbal questions type
+  setQuestionType(questionType: string) {
+    this.questionService.questionType = questionType;
+  }
 }

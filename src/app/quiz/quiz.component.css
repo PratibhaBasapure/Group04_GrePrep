@@ -1,6 +1,5 @@
-.quiz {
-  padding: 2%;
-}
-:host .mat-radio-button ~ .mat-radio-button {
-  margin-left: 16px;
+/* Author - Padmesh */
+.radioBtn {
+  margin-left: 10px;
+  margin-right: 10px;
 }

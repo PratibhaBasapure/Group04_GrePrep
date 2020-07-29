@@ -3,11 +3,11 @@
 export class Question {
   _id: String;
   questionId: number;
-  title: String;
-  type: String;
-  subType: String;
-  image: String;
+  title: string;
+  type: string;
+  subType: string;
+  image: string;
   answer: string[];
-  options: String[];
+  options: string[];
   answered: boolean;
 }

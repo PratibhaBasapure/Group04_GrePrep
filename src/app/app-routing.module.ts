@@ -1,3 +1,4 @@
+// Authors - Padmesh Donthu, Pratibha Basapure, Abhinav Ramesh
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { RegistrationComponent } from './registration/registration.component';
@@ -23,6 +24,9 @@ import { ListOfSchoolsComponent } from './list-of-schools/list-of-schools.compon
 import { ProfileSettingsComponent } from './profile-settings/profile-settings.component';
 import { AuthGuard } from './auth/auth.guard';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { TakeVerbalTestComponent } from './take-verbal-test/take-verbal-test.component';
+import { TakeQuantTestComponent } from './take-quant-test/take-quant-test.component';
+import { ViewAnswersComponent } from './view-answers/view-answers.component';
 
 const routes: Routes = [
   {
@@ -51,8 +55,18 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
+    path: 'gre/verbal/takeVerbalPracticeTest',
+    component: TakeVerbalTestComponent,
+    canActivate: [AuthGuard],
+  },
+  {
     path: 'gre/quant',
     component: QuantitativePracticeComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'gre/quant/takeQuantPracticeTest',
+    component: TakeQuantTestComponent,
     canActivate: [AuthGuard],
   },
   { path: 'masters/whyMasters', component: WhyMastersComponent },
@@ -62,6 +76,11 @@ const routes: Routes = [
   {
     path: 'attemptHistory',
     component: AttemptHistoryComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'attemptHistory/viewAnswers',
+    component: ViewAnswersComponent,
     canActivate: [AuthGuard],
   },
   { path: '***', redirectTo: '' },
@@ -87,7 +106,11 @@ const routes: Routes = [
     component: TakeMockTestComponent,
     canActivate: [AuthGuard],
   },
-  { path: 'masters/listOfSchools', component: ListOfSchoolsComponent },
+  {
+    path: 'masters/listOfSchools',
+    component: ListOfSchoolsComponent,
+    canActivate: [AuthGuard],
+  },
   {
     path: 'profile/profileSettings',
     component: ProfileSettingsComponent,

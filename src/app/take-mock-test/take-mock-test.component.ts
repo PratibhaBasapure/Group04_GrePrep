@@ -178,21 +178,20 @@ export class TakeMockTestComponent implements OnInit {
     // If the user confirms, submit the quiz, save the answers and calculate the score
     if (confirmation) {
       this.mode = 'result';
+      this.fillUnansweredQuestions();
       this.questionService
         .saveUserAnswers(this.userAnswers)
-        .subscribe((data: boolean) => {
-          if (data) {
-            this.calculateGreScore();
-            this.saveUserGreScore();
-          }
+        .subscribe((data: any) => {
+          this.calculateGreScore();
+          this.saveUserGreScore(data);
         });
     }
   }
 
   // Method to save the gre score which is calculated to the database
-  saveUserGreScore() {
+  saveUserGreScore(data: any) {
     this.questionService
-      .saveUserGreScore(this.userService.getUserEmail(), this.greScore)
+      .saveUserGreScore(this.userService.getUserEmail(), this.greScore, data)
       .subscribe((data: any) => {});
   }
 
@@ -235,6 +234,9 @@ export class TakeMockTestComponent implements OnInit {
       var questionAnswers = new Answers();
       this.userAnswers.questionAnswers = [];
       questionAnswers.questionId = question.questionId;
+      questionAnswers.questionTitle = question.title;
+      questionAnswers.actualAnswers = [...question.answer];
+      questionAnswers.options = [...question.options];
       questionAnswers.answers = [];
       questionAnswers.answers.push(value);
       this.userAnswers.questionAnswers.push(questionAnswers);
@@ -252,6 +254,9 @@ export class TakeMockTestComponent implements OnInit {
       if (!flag) {
         var questionAnswers = new Answers();
         questionAnswers.questionId = question.questionId;
+        questionAnswers.actualAnswers = [...question.answer];
+        questionAnswers.options = [...question.options];
+        questionAnswers.questionTitle = question.title;
         questionAnswers.answers = [];
         questionAnswers.answers.push(value);
         this.userAnswers.questionAnswers.push(questionAnswers);
@@ -290,6 +295,9 @@ export class TakeMockTestComponent implements OnInit {
         var questionAnswers = new Answers();
         this.userAnswers.questionAnswers = [];
         questionAnswers.questionId = question.questionId;
+        questionAnswers.actualAnswers = [...question.answer];
+        questionAnswers.options = [...question.options];
+        questionAnswers.questionTitle = question.title;
         questionAnswers.answers = [];
         questionAnswers.answers.push(value);
         this.userAnswers.questionAnswers.push(questionAnswers);
@@ -307,6 +315,9 @@ export class TakeMockTestComponent implements OnInit {
         if (!flag) {
           var questionAnswers = new Answers();
           questionAnswers.questionId = question.questionId;
+          questionAnswers.actualAnswers = [...question.answer];
+          questionAnswers.options = [...question.options];
+          questionAnswers.questionTitle = question.title;
           questionAnswers.answers = [];
           questionAnswers.answers.push(value);
           this.userAnswers.questionAnswers.push(questionAnswers);
@@ -341,5 +352,31 @@ export class TakeMockTestComponent implements OnInit {
   // Redirects to gre page when the user clicks on Back to GRE
   goToGreHome() {
     this.router.navigate(['/gre']);
+  }
+
+  // Method to fill any unanswered question and set the answer to a default value that is -1
+  fillUnansweredQuestions() {
+    var flag = false;
+    for (var i = 0; i < this.questions.length; i++) {
+      flag = false;
+      for (var j = 0; j < this.userAnswers.questionAnswers.length; j++) {
+        if (
+          this.questions[i].questionId ==
+          this.userAnswers.questionAnswers[j].questionId
+        ) {
+          flag = true;
+        }
+      }
+      if (!flag) {
+        var questionAnswers = new Answers();
+        questionAnswers.questionId = this.questions[i].questionId;
+        questionAnswers.questionTitle = this.questions[i].title;
+        questionAnswers.actualAnswers = [...this.questions[i].answer];
+        questionAnswers.options = [...this.questions[i].options];
+        questionAnswers.answers = [];
+        questionAnswers.answers.push(-1);
+        this.userAnswers.questionAnswers.push(questionAnswers);
+      }
+    }
   }
 }

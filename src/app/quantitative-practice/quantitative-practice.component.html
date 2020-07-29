@@ -1,199 +1,138 @@
-<head>
-  <link
-    rel="stylesheet"
-    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-  />
-</head>
-<div style="background-color: #e7ebee; height: 100%;">
+<!--Author - Padmesh Donthu-->
+<div style="background-color: #e7ebee; min-height: 100%;">
   <app-header></app-header>
-  <div class="container-fluid">
+  <div class="container" style="padding-top: 20px; padding-bottom: 20px;">
+    <h2 class="center-align">GRE Quantitative Practice</h2>
     <div class="row">
-      <div class="col-sm-3 col-md-3 col-lg-3">
-        <form
-          class="form-group border border-dark layout"
-          [formGroup]="form"
-          (ngSubmit)="onSubmit()"
-          style="margin-top: 50%;"
-        >
-          <div formGroupName="myCheckboxGroup">
-            <div class="label">
-              <h4>Filter Out Quantitative Questions</h4>
-            </div>
-            <div class="custom-control custom-checkbox">
-              <input
-                type="checkbox"
-                class="custom-control-input"
-                formControlName="myCheckbox1"
-                id="myCheckbox1"
-              />
-              <label class="custom-control-label" for="myCheckbox1"
-                >Numeric Entry</label
-              >
-            </div>
-            <div class="custom-control custom-checkbox">
-              <input
-                type="checkbox"
-                class="custom-control-input"
-                formControlName="myCheckbox2"
-                id="myCheckbox2"
-              />
-              <label class="custom-control-label" for="myCheckbox2"
-                >Multiple Answers</label
-              >
-            </div>
-            <div class="custom-control custom-checkbox">
-              <input
-                type="checkbox"
-                class="custom-control-input"
-                formControlName="myCheckbox3"
-                id="myCheckbox3"
-              />
-              <label class="custom-control-label" for="myCheckbox3"
-                >Quantitative</label
-              >
-            </div>
-          </div>
-          <br />
-          <div style="text-align: center;">
-            <button mat-raised-button type="submit" (click)="onSubmit()">
-              Filter
-            </button>
-          </div>
-        </form>
+      <div class="center-align">
+        Use the GREPrep Quantitative Practice to help you prepare for the
+        computer-delivered GRE General Test. The Quantitative Practice Quizzes are
+        designed to help you:
+        <ul class="collection">
+          <li class="collection-item">
+            Understand what's being tested Gain familiarity with the various
+            question types and difficulty level of Quantitative type of questions
+          </li>
+          <li class="collection-item">
+            Practice your test-taking strategies by understanding the topics
+            thoroughly
+          </li>
+          <li class="collection-item">
+            Use the concepts you have prepared in quantitative question types
+          </li>
+        </ul>
       </div>
-      <div class="col-sm-9 col-md-9 col-lg-9">
-        <div
-          class="form-group border border-dark layout"
-          style="font-size: x-small;"
+    </div>
+    <br />
+    <div class="row">
+      <div class="center-align">
+        <h5>Instructions</h5>
+        <ul class="collection">
+          <li class="collection-item">
+            The Quiz is untimed i.e. you will have unlimited time to complete
+            it. You can choose the number of questions to attempt before taking
+            the quiz.
+          </li>
+          <li class="collection-item">
+            The questions consist of Quantitative types.
+          </li>
+          <li class="collection-item">
+            The questions can either be multiple choice or single choice types
+          </li>
+          <li class="collection-item">
+            Once you submit your test, you can get your quiz score. Each
+            question will be of 1 mark.
+          </li>
+          <li class="collection-item">
+            You can use buttons like First, Previous, Next, and Last to move to
+            questions
+          </li>
+          <li class="collection-item">
+            Select the type of verbal questions you want to attempt
+          </li>
+          <li class="collection-item">
+            Select the number of questions you want to attempt
+          </li>
+          <li class="collection-item">
+            Click on Start Your Quiz button below to start your Quiz.
+          </li>
+          <li class="collection-item">
+            Once you click on the button, the test starts immediately.
+          </li>
+        </ul>
+      </div>
+    </div>
+    <br />
+    <div class="row">
+      <div class="center-align">
+        <mat-radio-group>
+          <mat-radio-button
+            value="QC"
+            class="radioBtn"
+            (change)="setQuestionType('QC')"
+            >Quantitative Comparison
+          </mat-radio-button>
+          <mat-radio-button
+            value="QMCQ"
+            class="radioBtn"
+            (change)="setQuestionType('QMCQ')"
+            >Quantitative Multiple Choice One Answer
+          </mat-radio-button>
+          <mat-radio-button
+            value="QSMQ"
+            class="radioBtn"
+            (change)="setQuestionType('QSMQ')"
+            >Quantitative Multiple Choice One or More Answers
+          </mat-radio-button>
+        </mat-radio-group>
+      </div>
+    </div>
+    <br />
+    <div class="row">
+      <div class="center-align">
+        <mat-radio-group>
+          <mat-radio-button
+            value="10"
+            class="radioBtn"
+            (change)="setNumberOfQuestions(10)"
+            >10
+          </mat-radio-button>
+          <mat-radio-button
+            value="20"
+            class="radioBtn"
+            (change)="setNumberOfQuestions(20)"
+            >20
+          </mat-radio-button>
+          <mat-radio-button
+            value="30"
+            class="radioBtn"
+            (change)="setNumberOfQuestions(30)"
+            >30
+          </mat-radio-button>
+          <mat-radio-button
+            value="40"
+            class="radioBtn"
+            (change)="setNumberOfQuestions(40)"
+            >40
+          </mat-radio-button>
+          <mat-radio-button
+            value="50"
+            class="radioBtn"
+            (change)="setNumberOfQuestions(50)"
+            >50
+          </mat-radio-button>
+        </mat-radio-group>
+      </div>
+    </div>
+    <br />
+    <div class="row">
+      <div class="center-align">
+        <button
+          class="btn waves-effect waves-light indigo darken-3"
+          (click)="next()"
         >
-          <h2 style="text-align: center;">Quantitative Practice Questions</h2>
-          <div class="panel-body">
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto
-              neque voluptatibus in. Repellendus quaerat animi sequi deserunt ut
-              blanditiis, dolor laborum consectetur distinctio. Doloremque sed
-              adipisci vero, esse ut tenetur?
-            </p>
-            <div class="radio">
-              <label>
-                <input
-                  type="radio"
-                  name="optionsRadios"
-                  id="optionsRadios1"
-                  value="option1"
-                  checked=""
-                />
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              </label>
-            </div>
-            <div class="radio">
-              <label>
-                <input
-                  type="radio"
-                  name="optionsRadios"
-                  id="optionsRadios2"
-                  value="option2"
-                />Repellendus quaerat animi sequi deserunt ut
-              </label>
-            </div>
-            <div class="radio">
-              <label>
-                <input
-                  type="radio"
-                  name="optionsRadios"
-                  id="optionsRadios3"
-                  value="option3"
-                />
-                Doloremque sed adipisci vero, esse ut tenetur
-              </label>
-            </div>
-          </div>
-          <div class="panel-body">
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto
-              neque voluptatibus in. Repellendus quaerat animi sequi deserunt ut
-              blanditiis, dolor laborum consectetur distinctio. Doloremque sed
-              adipisci vero, esse ut tenetur?
-            </p>
-            <div class="radio">
-              <label>
-                <input
-                  type="radio"
-                  name="optionsRadios1"
-                  id="optionsRadios4"
-                  value="option4"
-                  checked=""
-                />
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              </label>
-            </div>
-            <div class="radio">
-              <label>
-                <input
-                  type="radio"
-                  name="optionsRadios1"
-                  id="optionsRadios5"
-                  value="option5"
-                />Repellendus quaerat animi sequi deserunt ut
-              </label>
-            </div>
-            <div class="radio">
-              <label>
-                <input
-                  type="radio"
-                  name="optionsRadios1"
-                  id="optionsRadios6"
-                  value="option6"
-                />
-                Doloremque sed adipisci vero, esse ut tenetur
-              </label>
-            </div>
-          </div>
-          <div class="panel-body">
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto
-              neque voluptatibus in. Repellendus quaerat animi sequi deserunt ut
-              blanditiis, dolor laborum consectetur distinctio. Doloremque sed
-              adipisci vero, esse ut tenetur?
-            </p>
-            <div class="radio">
-              <label>
-                <input
-                  type="radio"
-                  name="optionsRadios2"
-                  id="optionsRadios4"
-                  value="option4"
-                  checked=""
-                />
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              </label>
-            </div>
-            <div class="radio">
-              <label>
-                <input
-                  type="radio"
-                  name="optionsRadios2"
-                  id="optionsRadios5"
-                  value="option5"
-                />Repellendus quaerat animi sequi deserunt ut
-              </label>
-            </div>
-            <div class="radio">
-              <label>
-                <input
-                  type="radio"
-                  name="optionsRadios2"
-                  id="optionsRadios6"
-                  value="option6"
-                />
-                Doloremque sed adipisci vero, esse ut tenetur
-              </label>
-            </div>
-          </div>
-          <div fxLayoutAlign="flex-end">
-            <button mat-raised-button>Next</button>
-          </div>
-        </div>
+          Start your Quiz
+        </button>
       </div>
     </div>
   </div>
