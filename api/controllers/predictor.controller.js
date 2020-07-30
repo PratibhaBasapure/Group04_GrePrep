@@ -56,10 +56,12 @@ module.exports.addRange = (req, res, next) => {
 };
 //getting the user
 module.exports.predictColleges = async (req, res, next) => {
-  var history = {};
+  var history = [];
   await History.find({ userEmailID: req.body.userEmailID }, (err, document) => {
     if (!err && document.length == 1) {
-      history = document[0].mockTests;
+      for (var i = 0; i < document[0].mockTests.length; i++) {
+        history.push(document[0].mockTests[i].score);
+      }
     } else {
       res.send({
         DreamColleges: [],
@@ -69,13 +71,11 @@ module.exports.predictColleges = async (req, res, next) => {
       });
     }
   });
-  const mapSort = new Map([...history.entries()].sort((a, b) => b[1] - a[1]));
+  const sortedScore = history.sort(function (a, b) {
+    return b - a;
+  });
+  var score = sortedScore[0];
 
-  var score = 0;
-  for (let [key, value] of mapSort) {
-    score = value;
-    break;
-  }
   Range.find({}, (err, ranges) => {
     if (!err) {
       var rangeMap = {};
