@@ -72,7 +72,8 @@ export class ViewAnswersComponent implements OnInit {
   getCorrectAnswer(answer: Answers): string {
     var correctAnswer = '';
     for (var i = 0; i < answer.actualAnswers.length; i++) {
-      correctAnswer = correctAnswer + answer.options[i] + ' ';
+      correctAnswer =
+        correctAnswer + answer.options[answer.actualAnswers[i]] + ' ';
     }
     return correctAnswer;
   }

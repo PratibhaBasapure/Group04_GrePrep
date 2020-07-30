@@ -75,37 +75,39 @@ export class AttemptHistoryComponent implements OnInit {
   // Method to store all the attempts to the datasource which requires a Attempt Array
   fillAttempts(data: Test) {
     this.attemptList = [];
-    for (var i = 0; i < data.mockTests.length; i++) {
-      var attempt = new Attempt();
-      attempt.score = data.mockTests[i].score;
-      attempt.testId = data.mockTests[i].mockTestId;
-      attempt.dateTaken = data.mockTests[i].createdDate;
-      attempt.test = 'Mock Test';
-      this.attemptList.push(attempt);
-    }
-    for (var i = 0; i < data.verbalTests.length; i++) {
-      var attempt = new Attempt();
-      attempt.score = data.verbalTests[i].score;
-      attempt.testId = data.verbalTests[i].verbalTestId;
-      attempt.dateTaken = data.verbalTests[i].createdDate;
-      attempt.test = 'Verbal Test';
-      this.attemptList.push(attempt);
-    }
-    for (var i = 0; i < data.quantTests.length; i++) {
-      var attempt = new Attempt();
-      attempt.score = data.quantTests[i].score;
-      attempt.testId = data.quantTests[i].quantTestId;
-      attempt.dateTaken = data.quantTests[i].createdDate;
-      attempt.test = 'Quantitative Test';
-      this.attemptList.push(attempt);
-    }
-    for (var i = 0; i < data.quizTests.length; i++) {
-      var attempt = new Attempt();
-      attempt.score = data.quizTests[i].score;
-      attempt.testId = data.quizTests[i].quizTestId;
-      attempt.dateTaken = data.quizTests[i].createdDate;
-      attempt.test = 'Quiz';
-      this.attemptList.push(attempt);
+    if (data != null) {
+      for (var i = 0; i < data.mockTests.length; i++) {
+        var attempt = new Attempt();
+        attempt.score = data.mockTests[i].score;
+        attempt.testId = data.mockTests[i].mockTestId;
+        attempt.dateTaken = data.mockTests[i].createdDate;
+        attempt.test = 'Mock Test';
+        this.attemptList.push(attempt);
+      }
+      for (var i = 0; i < data.verbalTests.length; i++) {
+        var attempt = new Attempt();
+        attempt.score = data.verbalTests[i].score;
+        attempt.testId = data.verbalTests[i].verbalTestId;
+        attempt.dateTaken = data.verbalTests[i].createdDate;
+        attempt.test = 'Verbal Test';
+        this.attemptList.push(attempt);
+      }
+      for (var i = 0; i < data.quantTests.length; i++) {
+        var attempt = new Attempt();
+        attempt.score = data.quantTests[i].score;
+        attempt.testId = data.quantTests[i].quantTestId;
+        attempt.dateTaken = data.quantTests[i].createdDate;
+        attempt.test = 'Quantitative Test';
+        this.attemptList.push(attempt);
+      }
+      for (var i = 0; i < data.quizTests.length; i++) {
+        var attempt = new Attempt();
+        attempt.score = data.quizTests[i].score;
+        attempt.testId = data.quizTests[i].quizTestId;
+        attempt.dateTaken = data.quizTests[i].createdDate;
+        attempt.test = 'Quiz';
+        this.attemptList.push(attempt);
+      }
     }
     this.loading = false;
     this.dataSource = new MatTableDataSource(this.attemptList);

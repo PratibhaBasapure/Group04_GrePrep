@@ -3,7 +3,7 @@
 export class Answers {
   questionId: number;
   questionTitle: string;
-  answers: Number[];
+  answers: number[];
   actualAnswers: string[];
   options: string[];
 }

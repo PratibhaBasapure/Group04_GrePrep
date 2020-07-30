@@ -59,7 +59,7 @@ export class TakeVerbalTestComponent implements OnInit {
     this.loadQuestions();
   }
 
-  // Gets the questions for the quiz using the question service
+  // Gets the questions for the verbal practice tests using the question service
   loadQuestions() {
     this.questionService
       .getQuestionsForVerbalAndQuantPractice()
@@ -165,28 +165,26 @@ export class TakeVerbalTestComponent implements OnInit {
       .subscribe((data: any) => {});
   }
 
-  // Method to calculate the quiz score based on the user answers
+  // Method to calculate the verbal practice test score based on the user answers
   calculateVerbalPracticeScore() {
     var unitQuestionScore = 1;
     var totalScore = 0;
-    var answers = this.userAnswers.questionAnswers;
-    var questions = this.questions;
-    for (var i = 0; i < answers.length; i++) {
-      for (var j = 0; j < questions.length; j++) {
-        if (answers[i].questionId == questions[i].questionId) {
-          var numberAnswers = questions[i].answer.map(function (item) {
-            return parseInt(item, 10);
-          });
-          if (
-            numberAnswers.sort().join(',') ===
-            answers[i].answers.sort().join(',')
-          ) {
-            totalScore += unitQuestionScore;
-          } else {
-            totalScore += 0;
+    var flag = true;
+    for (var i = 0; i < this.userAnswers.questionAnswers.length; i++) {
+      var userAnswers = this.userAnswers.questionAnswers[i].answers;
+      var actualAnswers = this.userAnswers.questionAnswers[i].actualAnswers;
+      if (userAnswers.length != actualAnswers.length) {
+        flag = false;
+      } else {
+        flag = true;
+        for (var j = 0; j < actualAnswers.length; j++) {
+          if (userAnswers.indexOf(parseInt(actualAnswers[j])) < 0) {
+            flag = false;
           }
-          break;
         }
+      }
+      if (flag) {
+        totalScore += unitQuestionScore;
       }
     }
     this.verbalPracticeScore = totalScore;
@@ -235,7 +233,7 @@ export class TakeVerbalTestComponent implements OnInit {
   }
 
   // This method tells the html page if the current option is checked or not for a question
-  getStatus(value: Number, question: Question): Boolean {
+  getStatus(value: number, question: Question): Boolean {
     if (this.userAnswers == null) {
       return false;
     } else {
