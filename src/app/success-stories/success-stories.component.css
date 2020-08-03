@@ -1,11 +1,17 @@
-.heading{
-    text-align: center;
-    font-size: xx-large;
-    padding-top: 2%;
+.heading {
+  text-align: center;
+  font-size: xx-large;
+  padding-top: 2%;
 }
 
-.topDiv{
-    padding-top: 3%;
-    padding-left: 10%;
-    padding-right: 10%;
+.topDiv {
+  padding-top: 3%;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-bottom: 3%;
+}
+
+.example-header-image {
+  background-image: url("../../assets/img/profile.png");
+  background-size: cover;
 }
