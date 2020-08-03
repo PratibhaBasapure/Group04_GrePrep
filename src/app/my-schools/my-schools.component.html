@@ -1,15 +1,7 @@
 <div style="background-color: #e7ebee; min-height: 100%;">
   <app-header></app-header>
-<<<<<<< HEAD
-  <h1 style="padding-top: 2%; text-align: center;">My Schools</h1>
-  <div *ngIf="loading" class="loading-indicator">
-    <mat-spinner></mat-spinner>
-  </div>
-  <div style="padding-bottom: 2%;" *ngIf="!loading">
-=======
   <h1 style="padding-top: 2%; text-align: center; font-size: xx-large;">MY SCHOOLS</h1>
   <div style="padding-bottom: 2%;">
->>>>>>> 6309565fadf7104a15532cb87ac4cb159c5e0523
     <div *ngIf="tempUserSchools" fxLayout="column" fxLayoutGap="0%">
       <div
         *ngIf="dreamSchools.length > 0"
@@ -73,7 +65,7 @@
             class="mat-paginator-sticky"
             [length]="dream_dataSource?.data.length"
             [pageIndex]="0"
-            [pageSize]="2"
+            [pageSize]="5"
             [pageSizeOptions]="[2, 3, 4, 5]"
           ></mat-paginator>
         </div>
@@ -140,7 +132,7 @@
             #paginatorReach
             [length]="reach_dataSource?.data.length"
             [pageIndex]="0"
-            [pageSize]="2"
+            [pageSize]="5"
             [pageSizeOptions]="[2, 3, 4, 5]"
           ></mat-paginator>
         </div>
@@ -207,7 +199,7 @@
             #paginatorSafe
             [length]="safe_dataSource?.data.length"
             [pageIndex]="0"
-            [pageSize]="2"
+            [pageSize]="5"
             [pageSizeOptions]="[2, 3, 4, 5]"
           ></mat-paginator>
         </div>
