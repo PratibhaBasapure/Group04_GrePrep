@@ -1,6 +1,8 @@
 <div style="background-color: #e7ebee; min-height: 100%;">
   <app-header></app-header>
-  <h1 style="padding-top: 2%; text-align: center; font-size: xx-large;">MY SCHOOLS</h1>
+  <h1 style="padding-top: 2%; text-align: center; font-size: xx-large;">
+    MY SCHOOLS
+  </h1>
   <div style="padding-bottom: 2%;">
     <div *ngIf="tempUserSchools" fxLayout="column" fxLayoutGap="0%">
       <div
@@ -45,7 +47,7 @@
               <mat-cell *matCellDef="let row">
                 <a
                   color="primary"
-                  style="text-decoration: underline;"
+                  style="cursor: pointer;"
                   (click)="deleteSchool(row.schoolId)"
                 >
                   <i class="fa fa-trash"></i>
@@ -113,7 +115,7 @@
               <mat-cell *matCellDef="let row">
                 <a
                   color="primary"
-                  style="text-decoration: underline;"
+                  style="cursor: pointer;"
                   (click)="deleteSchool(row.schoolId)"
                 >
                   <i class="fa fa-trash"></i>
@@ -180,7 +182,7 @@
               <mat-cell *matCellDef="let row">
                 <a
                   color="primary"
-                  style="text-decoration: underline;"
+                  style="cursor: pointer;"
                   (click)="deleteSchool(row.schoolId)"
                 >
                   <i class="fa fa-trash"></i>
