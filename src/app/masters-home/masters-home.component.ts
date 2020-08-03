@@ -1,3 +1,4 @@
+// Author - Padmesh Donthu
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 @Component({

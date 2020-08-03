@@ -30,7 +30,6 @@
 
 .card-container-right {
   display: inline;
-  float: right;
 }
 
 .card-container-left {
@@ -38,8 +37,8 @@
 }
 
 .mat-menu-panel.notifications-dropdown {
-  max-width:none;
-  width: 30%; 
+  max-width: none;
+  width: 30%;
   overflow: visible;
 }
 

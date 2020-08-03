@@ -1,7 +1,7 @@
 <head>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  </head>
+</head>
 <app-header></app-header>
 <div class="loading-indicator" *ngIf="isLoading">
   <mat-spinner></mat-spinner>
@@ -45,32 +45,60 @@
   </div>
 
   <div class="row">
-  <div *ngFor="let school of schoolList">
-  <div class="col s12 m12 l6"  *ngIf="schoolChoosen == 0 || schoolChoosen == school.id">
-    <div class="card">
-      <div class="card-image waves-effect waves-block waves-light">
-        <img class="activator" src={{school.imageURL}} style="width: 100%; height: 40vh;">
-      </div>
-      <div class="card-content" *ngIf="!verifySchoolStatus(school)">
-        <span class="card-title grey-text text-darken-4" style="font-size: medium;">{{school.name}}
-        <i class="material-icons right" [matMenuTriggerFor]="menu" style="cursor: pointer;">favorite_border</i></span>
-        <mat-menu #menu="matMenu">
-          <button mat-menu-item (click)="addToFavouriteSchools(school,1)">Add to Dream Schools</button>
-          <button mat-menu-item (click)="addToFavouriteSchools(school,2)">Add to Reach Schools</button>
-          <button mat-menu-item (click)="addToFavouriteSchools(school,3)">Add to Safe Schools</button>
-        </mat-menu>
-      </div>
-      <div class="card-content" *ngIf="verifySchoolStatus(school)">
-        <span class="card-title grey-text text-darken-4" style="font-size: medium;">{{school.name}}
-        <i class="material-icons right">favorite</i></span>
-      </div>
-      <div class="card-reveal">
-        <span class="card-title grey-text text-darken-4">{{school.name}}<i class="material-icons right">close</i></span>
-        <br>
-        <p>{{school.description}}</p>
+    <div *ngFor="let school of schoolList">
+      <div
+        class="col s12 m12 l6"
+        *ngIf="schoolChoosen == 0 || schoolChoosen == school.id"
+      >
+        <div class="card">
+          <div class="card-image waves-effect waves-block waves-light">
+            <img
+              class="activator"
+              src="{{ school.imageURL }}"
+              style="width: 100%; height: 40vh;"
+            />
+          </div>
+          <div class="card-content" *ngIf="!verifySchoolStatus(school)">
+            <span
+              class="card-title grey-text text-darken-4"
+              style="font-size: medium;"
+              >{{ school.name }}
+              <i
+                class="material-icons right"
+                [matMenuTriggerFor]="menu"
+                style="cursor: pointer;"
+                >favorite_border</i
+              ></span
+            >
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item (click)="addToFavouriteSchools(school, 1)">
+                Add to Dream Schools
+              </button>
+              <button mat-menu-item (click)="addToFavouriteSchools(school, 2)">
+                Add to Reach Schools
+              </button>
+              <button mat-menu-item (click)="addToFavouriteSchools(school, 3)">
+                Add to Safe Schools
+              </button>
+            </mat-menu>
+          </div>
+          <div class="card-content" *ngIf="verifySchoolStatus(school)">
+            <span
+              class="card-title grey-text text-darken-4"
+              style="font-size: medium;"
+              >{{ school.name }}
+              <i class="material-icons right">favorite</i></span
+            >
+          </div>
+          <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4"
+              >{{ school.name }}<i class="material-icons right">close</i></span
+            >
+            <br />
+            <p>{{ school.description }}</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
-</div>
 </div>

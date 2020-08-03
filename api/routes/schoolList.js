@@ -20,9 +20,7 @@ router.get("/:id", (req, res) => {
     if (!err) {
       res.send(doc);
     } else {
-      console.log(
-        "Error in Retreiving School :" + JSON.stringify(err, undefined, 2)
-      );
+      res.send([]);
     }
   });
 });
@@ -67,20 +65,19 @@ router.put("/removeSchools", (req, res) => {
         }
         document[0].favouriteSchools = updatedFavouriteSchools;
         document[0].save((err, result) => {
-            if (!err) {
-              res.send(true);
-            } else {
-              res.send(false);
-            }
-          });
-      }
-      else{
-        UserSchool.findOneAndRemove({ userId: req.body.userId }, (err,doc) => {
-            if(!err){
-                res.send(true);
-            }else {
-                res.send(false); 
-            }
+          if (!err) {
+            res.send(true);
+          } else {
+            res.send(false);
+          }
+        });
+      } else {
+        UserSchool.findOneAndRemove({ userId: req.body.userId }, (err, doc) => {
+          if (!err) {
+            res.send(true);
+          } else {
+            res.send(false);
+          }
         });
       }
     }
