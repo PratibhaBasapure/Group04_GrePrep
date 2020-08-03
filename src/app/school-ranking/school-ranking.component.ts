@@ -30,6 +30,7 @@ export class SchoolRankingComponent implements OnInit {
   schoolList: School[] = new Array();
   isLoading: boolean = true;
   selectedRanking:Number;
+  private paginator: MatPaginator;
 
   form: FormGroup;
   rankings: schoolRanking[] = [
@@ -43,7 +44,10 @@ export class SchoolRankingComponent implements OnInit {
   displayedColumns = ['id', 'name'];
   rankingControl = new FormControl(this.rankings[1].value);
 
-  @ViewChild('paginator', {static: true}) paginator: MatPaginator;
+  @ViewChild(MatPaginator) set matPaginator(mp: MatPaginator) {
+    this.paginator = mp;
+    this.setDataSourceAttributes();
+}
 
   constructor(public schoolService: SchoolService){
     this.form = new FormGroup({
@@ -55,13 +59,19 @@ export class SchoolRankingComponent implements OnInit {
    this.refreshEmployeeList();
   }
 
+  setDataSourceAttributes() {
+    if (!this.isLoading) {
+      this.dataSource.paginator = this.paginator;
+    }
+  }
+
   //To fetch and display the school rankings
   refreshEmployeeList(){
    this.schoolService.getSchoolList().subscribe((res) => {
       this.schoolService.schools = res as School[];
       this.dataSource = new MatTableDataSource(this.schoolService.schools);
       this.isLoading = false;
-      this.dataSource.paginator = this.paginator;
+      this.setDataSourceAttributes();
     });
   }
 

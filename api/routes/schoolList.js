@@ -28,7 +28,6 @@ router.get("/:id", (req, res) => {
 });
 
 router.post("/addSchools", (req, res) => {
-  console.log(req.body);
   UserSchool.find({ userId: req.body.userId }, (err, document) => {
     if (document.length == 1) {
       document[0].favouriteSchools = [...req.body.favouriteSchools];
@@ -56,15 +55,12 @@ router.post("/addSchools", (req, res) => {
 });
 
 router.put("/removeSchools", (req, res) => {
-  console.log(req.body);
   UserSchool.find({ userId: req.body.userId }, (err, document) => {
     if (document.length == 1) {
       if (document[0].favouriteSchools.length != 1) {
         var favouriteSchools = document[0].favouriteSchools;
         var updatedFavouriteSchools = [];
-        console.log("the list of favourite schools" + favouriteSchools);
         for (var favouriteSchool of favouriteSchools) {
-            console.log("favouriteSchool is :" + favouriteSchool);
           if (favouriteSchool.schoolId != req.body.schoolId) {
             updatedFavouriteSchools.push(favouriteSchool);
           }

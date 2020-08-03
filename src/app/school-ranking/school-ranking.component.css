@@ -8,7 +8,6 @@
   text-align: center;
   font-size: xx-large;
   padding-top: 3%;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 .material-icons {
   font-size: 48px;
@@ -45,4 +44,29 @@ th.mat-sort-header-sorted {
 .ranking-table {
   height: 45vh;
   overflow: auto;
+}
+
+.loading-indicator {
+  position: fixed;
+  z-index: 999;
+  height: 2em;
+  width: 2em;
+  overflow: show;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+/* Transparent Overlay */
+.loading-indicator:before {
+  content: "";
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
 }

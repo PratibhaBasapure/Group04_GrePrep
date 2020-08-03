@@ -6,6 +6,7 @@ import { SchoolType } from '../models/school-type.model';
 import { UserSchools } from '../models/user-schools.model';
 import { SchoolService } from '../services/school.service';
 import { UserService } from '../services/user.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 declare var M:any;
 @Component({
@@ -26,7 +27,10 @@ export class MySchoolsComponent implements OnInit{
   reachSchools: SchoolType[] = new Array();
   safeSchools: SchoolType[] = new Array();
   
-  constructor(public schoolService: SchoolService,public userService: UserService){}
+  constructor(public schoolService: SchoolService,
+    public userService: UserService, 
+    private _snackBar: MatSnackBar
+    ){}
   
   @ViewChild('paginatorDream', {static: true}) paginatorDream: MatPaginator;
   @ViewChild('paginatorReach', {static: true}) paginatorReach: MatPaginator;
@@ -69,9 +73,10 @@ export class MySchoolsComponent implements OnInit{
 
   deleteSchool(schoolId: Number){
     var emailId = this.userService.getUserEmail();
-    console.log(schoolId);
     this.schoolService.removeFavouriteSchool(emailId, schoolId).subscribe((res) => {
-      M.toast({html: 'Saved Successfully', classes: 'rounded'});
+      this._snackBar.open("School Removed Successfully", "OK", {
+        duration: 2000,
+      });
       this.getUserSchools();
     });
   }
