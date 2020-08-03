@@ -1,0 +1,163 @@
+<!--Author - Padmesh Donthu-->
+<div style="background-color: #e7ebee; min-height: 100%;">
+    <app-header></app-header>
+    <div class="loading-indicator" *ngIf="loading">
+      <mat-spinner></mat-spinner>
+    </div>
+    <div
+      class="container"
+      style="padding-top: 20px; padding-bottom: 20px;"
+      *ngIf="!loading"
+    >
+      <div class="row">
+        <div class="col s12">
+          <div *ngIf="mode == 'quiz'">
+            <div *ngFor="let question of filteredQuestions">
+              <div class="row">
+                <div
+                  class="col s3"
+                  style="
+                    background-color: #283593 !important;
+                    padding: 10px;
+                    color: white;
+                    font-size: medium;
+                  "
+                >
+                  Question {{ pager.index + 1 }} of {{ pager.count }}
+                </div>
+              </div>
+              <div>{{ pager.index + 1 }}. {{ question.title }}</div>
+              <div *ngIf="question.image != null" class="center-align">
+                <br />
+                <img src="{{ question.image }}" />
+              </div>
+              <br />
+              <div class="row">
+                <div class="col s12">
+                  <div *ngIf="question.answer.length == 1">
+                    <mat-radio-group>
+                      <mat-radio-button
+                        *ngFor="let option of question.options; let a = index"
+                        [value]="a"
+                        class="col s12"
+                        [checked]="getStatus(a, question)"
+                        (change)="singleChoiceAnswer(a, question)"
+                      >
+                        {{ option }}
+                      </mat-radio-button>
+                    </mat-radio-group>
+                  </div>
+                  <div *ngIf="question.answer.length != 1">
+                    <div *ngFor="let option of question.options; let j = index">
+                      <mat-checkbox
+                        style="margin-top: 12px;"
+                        class="col s12"
+                        color="accent"
+                        [checked]="getStatus(j, question)"
+                        (change)="multiChoiceAnswer(j, question, $event)"
+                      >
+                        {{ option }}
+                      </mat-checkbox>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <br />
+              <hr />
+              <div class="row" style="margin-top: 20px;">
+                <div class="col s3">
+                  <button
+                    class="btn waves-effect waves-light indigo darken-3"
+                    *ngIf="config.allowBack"
+                    (click)="goTo(0, question)"
+                  >
+                    First
+                  </button>
+                </div>
+                <div class="col s3">
+                  <button
+                    class="btn waves-effect waves-light indigo darken-3"
+                    *ngIf="config.allowBack"
+                    (click)="goTo(pager.index - 1, question)"
+                  >
+                    Previous
+                  </button>
+                </div>
+                <div class="col s3">
+                  <button
+                    class="btn waves-effect waves-light indigo darken-3"
+                    *ngIf="config.allowBack"
+                    (click)="goTo(pager.index + 1, question)"
+                  >
+                    Next
+                  </button>
+                </div>
+                <div class="col s3">
+                  <button
+                    class="btn waves-effect waves-light indigo darken-3"
+                    *ngIf="config.allowBack"
+                    (click)="goTo(pager.count - 1, question)"
+                  >
+                    Last
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row" *ngIf="mode != 'result'">
+            <hr />
+            <br />
+            <div class="center-align">
+              <div *ngIf="mode != 'result' && pager.count - 1 == pager.index">
+                <button
+                  class="btn waves-effect waves-light"
+                  color="primary"
+                  (click)="onSubmit()"
+                >
+                  Submit Your Answers
+                </button>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="mode == 'result'">
+            <div class="container">
+              <div class="row">
+                <div class="center-align">
+                  <div
+                    class="card hoverable blue-grey darken-1"
+                    style="padding: 20px;"
+                  >
+                    <div class="card-content white-text">
+                      <span class="card-title">Verbal Practice Score</span>
+                      <p>Your Score is {{ verbalPracticeScore }}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="center-align">
+                  <button
+                    class="btn waves-effect waves-light indigo darken-3"
+                    (click)="goToGreHome()"
+                  >
+                    Back to GRE
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row" *ngIf="mode != 'result'">
+            <div class="center-align">
+              <button
+                class="btn waves-effect waves-light red darken-3"
+                (click)="quitTest()"
+              >
+                Quit your Test
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

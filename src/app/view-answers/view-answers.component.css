@@ -28,3 +28,26 @@
   margin: 12px;
 }
 
+i.icon-green {
+  color: green;
+}
+
+i.icon-red {
+  color: red;
+}
+
+i.icon-bottom {
+  color: #3f51b5;
+  position: fixed;
+  right: 2%;
+  top: 20%;
+  cursor: pointer;
+}
+
+i.icon-top {
+  color: #3f51b5;
+  position: fixed;
+  right: 2%;
+  bottom: 10%;
+  cursor: pointer;
+}

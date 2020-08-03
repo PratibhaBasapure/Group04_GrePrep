@@ -1,30 +1,28 @@
-// Author - Padmesh Donthu
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Question } from '../models/question';
-import { QuestionManagerService } from '../services/question-manager.service';
-import { QuestionConfig } from '../models/question-config';
 import { UserAnswers } from '../models/user-answers';
-import { Answers } from '../models/answers';
+import { QuestionConfig } from '../models/question-config';
+import { QuestionManagerService } from '../services/question-manager.service';
 import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
+import { Answers } from '../models/answers';
 
 @Component({
-  selector: 'app-take-quiz',
-  templateUrl: './take-quiz.component.html',
+  selector: 'app-take-quant-test',
+  templateUrl: './take-quant-test.component.html',
   styleUrls: [
     '../../../node_modules/materialize-css/dist/css/materialize.min.css',
-    './take-quiz.component.css',
+    './take-quant-test.component.css',
   ],
-  encapsulation: ViewEncapsulation.Emulated,
 })
-export class TakeQuizComponent implements OnInit {
+export class TakeQuantTestComponent implements OnInit {
   // Class variables that are used in the html for reactivity
   questions: Question[];
   mode = 'quiz';
   loading = true;
 
   // Stores the final gre score based on the answers
-  quizScore = 0;
+  quantPracticeScore = 0;
 
   // Stores all the user answers
   userAnswers: UserAnswers = null;
@@ -61,11 +59,13 @@ export class TakeQuizComponent implements OnInit {
 
   // Gets the questions for the quiz using the question service
   loadQuestions() {
-    this.questionService.getQuestionsForQuiz().subscribe((data: Question[]) => {
-      this.questions = data;
-      this.loading = false;
-      this.pager.count = this.questions.length;
-    });
+    this.questionService
+      .getQuestionsForVerbalAndQuantPractice()
+      .subscribe((data: Question[]) => {
+        this.questions = data;
+        this.loading = false;
+        this.pager.count = this.questions.length;
+      });
   }
 
   // Used to get the next question based on the button click
@@ -146,24 +146,29 @@ export class TakeQuizComponent implements OnInit {
       this.questionService
         .saveUserAnswers(this.userAnswers)
         .subscribe((data: any) => {
-          this.calculateQuizScore();
-          this.saveUserQuizScore(data);
+          this.calculateQuantPracticeScore();
+          this.saveUserQuantPracticeScore(data);
         });
     }
   }
 
   // Method to save the gre score which is calculated to the database
-  saveUserQuizScore(data: any) {
+  saveUserQuantPracticeScore(data: any) {
     this.questionService
-      .saveUserQuizScore(this.userService.getUserEmail(), this.quizScore, data)
+      .saveUserQuantPracticeScore(
+        this.userService.getUserEmail(),
+        this.quantPracticeScore,
+        data
+      )
       .subscribe((data: any) => {});
   }
 
-  // Method to calculate the quiz score based on the user answers
-  calculateQuizScore() {
+  // Method to calculate the quantitative practice test score based on the user answers
+  calculateQuantPracticeScore() {
     var unitQuestionScore = 1;
     var totalScore = 0;
     var flag = true;
+
     for (var i = 0; i < this.userAnswers.questionAnswers.length; i++) {
       var userAnswers = this.userAnswers.questionAnswers[i].answers;
       var actualAnswers = this.userAnswers.questionAnswers[i].actualAnswers;
@@ -181,7 +186,8 @@ export class TakeQuizComponent implements OnInit {
         totalScore += unitQuestionScore;
       }
     }
-    this.quizScore = totalScore;
+
+    this.quantPracticeScore = totalScore;
   }
 
   // Save the answer after every question selection by the user
@@ -192,7 +198,7 @@ export class TakeQuizComponent implements OnInit {
     if (this.userAnswers == null) {
       this.userAnswers = new UserAnswers();
       this.userAnswers.userId = emailId;
-      this.userAnswers.testType = 'Quiz';
+      this.userAnswers.testType = this.questionService.questionType;
       var questionAnswers = new Answers();
       this.userAnswers.questionAnswers = [];
       questionAnswers.questionId = question.questionId;
@@ -253,13 +259,13 @@ export class TakeQuizComponent implements OnInit {
       if (this.userAnswers == null) {
         this.userAnswers = new UserAnswers();
         this.userAnswers.userId = emailId;
-        this.userAnswers.testType = 'Quiz';
+        this.userAnswers.testType = this.questionService.questionType;
         var questionAnswers = new Answers();
         this.userAnswers.questionAnswers = [];
-        questionAnswers.questionId = question.questionId;
         questionAnswers.actualAnswers = [...question.answer];
         questionAnswers.options = [...question.options];
         questionAnswers.questionTitle = question.title;
+        questionAnswers.questionId = question.questionId;
         questionAnswers.answers = [];
         questionAnswers.answers.push(value);
         this.userAnswers.questionAnswers.push(questionAnswers);
@@ -332,9 +338,9 @@ export class TakeQuizComponent implements OnInit {
       if (!flag) {
         var questionAnswers = new Answers();
         questionAnswers.questionId = this.questions[i].questionId;
-        questionAnswers.questionTitle = this.questions[i].title;
         questionAnswers.actualAnswers = [...this.questions[i].answer];
         questionAnswers.options = [...this.questions[i].options];
+        questionAnswers.questionTitle = this.questions[i].title;
         questionAnswers.answers = [];
         questionAnswers.answers.push(-1);
         this.userAnswers.questionAnswers.push(questionAnswers);

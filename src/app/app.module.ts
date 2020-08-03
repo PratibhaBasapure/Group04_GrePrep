@@ -1,3 +1,4 @@
+// Authors - Padmesh Donthu, Pratibha Basapure, Abhinav Ramesh
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
@@ -62,6 +63,9 @@ import { AuthInterceptor } from './auth/auth.interceptor';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SchoolService } from './services/school.service';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { TakeVerbalTestComponent } from './take-verbal-test/take-verbal-test.component';
+import { TakeQuantTestComponent } from './take-quant-test/take-quant-test.component';
+import { ViewAnswersComponent } from './view-answers/view-answers.component';
 
 @NgModule({
   declarations: [
@@ -91,6 +95,9 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     ListOfSchoolsComponent,
     ProfileSettingsComponent,
     ForgotPasswordComponent,
+    TakeVerbalTestComponent,
+    TakeQuantTestComponent,
+    ViewAnswersComponent,
   ],
   imports: [
     BrowserModule,

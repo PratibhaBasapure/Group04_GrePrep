@@ -40,7 +40,6 @@ export class GrePredictorComponent implements OnInit {
       .getColleges(this.userService.getUserEmail())
       .subscribe(
         (res) => {
-          console.log(res);
           const dreamCollege = res['DreamColleges'].map((x) => {
             return {
               school: x,
@@ -69,7 +68,6 @@ export class GrePredictorComponent implements OnInit {
           this.dataSource.sort = this.sort;
         },
         (err) => {
-          console.log(err);
         }
       );
   }

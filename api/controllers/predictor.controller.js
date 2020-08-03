@@ -11,17 +11,17 @@ const { floor } = require("lodash");
 // Adds the mock test score to the database for the user.
 module.exports.addMockTest = (req, res, next) => {
   var history = new History();
-  var date = new Date();
+  var data = {
+    score: req.body.mockTest,
+    createdDate: new Date(),
+    mockTestId: req.body.mockTestId,
+  };
   History.find({ userEmailID: req.body.userEmailID }, (err, document) => {
     if (!err && document.length == 1) {
-      // var _mocktTests = document[0].mockTests;
-      var _oldMockTests = {};
-      for (let [key, value] of document[0].mockTests) {
-        _oldMockTests[key] = value;
+      if (document[0].mockTests == null) {
+        document[0].mockTests = [];
       }
-      _oldMockTests[date.getTime()] = req.body.mockTest;
-      // _mocktTests[date.getTime()] = req.body.mockTest
-      document[0].mockTests = _oldMockTests;
+      document[0].mockTests.push(data);
       document[0].save((err, result) => {
         if (!err) res.send(result);
         else {
@@ -30,9 +30,8 @@ module.exports.addMockTest = (req, res, next) => {
       });
     } else {
       history.userEmailID = req.body.userEmailID;
-      var mockTestIndex = {};
-      mockTestIndex[date.getTime()] = req.body.mockTest;
-      history.mockTests = mockTestIndex;
+      history.mockTests = [];
+      history.mockTests.push(data);
       history.save((err, result) => {
         if (!err) res.send(result);
         else {
@@ -41,12 +40,6 @@ module.exports.addMockTest = (req, res, next) => {
       });
     }
   });
-};
-module.exports.updateMockTest = (req, res, next) => {
-  var history = new History();
-  history.userEmailID = req.body.userEmailID;
-  history.mockTests = req.body.mockTest;
-  History.find({});
 };
 //adding the range of scores
 module.exports.addRange = (req, res, next) => {
@@ -63,10 +56,12 @@ module.exports.addRange = (req, res, next) => {
 };
 //getting the user
 module.exports.predictColleges = async (req, res, next) => {
-  var history = {};
+  var history = [];
   await History.find({ userEmailID: req.body.userEmailID }, (err, document) => {
     if (!err && document.length == 1) {
-      history = document[0].mockTests;
+      for (var i = 0; i < document[0].mockTests.length; i++) {
+        history.push(document[0].mockTests[i].score);
+      }
     } else {
       res.send({
         DreamColleges: [],
@@ -76,13 +71,11 @@ module.exports.predictColleges = async (req, res, next) => {
       });
     }
   });
-  const mapSort = new Map([...history.entries()].sort((a, b) => b[1] - a[1]));
+  const sortedScore = history.sort(function (a, b) {
+    return b - a;
+  });
+  var score = sortedScore[0];
 
-  var score = 0;
-  for (let [key, value] of mapSort) {
-    score = value;
-    break;
-  }
   Range.find({}, (err, ranges) => {
     if (!err) {
       var rangeMap = {};

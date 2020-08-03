@@ -2,7 +2,7 @@
 const express = require("express");
 const router = express.Router();
 const range = require("../models/range.model");
-const mock = require("../models/mock.model");
+const mock = require("../models/tests");
 const ctrlPredictor = require("../controllers/predictor.controller");
 //Post request to send the response
 router.post("/uploadExcel", ctrlPredictor.updateRangeExcel);

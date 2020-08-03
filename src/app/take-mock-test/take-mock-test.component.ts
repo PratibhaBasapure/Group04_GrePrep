@@ -178,21 +178,20 @@ export class TakeMockTestComponent implements OnInit {
     // If the user confirms, submit the quiz, save the answers and calculate the score
     if (confirmation) {
       this.mode = 'result';
+      this.fillUnansweredQuestions();
       this.questionService
         .saveUserAnswers(this.userAnswers)
-        .subscribe((data: boolean) => {
-          if (data) {
-            this.calculateGreScore();
-            this.saveUserGreScore();
-          }
+        .subscribe((data: any) => {
+          this.calculateGreScore();
+          this.saveUserGreScore(data);
         });
     }
   }
 
   // Method to save the gre score which is calculated to the database
-  saveUserGreScore() {
+  saveUserGreScore(data: any) {
     this.questionService
-      .saveUserGreScore(this.userService.getUserEmail(), this.greScore)
+      .saveUserGreScore(this.userService.getUserEmail(), this.greScore, data)
       .subscribe((data: any) => {});
   }
 
@@ -200,24 +199,22 @@ export class TakeMockTestComponent implements OnInit {
   calculateGreScore() {
     var unitQuestionScore = (340 * 1.0) / this.questions.length;
     var totalScore = 0;
-    var answers = this.userAnswers.questionAnswers;
-    var questions = this.questions;
-    for (var i = 0; i < answers.length; i++) {
-      for (var j = 0; j < questions.length; j++) {
-        if (answers[i].questionId == questions[i].questionId) {
-          var numberAnswers = questions[i].answer.map(function (item) {
-            return parseInt(item, 10);
-          });
-          if (
-            numberAnswers.sort().join(',') ===
-            answers[i].answers.sort().join(',')
-          ) {
-            totalScore += unitQuestionScore;
-          } else {
-            totalScore += 0;
+    var flag = true;
+    for (var i = 0; i < this.userAnswers.questionAnswers.length; i++) {
+      var userAnswers = this.userAnswers.questionAnswers[i].answers;
+      var actualAnswers = this.userAnswers.questionAnswers[i].actualAnswers;
+      if (userAnswers.length != actualAnswers.length) {
+        flag = false;
+      } else {
+        flag = true;
+        for (var j = 0; j < actualAnswers.length; j++) {
+          if (userAnswers.indexOf(parseInt(actualAnswers[j])) < 0) {
+            flag = false;
           }
-          break;
         }
+      }
+      if (flag) {
+        totalScore += unitQuestionScore;
       }
     }
     this.greScore = totalScore;
@@ -235,6 +232,9 @@ export class TakeMockTestComponent implements OnInit {
       var questionAnswers = new Answers();
       this.userAnswers.questionAnswers = [];
       questionAnswers.questionId = question.questionId;
+      questionAnswers.questionTitle = question.title;
+      questionAnswers.actualAnswers = [...question.answer];
+      questionAnswers.options = [...question.options];
       questionAnswers.answers = [];
       questionAnswers.answers.push(value);
       this.userAnswers.questionAnswers.push(questionAnswers);
@@ -252,6 +252,9 @@ export class TakeMockTestComponent implements OnInit {
       if (!flag) {
         var questionAnswers = new Answers();
         questionAnswers.questionId = question.questionId;
+        questionAnswers.actualAnswers = [...question.answer];
+        questionAnswers.options = [...question.options];
+        questionAnswers.questionTitle = question.title;
         questionAnswers.answers = [];
         questionAnswers.answers.push(value);
         this.userAnswers.questionAnswers.push(questionAnswers);
@@ -260,7 +263,7 @@ export class TakeMockTestComponent implements OnInit {
   }
 
   // This method tells the html page if the current option is checked or not for a question
-  getStatus(value: Number, question: Question): Boolean {
+  getStatus(value: number, question: Question): Boolean {
     if (this.userAnswers == null) {
       return false;
     } else {
@@ -290,6 +293,9 @@ export class TakeMockTestComponent implements OnInit {
         var questionAnswers = new Answers();
         this.userAnswers.questionAnswers = [];
         questionAnswers.questionId = question.questionId;
+        questionAnswers.actualAnswers = [...question.answer];
+        questionAnswers.options = [...question.options];
+        questionAnswers.questionTitle = question.title;
         questionAnswers.answers = [];
         questionAnswers.answers.push(value);
         this.userAnswers.questionAnswers.push(questionAnswers);
@@ -307,6 +313,9 @@ export class TakeMockTestComponent implements OnInit {
         if (!flag) {
           var questionAnswers = new Answers();
           questionAnswers.questionId = question.questionId;
+          questionAnswers.actualAnswers = [...question.answer];
+          questionAnswers.options = [...question.options];
+          questionAnswers.questionTitle = question.title;
           questionAnswers.answers = [];
           questionAnswers.answers.push(value);
           this.userAnswers.questionAnswers.push(questionAnswers);
@@ -341,5 +350,31 @@ export class TakeMockTestComponent implements OnInit {
   // Redirects to gre page when the user clicks on Back to GRE
   goToGreHome() {
     this.router.navigate(['/gre']);
+  }
+
+  // Method to fill any unanswered question and set the answer to a default value that is -1
+  fillUnansweredQuestions() {
+    var flag = false;
+    for (var i = 0; i < this.questions.length; i++) {
+      flag = false;
+      for (var j = 0; j < this.userAnswers.questionAnswers.length; j++) {
+        if (
+          this.questions[i].questionId ==
+          this.userAnswers.questionAnswers[j].questionId
+        ) {
+          flag = true;
+        }
+      }
+      if (!flag) {
+        var questionAnswers = new Answers();
+        questionAnswers.questionId = this.questions[i].questionId;
+        questionAnswers.questionTitle = this.questions[i].title;
+        questionAnswers.actualAnswers = [...this.questions[i].answer];
+        questionAnswers.options = [...this.questions[i].options];
+        questionAnswers.answers = [];
+        questionAnswers.answers.push(-1);
+        this.userAnswers.questionAnswers.push(questionAnswers);
+      }
+    }
   }
 }

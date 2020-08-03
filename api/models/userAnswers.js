@@ -12,9 +12,22 @@ const userAnswersSchema = mongoose.Schema({
       questionId: {
         type: Number,
       },
+      questionTitle: {
+        type: String,
+      },
       answers: [
         {
           type: Number,
+        },
+      ],
+      actualAnswers: [
+        {
+          type: String,
+        },
+      ],
+      options: [
+        {
+          type: String,
         },
       ],
     },

@@ -67,9 +67,7 @@ export class SchoolRankingComponent implements OnInit {
 
   //Function is executed when the value in the drop down is changed
   public onChange(event): void {
-    console.log(event.value);
     this.selectedRanking = event.value.value;
-    console.log(this.selectedRanking);
     if(this.selectedRanking == 1){
       this.schoolService.schools=this.schoolService.schools.sort((a, b) => (a.csRank < b.csRank ? -1 : 1));
       this.dataSource = new MatTableDataSource(this.schoolService.schools);
