@@ -8,7 +8,8 @@ import {
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css'],
+  styleUrls: [ '../../../node_modules/materialize-css/dist/css/materialize.min.css',
+  './home.component.css'],
   encapsulation: ViewEncapsulation.Emulated
 })
 export class HomeComponent implements OnInit {

@@ -1,40 +1,42 @@
-<div style="background-color: #e7ebee;">
+<div style="background-color: #e7ebee; min-height: 100%;">
   <app-header></app-header>
   <h1 style="padding-top: 2%; text-align: center;">My Schools</h1>
   <div style="padding-bottom: 2%;">
-    <div fxLayout="column" fxLayoutGap="0%">
+    <div *ngIf="tempUserSchools" fxLayout="column" fxLayoutGap="0%">
       <div
+        *ngIf = "dreamSchools.length > 0"
         fxLayout="column"
         fxLayoutAlign="center"
         class="mat-elevation-z8"
         style="background-color: white;"
       >
         <div
+          *ngIf = "dreamSchools.length > 0"
           fxFlex="10%"
           style="text-align: center; font-size: larger; padding-top: 2%;"
         >
           Dream Schools
         </div>
         <div fxFlex="80%">
-          <mat-table [dataSource]="dream_dataSource" class="mat-table" matSort>
+          <mat-table  *ngIf = "dreamSchools.length > 0" [dataSource]="dream_dataSource" class="mat-table" matSort>
             <!-- Position Column -->
             <ng-container matColumnDef="id">
               <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
-              <mat-cell *matCellDef="let element"> {{ element.id }} </mat-cell>
+              <mat-cell *matCellDef="let element; let i = index;"> {{(i+1) +  (paginatorDream.pageIndex * paginatorDream.pageSize)}} </mat-cell>
             </ng-container>
 
             <!-- Name Column -->
             <ng-container matColumnDef="name">
               <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
               <mat-cell *matCellDef="let element">
-                {{ element.name }}
+                {{ element.schoolName }}
               </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="actions">
               <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
               <mat-cell *matCellDef="let row" style="margin-right: initial;">
-                <button mat-raised-button [routerLink]="'/register'">
+                <button mat-raised-button (click)="deleteSchool(row.schoolId)">
                   Remove From Favourites
                 </button>
               </mat-cell>
@@ -49,11 +51,16 @@
         <div fxFlex="10%" style="margin-left: auto; margin-right: auto;">
           <mat-paginator
             #paginatorDream
+            class="mat-paginator-sticky"
+            [length]="dream_dataSource?.data.length"
+            [pageIndex]="0"
+            [pageSize]="2"
             [pageSizeOptions]="[2, 3, 4, 5]"
           ></mat-paginator>
         </div>
       </div>
       <div
+      *ngIf = "reachSchools.length > 0"
         fxFlex="30%"
         fxLayout="column"
         fxLayoutAlign="center"
@@ -61,31 +68,32 @@
         style="background-color: white;"
       >
         <div
+        *ngIf = "reachSchools.length > 0"
           fxFlex="10%"
           style="text-align: center; font-size: larger; padding-top: 2%;"
         >
           Reach Schools
         </div>
         <div fxFlex="80%">
-          <mat-table [dataSource]="reach_dataSource" class="mat-table" matSort>
+          <mat-table  *ngIf = "reachSchools.length > 0" [dataSource]="reach_dataSource" class="mat-table" matSort>
             <!-- Position Column -->
             <ng-container matColumnDef="id">
               <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
-              <mat-cell *matCellDef="let element"> {{ element.id }} </mat-cell>
+              <mat-cell *matCellDef="let element; let i = index;"> {{(i+1) + (paginatorReach.pageIndex * paginatorReach.pageSize)}} </mat-cell>
             </ng-container>
 
             <!-- Name Column -->
             <ng-container matColumnDef="name">
               <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
               <mat-cell *matCellDef="let element">
-                {{ element.name }}
+                {{ element.schoolName }}
               </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="actions">
               <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
               <mat-cell *matCellDef="let row">
-                <button mat-raised-button [routerLink]="'/register'">
+                <button mat-raised-button (click)="deleteSchool(row.schoolId)">
                   Remove From Favourites
                 </button>
               </mat-cell>
@@ -100,11 +108,15 @@
         <div fxFlex="10%" style="margin-left: auto; margin-right: auto;">
           <mat-paginator
             #paginatorReach
+            [length]="reach_dataSource?.data.length"
+            [pageIndex]="0"
+            [pageSize]="2"
             [pageSizeOptions]="[2, 3, 4, 5]"
           ></mat-paginator>
         </div>
       </div>
       <div
+      *ngIf = "safeSchools.length > 0"
         fxFlex="30%"
         fxLayout="column"
         fxLayoutAlign="center"
@@ -112,31 +124,32 @@
         style="background-color: white;"
       >
         <div
+        *ngIf = "safeSchools.length > 0"
           fxFlex="10%"
           style="text-align: center; font-size: larger; padding-top: 2%;"
         >
           Safe Schools
         </div>
         <div fxFlex="80%">
-          <mat-table [dataSource]="safe_dataSource" class="mat-table" matSort>
+          <mat-table  *ngIf = "safeSchools.length > 0" [dataSource]="safe_dataSource" class="mat-table" matSort>
             <!-- Position Column -->
             <ng-container matColumnDef="id">
               <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
-              <mat-cell *matCellDef="let element"> {{ element.id }} </mat-cell>
+              <mat-cell *matCellDef="let element; let i = index;">{{(i+1) +  (paginatorSafe.pageIndex * paginatorSafe.pageSize)}} </mat-cell>
             </ng-container>
 
             <!-- Name Column -->
             <ng-container matColumnDef="name">
               <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
               <mat-cell *matCellDef="let element">
-                {{ element.name }}
+                {{ element.schoolName }}
               </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="actions">
               <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
               <mat-cell *matCellDef="let row">
-                <button mat-raised-button [routerLink]="'/register'">
+                <button mat-raised-button (click)="deleteSchool(row.schoolId)">
                   Remove From Favourites
                 </button>
               </mat-cell>
@@ -151,10 +164,16 @@
         <div fxFlex="10%" style="margin-left: auto; margin-right: auto;">
           <mat-paginator
             #paginatorSafe
+            [length]="safe_dataSource?.data.length"
+            [pageIndex]="0"
+            [pageSize]="2"
             [pageSizeOptions]="[2, 3, 4, 5]"
           ></mat-paginator>
         </div>
       </div>
+    </div>
+    <div *ngIf="!tempUserSchools">
+      <h2 style="text-align: center;">You havent added any school into Favourites.</h2>
     </div>
   </div>
 </div>

@@ -1,168 +1,124 @@
 <head>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
-</head>
-<div style="background-color: #e7ebee;">
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  </head>
+<script type="text/javascript" src="js/materialize.min.js"></script>
   <app-header></app-header>
-  <ngb-carousel
-    style="height: 300px;"
-    #carousel
-    [interval]="1500"
-    [pauseOnHover]="pauseOnHover"
-    (slide)="onSlide($event)"
-  >
-    <ng-template ngbSlide *ngFor="let img of images; index as i">
-      <div class="carousel-caption">
-        <h3>My slide {{ i + 1 }} title</h3>
-      </div>
-      <div class="picsum-img-wrapper">
-        <img [src]="img" height="300px" />
-      </div>
-    </ng-template>
-  </ngb-carousel>
-
-  <div
-    class="container"
-    fxLayout="row"
-    fxLayout.xs="column"
-    fxLayoutWrap
-    fxLayoutGap="0.5"
-    fxLayoutAlign="start"
-  >
-    <div fxFlex="65%" style="padding: 10px;">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Semper auctor neque
-      vitae tempus quam pellentesque nec nam. Curabitur gravida arcu ac tortor
-      dignissim convallis aenean et. Sed arcu non odio euismod lacinia at.
-      Sollicitudin tempor id eu nisl nunc. Auctor urna nunc id cursus metus
-      aliquam eleifend mi. Amet mattis vulputate enim nulla aliquet. Varius duis
-      at consectetur lorem. Non arcu risus quis varius quam quisque id.
-      Ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia. Risus
-      sed vulputate odio ut enim blandit volutpat maecenas volutpat. Nunc congue
-      nisi vitae suscipit tellus. Et malesuada fames ac turpis egestas integer
-      eget. Aliquet bibendum enim facilisis gravida neque convallis a. Lorem
-      ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-      incididunt ut labore et dolore magna aliqua. Semper auctor neque vitae
-      tempus quam pellentesque nec nam. Curabitur gravida arcu ac tortor
-      dignissim convallis aenean et. Sed arcu non odio euismod lacinia at.
-      Sollicitudin tempor id eu nisl nunc. Auctor urna nunc id cursus metus
-      aliquam eleifend mi. Amet mattis vulputate enim nulla aliquet. Varius duis
-      at consectetur lorem. Non arcu risus quis varius quam quisque id.
-      Ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia. Risus
-      sed vulputate odio ut enim blandit volutpat maecenas volutpat. Nunc congue
-      nisi vitae suscipit tellus. Et malesuada fames ac turpis egestas integer
-      eget. Aliquet bibendum enim facilisis gravida neque convallis a.
-    </div>
-    <div fxFlex="35%" style="padding: 10px;">
-      <img src="../../assets/img/english.PNG" width="90%" height="90%" />
+  <div class="parallax-container">
+    <div class="parallax"></div>
+  </div>
+  <div class="section white">
+    <div class="row container">
+      <h2 class="header">Why Choose GRE PREP</h2>
+      <p class="grey-text text-darken-3 lighten-3"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Semper auctor neque
+        vitae tempus quam pellentesque nec nam. Curabitur gravida arcu ac tortor
+        dignissim convallis aenean et. Sed arcu non odio euismod lacinia at.
+        Sollicitudin tempor id eu nisl nunc. Auctor urna nunc id cursus metus
+        aliquam eleifend mi. Amet mattis vulputate enim nulla aliquet. Varius duis
+        at consectetur lorem. Non arcu risus quis varius quam quisque id.
+        Ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia. Risus
+        sed vulputate odio ut enim blandit volutpat maecenas volutpat. Nunc congue
+        nisi vitae suscipit tellus. Et malesuada fames ac turpis egestas integer
+        eget. Aliquet bibendum enim facilisis gravida neque convallis a. Lorem
+        ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+        incididunt ut labore et dolore magna aliqua. Semper auctor neque vitae
+        tempus quam pellentesque nec nam. Curabitur gravida arcu ac tortor
+        dignissim convallis aenean et. Sed arcu non odio euismod lacinia at.
+        Sollicitudin tempor id eu nisl nunc. Auctor urna nunc id cursus metus
+        aliquam eleifend mi. Amet mattis vulputate enim nulla aliquet. Varius duis
+        at consectetur lorem. Non arcu risus quis varius quam quisque id.
+        Ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia. Risus
+        sed vulputate odio ut enim blandit volutpat maecenas volutpat. Nunc congue
+        nisi vitae suscipit tellus. Et malesuada fames ac turpis egestas i</p>
     </div>
   </div>
-  <div
-    class="container"
-    fxLayout="row"
-    fxLayout.xs="column"
-    fxLayoutWrap
-    fxLayoutGap="0.5"
-    fxLayoutAlign="start"
-  >
-    <div fxFlex="35%" style="padding: 10px;">
-      <img src="../../assets/img/english2.jpg" width="90%" height="90%" />
-    </div>
-    <div fxFlex="65%" style="padding: 10px;">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Semper auctor neque
-      vitae tempus quam pellentesque nec nam. Curabitur gravida arcu ac tortor
-      dignissim convallis aenean et. Sed arcu non odio euismod lacinia at.
-      Sollicitudin tempor id eu nisl nunc. Auctor urna nunc id cursus metus
-      aliquam eleifend mi. Amet mattis vulputate enim nulla aliquet. Varius duis
-      at consectetur lorem. Non arcu risus quis varius quam quisque id.
-      Ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia. Risus
-      sed vulputate odio ut enim blandit volutpat maecenas volutpat. Nunc congue
-      nisi vitae suscipit tellus. Et malesuada fames ac turpis egestas integer
-      eget. Aliquet bibendum enim facilisis gravida neque convallis a. Lorem
-      ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-      incididunt ut labore et dolore magna aliqua. Semper auctor neque vitae
-      tempus quam pellentesque nec nam. Curabitur gravida arcu ac tortor
-      dignissim convallis aenean et. Sed arcu non odio euismod lacinia at.
-      Sollicitudin tempor id eu nisl nunc. Auctor urna nunc id cursus metus
-      aliquam eleifend mi. Amet mattis vulputate enim nulla aliquet. Varius duis
-      at consectetur lorem. Non arcu risus quis varius quam quisque id.
-      Ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia. Risus
-      sed vulputate odio ut enim blandit volutpat maecenas volutpat. Nunc congue
-      nisi vitae suscipit tellus. Et malesuada fames ac turpis egestas integer
-      eget. Aliquet bibendum enim facilisis gravida neque convallis a.
+  <div class="parallax-container">
+    <div class="parallax2"></div>
+  </div>
+  <div class="section white">
+    <div class="row container">
+      <h2 class="header">Mock Tests</h2>
+      <p class="grey-text text-darken-3 lighten-3"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Semper auctor neque
+        vitae tempus quam pellentesque nec nam. Curabitur gravida arcu ac tortor
+        dignissim convallis aenean et. Sed arcu non odio euismod lacinia at.
+        Sollicitudin tempor id eu nisl nunc. Auctor urna nunc id cursus metus
+        aliquam eleifend mi. Amet mattis vulputate enim nulla aliquet. Varius duis
+        at consectetur lorem. Non arcu risus quis varius quam quisque id.
+        Ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia. Risus
+        sed vulputate odio ut enim blandit volutpat maecenas volutpat. Nunc congue
+        nisi vitae suscipit tellus. Et malesuada fames ac turpis egestas integer
+        eget. Aliquet bibendum enim facilisis gravida neque convallis a. Lorem
+        ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+        incididunt ut labore et dolore magna aliqua. Semper auctor neque vitae
+        tempus quam pellentesque nec nam. Curabitur gravida arcu ac tortor
+        dignissim convallis aenean et. Sed arcu non odio euismod lacinia at.
+        Sollicitudin tempor id eu nisl nunc. Auctor urna nunc id cursus metus
+        aliquam eleifend mi. Amet mattis vulputate enim nulla aliquet. Varius duis
+        at consectetur lorem. Non arcu risus quis varius quam quisque id.
+        Ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia. Risus
+        sed vulputate odio ut enim blandit volutpat maecenas volutpat. Nunc congue
+        nisi vitae suscipit tellus. Et malesuada fames ac turpis egestas i</p>
     </div>
   </div>
-  <div
-    class="container"
-    fxLayout="row"
-    fxLayout.xs="column"
-    fxLayoutWrap
-    fxLayoutGap="0.5"
-    fxLayoutAlign="start"
-  >
-    <div fxFlex="65%" style="padding: 10px;">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Semper auctor neque
-      vitae tempus quam pellentesque nec nam. Curabitur gravida arcu ac tortor
-      dignissim convallis aenean et. Sed arcu non odio euismod lacinia at.
-      Sollicitudin tempor id eu nisl nunc. Auctor urna nunc id cursus metus
-      aliquam eleifend mi. Amet mattis vulputate enim nulla aliquet. Varius duis
-      at consectetur lorem. Non arcu risus quis varius quam quisque id.
-      Ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia. Risus
-      sed vulputate odio ut enim blandit volutpat maecenas volutpat. Nunc congue
-      nisi vitae suscipit tellus. Et malesuada fames ac turpis egestas integer
-      eget. Aliquet bibendum enim facilisis gravida neque convallis a. Lorem
-      ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-      incididunt ut labore et dolore magna aliqua. Semper auctor neque vitae
-      tempus quam pellentesque nec nam. Curabitur gravida arcu ac tortor
-      dignissim convallis aenean et. Sed arcu non odio euismod lacinia at.
-      Sollicitudin tempor id eu nisl nunc. Auctor urna nunc id cursus metus
-      aliquam eleifend mi. Amet mattis vulputate enim nulla aliquet. Varius duis
-      at consectetur lorem. Non arcu risus quis varius quam quisque id.
-      Ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia. Risus
-      sed vulputate odio ut enim blandit volutpat maecenas volutpat. Nunc congue
-      nisi vitae suscipit tellus. Et malesuada fames ac turpis egestas integer
-      eget. Aliquet bibendum enim facilisis gravida neque convallis a.
-    </div>
-    <div fxFlex="35%" style="padding: 10px;">
-      <img src="../../assets/img/english.PNG" width="90%" height="90%" />
+  <div class="parallax-container">
+    <div class="parallax3"></div>
+  </div>
+  <div class="section white">
+    <div class="row container">
+      <h2 class="header">GRE Predictor and Attempt History</h2>
+      <p class="grey-text text-darken-3 lighten-3"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Semper auctor neque
+        vitae tempus quam pellentesque nec nam. Curabitur gravida arcu ac tortor
+        dignissim convallis aenean et. Sed arcu non odio euismod lacinia at.
+        Sollicitudin tempor id eu nisl nunc. Auctor urna nunc id cursus metus
+        aliquam eleifend mi. Amet mattis vulputate enim nulla aliquet. Varius duis
+        at consectetur lorem. Non arcu risus quis varius quam quisque id.
+        Ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia. Risus
+        sed vulputate odio ut enim blandit volutpat maecenas volutpat. Nunc congue
+        nisi vitae suscipit tellus. Et malesuada fames ac turpis egestas integer
+        eget. Aliquet bibendum enim facilisis gravida neque convallis a. Lorem
+        ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+        incididunt ut labore et dolore magna aliqua. Semper auctor neque vitae
+        tempus quam pellentesque nec nam. Curabitur gravida arcu ac tortor
+        dignissim convallis aenean et. Sed arcu non odio euismod lacinia at.
+        Sollicitudin tempor id eu nisl nunc. Auctor urna nunc id cursus metus
+        aliquam eleifend mi. Amet mattis vulputate enim nulla aliquet. Varius duis
+        at consectetur lorem. Non arcu risus quis varius quam quisque id.
+        Ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia. Risus
+        sed vulputate odio ut enim blandit volutpat maecenas volutpat. Nunc congue
+        nisi vitae suscipit tellus. Et malesuada fames ac turpis egestas i</p>
     </div>
   </div>
-  <div
-    class="container"
-    fxLayout="row"
-    fxLayout.xs="column"
-    fxLayoutWrap
-    fxLayoutGap="0.5"
-    fxLayoutAlign="start"
-  >
-    <div fxFlex="35%" style="padding: 10px;">
-      <img src="../../assets/img/english2.jpg" width="90%" height="90%" />
-    </div>
-    <div fxFlex="65%" style="padding: 10px;">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Semper auctor neque
-      vitae tempus quam pellentesque nec nam. Curabitur gravida arcu ac tortor
-      dignissim convallis aenean et. Sed arcu non odio euismod lacinia at.
-      Sollicitudin tempor id eu nisl nunc. Auctor urna nunc id cursus metus
-      aliquam eleifend mi. Amet mattis vulputate enim nulla aliquet. Varius duis
-      at consectetur lorem. Non arcu risus quis varius quam quisque id.
-      Ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia. Risus
-      sed vulputate odio ut enim blandit volutpat maecenas volutpat. Nunc congue
-      nisi vitae suscipit tellus. Et malesuada fames ac turpis egestas integer
-      eget. Aliquet bibendum enim facilisis gravida neque convallis a. Lorem
-      ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-      incididunt ut labore et dolore magna aliqua. Semper auctor neque vitae
-      tempus quam pellentesque nec nam. Curabitur gravida arcu ac tortor
-      dignissim convallis aenean et. Sed arcu non odio euismod lacinia at.
-      Sollicitudin tempor id eu nisl nunc. Auctor urna nunc id cursus metus
-      aliquam eleifend mi. Amet mattis vulputate enim nulla aliquet. Varius duis
-      at consectetur lorem. Non arcu risus quis varius quam quisque id.
-      Ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia. Risus
-      sed vulputate odio ut enim blandit volutpat maecenas volutpat. Nunc congue
-      nisi vitae suscipit tellus. Et malesuada fames ac turpis egestas integer
-      eget. Aliquet bibendum enim facilisis gravida neque convallis a.
+  <div class="parallax-container">
+    <div class="parallax4"></div>
+  </div>
+  <div class="section white">
+    <div class="row container">
+      <h2 class="header">My Schools</h2>
+      <p class="grey-text text-darken-3 lighten-3"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Semper auctor neque
+        vitae tempus quam pellentesque nec nam. Curabitur gravida arcu ac tortor
+        dignissim convallis aenean et. Sed arcu non odio euismod lacinia at.
+        Sollicitudin tempor id eu nisl nunc. Auctor urna nunc id cursus metus
+        aliquam eleifend mi. Amet mattis vulputate enim nulla aliquet. Varius duis
+        at consectetur lorem. Non arcu risus quis varius quam quisque id.
+        Ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia. Risus
+        sed vulputate odio ut enim blandit volutpat maecenas volutpat. Nunc congue
+        nisi vitae suscipit tellus. Et malesuada fames ac turpis egestas integer
+        eget. Aliquet bibendum enim facilisis gravida neque convallis a. Lorem
+        ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+        incididunt ut labore et dolore magna aliqua. Semper auctor neque vitae
+        tempus quam pellentesque nec nam. Curabitur gravida arcu ac tortor
+        dignissim convallis aenean et. Sed arcu non odio euismod lacinia at.
+        Sollicitudin tempor id eu nisl nunc. Auctor urna nunc id cursus metus
+        aliquam eleifend mi. Amet mattis vulputate enim nulla aliquet. Varius duis
+        at consectetur lorem. Non arcu risus quis varius quam quisque id.
+        Ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia. Risus
+        sed vulputate odio ut enim blandit volutpat maecenas volutpat. Nunc congue
+        nisi vitae suscipit tellus. Et malesuada fames ac turpis egestas i</p>
     </div>
   </div>
-</div>
 <app-footer></app-footer>

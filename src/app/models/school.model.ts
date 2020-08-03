@@ -2,8 +2,8 @@
 export class School {
     _id: String;
     id:  Number;
-    name: String;
-    description: String;
+    name: string;
+    description: string;
     globalRank: Number;
     csRank: Number;
     eceRank: Number;

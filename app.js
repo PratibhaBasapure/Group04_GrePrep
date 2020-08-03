@@ -8,6 +8,7 @@ const passport = require("passport");
 require("./api/config/passportConfig");
 const predictorRouter = require("./api/routes/predictor.router");
 const schoolRoutes = require("./api/routes/schoolRoutes");
+const schoolList = require("./api/routes/schoolList");
 
 const mongoUrl =
   "mongodb+srv://admin:dbadmin@greprep.ym7uf.mongodb.net/greprep?retryWrites=true&w=majority";
@@ -24,6 +25,8 @@ app.use("/user", rtsUser);
 app.use("/predictor", predictorRouter);
 app.use("/question", question);
 app.use("/schoolRankings", schoolRoutes);
+app.use("/schools", schoolList);
+
 
 app.use((err, req, res, next) => {
   if (err.name === "ValidationError") {

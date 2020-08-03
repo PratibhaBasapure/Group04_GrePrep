@@ -3,9 +3,11 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 
+
 import { SchoolService } from '../services/school.service';
 import { School } from '../models/school.model';
 import { FormGroup, FormControl } from '@angular/forms';
+
 
 interface schoolRanking {
   value: Number;
