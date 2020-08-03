@@ -8,6 +8,7 @@ import { School } from '../models/school.model';
 import { UserService } from '../services/user.service';
 import { SchoolType } from '../models/school-type.model';
 import { UserSchools } from '../models/user-schools.model';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 export interface Options {
   name: string;
@@ -38,16 +39,10 @@ export class ListOfSchoolsComponent implements OnInit {
   constructor(
     private router: Router,
     public schoolService: SchoolService,
-    public userService: UserService
+    public userService: UserService,
+    private _snackBar: MatSnackBar
   ) {}
-
-  options: Options[] = [
-    { name: 'Harvard University', id: 1 },
-    { name: 'Stanford University', id: 2 },
-    { name: 'Massachusetts Institute of Technology (MIT)', id: 3 },
-    { name: 'University of California, Berkeley (UCB)', id: 4 },
-    { name: 'Columbia University', id: 5 },
-  ];
+  
   schoolChoosen: number = 0;
 
   ngOnInit(): void {
@@ -60,7 +55,6 @@ export class ListOfSchoolsComponent implements OnInit {
   }
 
   getCard(school: number) {
-    console.log("the school number is " + school);
     if (school) {
       this.schoolChoosen = school;
     } else {
@@ -105,37 +99,35 @@ export class ListOfSchoolsComponent implements OnInit {
     var userSchools: UserSchools = null;
     this.schoolService.getFavouriteSchool(emailId).subscribe((res) => {
       userSchools = res as UserSchools;
-      console.log("the user school is :" + userSchools);
       if (userSchools == null) {
         userSchools = new UserSchools();
         userSchools.userId = emailId;
         var favouriteSchools: SchoolType[] = [];
         var favouriteSchool = new SchoolType();
-        console.log(school);
         favouriteSchool.schoolId = school.id;
-        console.log(favouriteSchool.schoolId);
         favouriteSchool.schoolName = school.name;
         favouriteSchool.schoolType = schooType;
         favouriteSchools.push(favouriteSchool);
         userSchools.favouriteSchools = favouriteSchools;
-        console.log(userSchools);
         this.schoolService.postFavouriteSchool(userSchools).subscribe((res) => {
-          M.toast({html: 'Saved Successfully', classes: 'rounded'});
+          this._snackBar.open("School Added Successfully", "OK", {
+            duration: 2000,
+          });
         });
       }
       else{
         var favouriteSchool = new SchoolType();
         var favouriteSchools: SchoolType[] = [];
         favouriteSchools = userSchools.favouriteSchools;
-        console.log(favouriteSchools);
         favouriteSchool.schoolId = school.id;
         favouriteSchool.schoolName = school.name;
         favouriteSchool.schoolType = schooType;
         favouriteSchools.push(favouriteSchool);
-        console.log(favouriteSchools);
         userSchools.favouriteSchools = favouriteSchools;
         this.schoolService.postFavouriteSchool(userSchools).subscribe((res) => {
-          M.toast({html: 'Saved Successfully', classes: 'rounded'});
+          this._snackBar.open("School Added Successfully", "OK", {
+            duration: 2000,
+          });
         });
       }
       this.refreshSchoolList();
