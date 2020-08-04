@@ -1,4 +1,5 @@
 //Author- Neelesh Singh
+// Modified by Padmesh Donthu
 const mongoose = require("mongoose");
 const Range = mongoose.model("Range");
 const History = mongoose.model("MarksHistory");
@@ -63,6 +64,7 @@ module.exports.predictColleges = async (req, res, next) => {
         history.push(document[0].mockTests[i].score);
       }
     } else {
+      console.log("I am here!");
       res.send({
         DreamColleges: [],
         ReachColleges: [],
@@ -71,54 +73,57 @@ module.exports.predictColleges = async (req, res, next) => {
       });
     }
   });
-  const sortedScore = history.sort(function (a, b) {
-    return b - a;
-  });
-  var score = sortedScore[0];
 
-  Range.find({}, (err, ranges) => {
-    if (!err) {
-      var rangeMap = {};
-      ranges.forEach((range) => {
-        rangeMap[range.rangeID] = range.colleges;
-      });
-      //dividing the categories of the schools based on values
-      var scoreIndex = 9 - floor(score / 5 - 59);
+  if (history.length != 0) {
+    const sortedScore = history.sort(function (a, b) {
+      return b - a;
+    });
+    var score = sortedScore[0];
 
-      var dreamColleges = [];
-      var reachColleges = [];
-      var safeColleges = [];
-      if (score > 340) {
-        score = 340;
-        scoreIndex = 9 - floor(score / 5 - 59);
-      }
-      if (score < 295) {
-        for (i = 0; i <= 9; i++) {
-          dreamColleges = dreamColleges.concat(rangeMap[i]);
+    Range.find({}, (err, ranges) => {
+      if (!err) {
+        var rangeMap = {};
+        ranges.forEach((range) => {
+          rangeMap[range.rangeID] = range.colleges;
+        });
+        //dividing the categories of the schools based on values
+        var scoreIndex = 9 - floor(score / 5 - 59);
+
+        var dreamColleges = [];
+        var reachColleges = [];
+        var safeColleges = [];
+        if (score > 340) {
+          score = 340;
+          scoreIndex = 9 - floor(score / 5 - 59);
         }
+        if (score < 295) {
+          for (i = 0; i <= 9; i++) {
+            dreamColleges = dreamColleges.concat(rangeMap[i]);
+          }
+        } else {
+          for (i = scoreIndex + 1; i < 10; i++) {
+            safeColleges = safeColleges.concat(rangeMap[i]);
+          }
+          reachColleges = rangeMap[scoreIndex];
+          if (scoreIndex - 1 >= 0) {
+            reachColleges = reachColleges.concat(rangeMap[scoreIndex - 1]);
+          }
+          for (i = 0; i <= scoreIndex - 2; i++) {
+            dreamColleges = dreamColleges.concat(rangeMap[i]);
+          }
+        }
+        //sending the response
+        res.send({
+          DreamColleges: dreamColleges,
+          ReachColleges: reachColleges,
+          SafeColleges: safeColleges,
+          Score: score,
+        });
       } else {
-        for (i = scoreIndex + 1; i < 10; i++) {
-          safeColleges = safeColleges.concat(rangeMap[i]);
-        }
-        reachColleges = rangeMap[scoreIndex];
-        if (scoreIndex - 1 >= 0) {
-          reachColleges = reachColleges.concat(rangeMap[scoreIndex - 1]);
-        }
-        for (i = 0; i <= scoreIndex - 2; i++) {
-          dreamColleges = dreamColleges.concat(rangeMap[i]);
-        }
+        return next(err);
       }
-      //sending the response
-      res.send({
-        DreamColleges: dreamColleges,
-        ReachColleges: reachColleges,
-        SafeColleges: safeColleges,
-        Score: score,
-      });
-    } else {
-      return next(err);
-    }
-  });
+    });
+  }
 };
 //exporting the excel
 module.exports.updateRangeExcel = (request, res, next) => {
