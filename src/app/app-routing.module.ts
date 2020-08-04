@@ -72,7 +72,7 @@ const routes: Routes = [
     component: TakeQuantTestComponent,
     canActivate: [AuthGuard],
   },
-  { path: 'masters/whyMasters', component: WhyMastersComponent },  
+  { path: 'masters/whyMasters', component: WhyMastersComponent },
   { path: 'terms', component: TermsAndConditionsComponent },
   { path: 'masters/stories', component: SuccessStoriesComponent },
   {

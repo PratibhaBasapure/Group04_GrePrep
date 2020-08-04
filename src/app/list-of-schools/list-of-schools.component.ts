@@ -1,3 +1,4 @@
+// Author - Abhinav Ramesh
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
@@ -94,6 +95,7 @@ export class ListOfSchoolsComponent implements OnInit {
     );
   }
 
+  // Method to add school to user favourites
   addToFavouriteSchools(school: School, schooType:Number) {
     var emailId = this.userService.getUserEmail();
     var userSchools: UserSchools = null;

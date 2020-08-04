@@ -1,14 +1,14 @@
+// Author - Abhinav Ramesh
 import { Injectable } from '@angular/core';
 import { School } from '../models/school.model';
-import { UserSchools } from '../models/user-schools.model'
+import { UserSchools } from '../models/user-schools.model';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SchoolService {
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   selectedSchool: School;
   schools: School[];
@@ -18,23 +18,23 @@ export class SchoolService {
   readonly getFavouriteSchoolURL = '/schools';
 
   //Used to fetch all the school details from the API
-  getSchoolList(){
+  getSchoolList() {
     return this.http.get(this.schoolRankingURL);
   }
 
-  postFavouriteSchool(userSchool : UserSchools){
+  postFavouriteSchool(userSchool: UserSchools) {
     return this.http.post(this.addSchoolURL, userSchool);
   }
 
-  getFavouriteSchools(){
+  getFavouriteSchools() {
     return this.http.get(this.getFavouriteSchoolURL);
   }
 
-  getFavouriteSchool(emailId: String){
+  getFavouriteSchool(emailId: String) {
     return this.http.get(this.getFavouriteSchoolURL + '/' + emailId);
   }
 
-  removeFavouriteSchool(emailId: String, schoolId: Number){
+  removeFavouriteSchool(emailId: String, schoolId: Number) {
     var body = {
       userId: emailId,
       schoolId: schoolId,

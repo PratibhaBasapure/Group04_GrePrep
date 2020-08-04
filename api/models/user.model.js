@@ -54,7 +54,7 @@ userSchema.methods.verifyPassword = function (password) {
 
 userSchema.methods.generateJwt = function () {
   return jwt.sign({ _id: this._id }, "SECRET#123", {
-    expiresIn: 604800
+    expiresIn: 10800
   });
 };
 

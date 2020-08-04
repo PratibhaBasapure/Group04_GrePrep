@@ -8,7 +8,7 @@ import { MediaObserver, MediaChange } from '@angular/flex-layout';
   selector: 'app-footer',
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.css'],
-  encapsulation: ViewEncapsulation.Emulated
+  encapsulation: ViewEncapsulation.Emulated,
 })
 export class FooterComponent implements OnInit {
   mediaSubscribe: Subscription;

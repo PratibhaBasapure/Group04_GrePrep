@@ -1,18 +1,17 @@
+// Author - Neelesh Singh
 import { Injectable } from '@angular/core';
-import { HttpHeaders, HttpClient, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PredictionServiceService {
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { }
-
-  getColleges(user) {
+  getColleges(user: string) {
     const requestBody = {
-      userEmailID: user
-    }
+      userEmailID: user,
+    };
     return this.http.post('/predictor/predict', requestBody);
   }
 }

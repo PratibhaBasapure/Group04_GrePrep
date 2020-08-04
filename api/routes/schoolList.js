@@ -15,6 +15,7 @@ router.get("/myschools", (req, res) => {
     });
 });
 
+// This get request is used to fetch a school based on its id
 router.get("/:id", (req, res) => {
   UserSchool.findOne({ userId: req.params.id }, (err, doc) => {
     if (!err) {
@@ -25,6 +26,7 @@ router.get("/:id", (req, res) => {
   });
 });
 
+// This post request is used to add school to user favourite
 router.post("/addSchools", (req, res) => {
   UserSchool.find({ userId: req.body.userId }, (err, document) => {
     if (document.length == 1) {
@@ -52,6 +54,7 @@ router.post("/addSchools", (req, res) => {
   });
 });
 
+// This is a put request to update the existing document and removes the selected school from favourites
 router.put("/removeSchools", (req, res) => {
   UserSchool.find({ userId: req.body.userId }, (err, document) => {
     if (document.length == 1) {

@@ -1,3 +1,4 @@
+// Author- Abhinav Ramesh
 import { SchoolType } from './school-type.model';
 
 export class UserSchools {

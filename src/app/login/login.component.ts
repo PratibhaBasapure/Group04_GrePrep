@@ -3,12 +3,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
-import {
-  MatDialog,
-  MatDialogRef,
-  MAT_DIALOG_DATA,
-} from '@angular/material/dialog';
-import { LoginAndSignupDialogComponent } from '../login-and-signup-dialog/login-and-signup-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -59,7 +54,7 @@ export class LoginComponent implements OnInit {
   onCancel() {
     this.location.back;
   }
-  forgotPassword(){
+  forgotPassword() {
     this.router.navigate(['/forgotPassward']);
   }
 }

@@ -87,7 +87,7 @@ import { AboutUSComponent } from './static-pages/about-us/about-us.component';
     MySchoolsComponent,
     VerbalPracticeComponent,
     QuantitativePracticeComponent,
-    WhyMastersComponent,    
+    WhyMastersComponent,
     SuccessStoriesComponent,
     QuizComponent,
     TakeQuizComponent,

@@ -9,8 +9,8 @@ const jwtHelper = require("../config/jwtHelper");
 router.post("/register", ctrlUser.register);
 router.post("/authenticate", ctrlUser.authenticate);
 router.get("/userProfile", jwtHelper.verifyJwtToken, ctrlUser.userProfile);
-router.post('/userProfile/updateUserDetails', ctrlUser.updateUserDetails);
-router.post('/userProfile/updateUserPassword', ctrlUser.updateUserPassword);
-router.post('/userProfile/deleteUser', ctrlUser.deleteUser);
+router.post("/userProfile/updateUserDetails", ctrlUser.updateUserDetails);
+router.post("/userProfile/updateUserPassword", ctrlUser.updateUserPassword);
+router.post("/userProfile/deleteUser", ctrlUser.deleteUser);
 
 module.exports = router;

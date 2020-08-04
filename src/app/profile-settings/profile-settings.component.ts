@@ -62,7 +62,7 @@ export class ProfileSettingsComponent implements OnInit {
     private router: Router,
     private userService: UserService,
     private _snackBar: MatSnackBar
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.signupForm = this.formBuilder.group({
@@ -94,8 +94,7 @@ export class ProfileSettingsComponent implements OnInit {
       (res) => {
         this.userDetails = res['user'];
       },
-      err => {
-      }
+      (err) => {}
     );
   }
 
@@ -121,16 +120,21 @@ export class ProfileSettingsComponent implements OnInit {
     this.submitted = true;
     if (this.signupForm.invalid) {
       return;
-    }
-    else {
+    } else {
       this.makeFirstNameEditable = false;
       this.userDetails.firstName = this.signupForm.controls['firstName'].value;
       this.userService.updateUserDetails(this.userDetails).subscribe(
         (res) => {
-          this._snackBar.open("Updated successfully !!", '', { duration: 1000 });
+          this._snackBar.open('Updated successfully !!', '', {
+            duration: 1000,
+          });
         },
-        err => {
-          this._snackBar.open("Something went wrong. Unable to update. Please try later !!", '', { duration: 300 });
+        (err) => {
+          this._snackBar.open(
+            'Something went wrong. Unable to update. Please try later !!',
+            '',
+            { duration: 300 }
+          );
         }
       );
     }
@@ -142,8 +146,7 @@ export class ProfileSettingsComponent implements OnInit {
     this.submitted = true;
     if (this.signupForm.invalid) {
       return;
-    }
-    else {
+    } else {
       this.makeFirstNameEditable = false;
     }
   }
@@ -152,13 +155,21 @@ export class ProfileSettingsComponent implements OnInit {
       return;
     } else {
       this.makeContactNumberEditable = false;
-      this.userDetails.mobileNumber = this.contactNumberForm.controls['mobileNum'].value;
+      this.userDetails.mobileNumber = this.contactNumberForm.controls[
+        'mobileNum'
+      ].value;
       this.userService.updateUserDetails(this.userDetails).subscribe(
-        res => {
-          this._snackBar.open("Updated successfully !!", '', { duration: 1000 });
+        (res) => {
+          this._snackBar.open('Updated successfully !!', '', {
+            duration: 1000,
+          });
         },
-        err => {
-          this._snackBar.open("Something went wrong. Unable to update. Please try later !!", '', { duration: 300 });
+        (err) => {
+          this._snackBar.open(
+            'Something went wrong. Unable to update. Please try later !!',
+            '',
+            { duration: 300 }
+          );
         }
       );
     }
@@ -170,25 +181,31 @@ export class ProfileSettingsComponent implements OnInit {
     this.submitted = true;
     if (this.contactNumberForm.invalid) {
       return;
-    }
-    else {
+    } else {
       this.makeContactNumberEditable = false;
     }
   }
   submitPassword() {
     if (this.passwordChangeForm.invalid) {
       return;
-    }
-    else {
-      this.userDetails.password = this.passwordChangeForm.controls['password'].value;
+    } else {
+      this.userDetails.password = this.passwordChangeForm.controls[
+        'password'
+      ].value;
       this.userService.updateUserPassword(this.userDetails).subscribe(
         (res) => {
-          this._snackBar.open("", '', { duration: 1000 });
-          alert("Password updated successfully. Please log in again to continue.")
+          this._snackBar.open('', '', { duration: 1000 });
+          alert(
+            'Password updated successfully. Please log in again to continue.'
+          );
           this.userService.logout();
         },
-        err => {
-          this._snackBar.open("Something went wrong. Unable to update. Please try later !!", '', { duration: 300 });
+        (err) => {
+          this._snackBar.open(
+            'Something went wrong. Unable to update. Please try later !!',
+            '',
+            { duration: 300 }
+          );
         }
       );
     }
@@ -198,7 +215,9 @@ export class ProfileSettingsComponent implements OnInit {
     if (confirm('Are you sure to delete your account ?') == true) {
       this.userDetails.email = this.userService.getUserEmail();
       this.userService.deleteUserAccount(this.userDetails).subscribe((res) => {
-        alert("Deleted successfully. Thank you for availing GREPrep Service. Have a bright future.")
+        alert(
+          'Deleted successfully. Thank you for availing GREPrep Service. Have a bright future.'
+        );
         this.userService.logout();
       });
     }

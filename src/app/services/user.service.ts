@@ -18,7 +18,7 @@ export class UserService {
 
   noAuthHeader = { headers: new HttpHeaders({ NoAuth: 'True' }) };
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router) {}
 
   //HttpMethods
 
@@ -26,8 +26,12 @@ export class UserService {
     return this.http.post('/user/register', user, this.noAuthHeader);
   }
 
-  login(authCredentials) {
-    return this.http.post('/user/authenticate', authCredentials, this.noAuthHeader);
+  login(authCredentials: any) {
+    return this.http.post(
+      '/user/authenticate',
+      authCredentials,
+      this.noAuthHeader
+    );
   }
   logout() {
     this.deleteToken();
