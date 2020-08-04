@@ -1,0 +1,45 @@
+.heading{
+    text-align: center;
+    font-size: xx-large;
+    padding-top: 2%;
+}
+.content{
+    text-align: center;
+    padding-top: 2%;
+    text-align: justify;
+    padding-right: 10%;
+    padding-left: 10%;
+}
+
+.example-card {
+    padding: 20px;
+  }
+  
+  .example-header-image {
+    background-size: cover;
+  }
+  
+  .auto-complete {
+    padding-top: 20px;
+  }
+  .example-form {
+    min-width: 150px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 70%;
+    margin:2em;
+  }
+  
+  .align-center {
+    display: inline-block;
+    margin-top: 10px;
+  }
+  .header {
+    text-align: center;
+    background-color: #eaeaff;
+  }
+  .card {
+      margin: 3%;
+  }

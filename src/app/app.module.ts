@@ -41,8 +41,7 @@ import { MySchoolsComponent } from './my-schools/my-schools.component';
 import { VerbalPracticeComponent } from './verbal-practice/verbal-practice.component';
 import { QuantitativePracticeComponent } from './quantitative-practice/quantitative-practice.component';
 import { WhyMastersComponent } from './why-masters/why-masters.component';
-import { AboutUsComponent } from './about-us/about-us.component';
-import { TermsAndConditionComponent } from './terms-and-condition/terms-and-condition.component';
+import { TermsAndConditionsComponent } from './static-pages/terms-and-conditions/terms-and-conditions.component';
 import { SuccessStoriesComponent } from './success-stories/success-stories.component';
 import { QuizComponent } from './quiz/quiz.component';
 import { MatRadioModule } from '@angular/material/radio';
@@ -66,6 +65,10 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { TakeVerbalTestComponent } from './take-verbal-test/take-verbal-test.component';
 import { TakeQuantTestComponent } from './take-quant-test/take-quant-test.component';
 import { ViewAnswersComponent } from './view-answers/view-answers.component';
+import { ContactUsComponent } from './static-pages/contact-us/contact-us.component';
+import { FAQsComponent } from './static-pages/faqs/faqs.component';
+import { PrivacyPoliciesComponent } from './static-pages/privacy-policies/privacy-policies.component';
+import { AboutUSComponent } from './static-pages/about-us/about-us.component';
 
 @NgModule({
   declarations: [
@@ -84,9 +87,7 @@ import { ViewAnswersComponent } from './view-answers/view-answers.component';
     MySchoolsComponent,
     VerbalPracticeComponent,
     QuantitativePracticeComponent,
-    WhyMastersComponent,
-    AboutUsComponent,
-    TermsAndConditionComponent,
+    WhyMastersComponent,    
     SuccessStoriesComponent,
     QuizComponent,
     TakeQuizComponent,
@@ -98,6 +99,11 @@ import { ViewAnswersComponent } from './view-answers/view-answers.component';
     TakeVerbalTestComponent,
     TakeQuantTestComponent,
     ViewAnswersComponent,
+    TermsAndConditionsComponent,
+    ContactUsComponent,
+    FAQsComponent,
+    PrivacyPoliciesComponent,
+    AboutUSComponent,
   ],
   imports: [
     BrowserModule,

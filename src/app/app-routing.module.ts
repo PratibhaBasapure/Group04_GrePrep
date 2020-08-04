@@ -13,8 +13,8 @@ import { MySchoolsComponent } from './my-schools/my-schools.component';
 import { VerbalPracticeComponent } from './verbal-practice/verbal-practice.component';
 import { QuantitativePracticeComponent } from './quantitative-practice/quantitative-practice.component';
 import { WhyMastersComponent } from './why-masters/why-masters.component';
-import { AboutUsComponent } from './about-us/about-us.component';
-import { TermsAndConditionComponent } from './terms-and-condition/terms-and-condition.component';
+import { AboutUSComponent } from '../app/static-pages/about-us/about-us.component';
+import { TermsAndConditionsComponent } from '../app/static-pages/terms-and-conditions/terms-and-conditions.component';
 import { SuccessStoriesComponent } from './success-stories/success-stories.component';
 import { QuizComponent } from './quiz/quiz.component';
 import { TakeQuizComponent } from './take-quiz/take-quiz.component';
@@ -27,6 +27,9 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { TakeVerbalTestComponent } from './take-verbal-test/take-verbal-test.component';
 import { TakeQuantTestComponent } from './take-quant-test/take-quant-test.component';
 import { ViewAnswersComponent } from './view-answers/view-answers.component';
+import { ContactUsComponent } from './static-pages/contact-us/contact-us.component';
+import { PrivacyPoliciesComponent } from './static-pages/privacy-policies/privacy-policies.component';
+import { FAQsComponent } from './static-pages/faqs/faqs.component';
 
 const routes: Routes = [
   {
@@ -69,9 +72,8 @@ const routes: Routes = [
     component: TakeQuantTestComponent,
     canActivate: [AuthGuard],
   },
-  { path: 'masters/whyMasters', component: WhyMastersComponent },
-  { path: 'aboutUs', component: AboutUsComponent },
-  { path: 'terms', component: TermsAndConditionComponent },
+  { path: 'masters/whyMasters', component: WhyMastersComponent },  
+  { path: 'terms', component: TermsAndConditionsComponent },
   { path: 'masters/stories', component: SuccessStoriesComponent },
   {
     path: 'attemptHistory',
@@ -116,6 +118,11 @@ const routes: Routes = [
     component: ProfileSettingsComponent,
     canActivate: [AuthGuard],
   },
+  { path: 'termsAndConditions', component: TermsAndConditionsComponent },
+  { path: 'contactUs', component: ContactUsComponent },
+  { path: 'aboutUs', component: AboutUSComponent },
+  { path: 'privacyPolicies', component: PrivacyPoliciesComponent },
+  { path: 'faqs', component: FAQsComponent },
 ];
 
 @NgModule({
