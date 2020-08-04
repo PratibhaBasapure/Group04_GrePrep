@@ -17,9 +17,13 @@
 :host .mat-button {
   background-color: green;
 }
-:host .mat-form-field-appearance-outline:not(.mat-form-field-disabled)
+:host
+  .mat-form-field-appearance-outline:not(.mat-form-field-disabled)
   .mat-form-field-flex:hover
   .mat-form-field-outline {
   border: none;
   opacity: 1;
+}
+.link {
+  color: mediumblue;
 }

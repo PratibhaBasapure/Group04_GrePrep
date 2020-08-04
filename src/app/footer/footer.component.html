@@ -1,5 +1,5 @@
 <!--Author - Padmesh Donthu, Pratibha Basapure-->
-<div style="background-color: #404242; color: white;">
+<div style="background-color: lightblue;">
   <div
     fxLayout="row"
     fxLayout.xs="column"
@@ -10,22 +10,24 @@
     style="padding: 2%;"
   >
     <div fxFlex="30%" fxLayout="column wrap" fxLayoutAlign="start start">
-      <p style="color: gray; text-decoration: underline; font-size: medium;">
+      <p style="text-decoration: underline; font-size: medium;">
         Some quick links...
       </p>
       <p style="margin: 0;">
-        <a [routerLink]="'/privacyPolicies'">Privacy Policies</a>
+        <a [routerLink]="'/privacyPolicies'" class="link">Privacy Policies</a>
       </p>
       <p style="margin: 0;">
-        <a [routerLink]="'/termsAndConditions'">Terms and Conditions</a>
+        <a [routerLink]="'/termsAndConditions'" class="link"
+          >Terms and Conditions</a
+        >
       </p>
       <p style="margin: 0;">
-        <a [routerLink]="'/faqs'">FAQs</a>
+        <a [routerLink]="'/faqs'" class="link">FAQs</a>
       </p>
     </div>
     <div fxFlex="40%">
       <div fxLayout="column wrap" fxLayoutAlign="center center">
-        <p style="color: gray; text-decoration: underline; font-size: medium;">
+        <p style="text-decoration: underline; font-size: medium;">
           Connect with us at..
         </p>
 
@@ -67,14 +69,14 @@
       </div>
     </div>
     <div fxFlex="25%" fxLayout="column wrap" fxLayoutAlign="end end">
-      <p style="color: gray; text-decoration: underline; font-size: medium;">
+      <p style="text-decoration: underline; font-size: medium;">
         Some quick links...
       </p>
       <p style="margin: 0;">
-        <a [routerLink]="'/contactUs'">Contact Us</a>
+        <a [routerLink]="'/contactUs'" class="link">Contact Us</a>
       </p>
       <p style="margin: 0;">
-        <a [routerLink]="'/aboutUs'">About Us</a>
+        <a [routerLink]="'/aboutUs'" class="link">About Us</a>
       </p>
     </div>
   </div>
