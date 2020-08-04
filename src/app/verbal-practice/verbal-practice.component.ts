@@ -24,9 +24,18 @@ export class VerbalPracticeComponent implements OnInit {
 
   // Method to route the user to quantitative test page
   next() {
-    this.router.navigate(['takeVerbalPracticeTest'], {
-      relativeTo: this.route,
-    });
+    if (
+      this.questionService.questionCount == 0 ||
+      this.questionService.questionType == ''
+    ) {
+      alert(
+        'Please select all the options available before starting your test!'
+      );
+    } else {
+      this.router.navigate(['takeVerbalPracticeTest'], {
+        relativeTo: this.route,
+      });
+    }
   }
 
   // Method to set the number of questions for the verbal practice test

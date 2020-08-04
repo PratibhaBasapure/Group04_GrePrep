@@ -24,7 +24,13 @@ export class QuizComponent implements OnInit {
 
   // Method to route the user to quiz page
   next() {
-    this.router.navigate(['takeQuiz'], { relativeTo: this.route });
+    if (this.questionService.questionCount == 0) {
+      alert(
+        'Please select the number of questions to attempt before starting your test!'
+      );
+    } else {
+      this.router.navigate(['takeQuiz'], { relativeTo: this.route });
+    }
   }
 
   // Method to set the number of questions for the test
